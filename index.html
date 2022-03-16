@@ -1,9 +1,9 @@
-<!DOCTYPE html>
-<html>
+<!doctype html>
+<html lang="en">
 
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
   <meta content="ie=edge" http-equiv="x-ua-compatible">
   <link rel="preconnect" href="//static.sketchfab.com" crossorigin="anonymous">
   <link rel="dns-prefetch" href="//static.sketchfab.com">
@@ -22,10 +22,8 @@
   <meta name="keywords" content="UNMC iEXCEL 3D Models">
   <meta name="author" content="iEXCEL">
   <!-- CSS dependencies -->
-  <!--<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">-->
   <link rel="stylesheet" href="https://res.cloudinary.com/unmc/raw/upload/v1639426342/CSS/5.3.1.minified-css_ijwhx5.css">
   <link rel="stylesheet" href="https://res.cloudinary.com/unmc/raw/upload/v1645034850/CSS/bootstrap4.3.1_clean_min.css">
-  <!--<link rel="stylesheet" href="https://res.cloudinary.com/unmc/raw/upload/v1644968073/CSS/bootstrap4.3.1.min_y2xn8o.css" media="all">-->
   <link rel="stylesheet" href="pediatric.css">
   <style type="text/css">
     html,
@@ -300,7 +298,6 @@
       -webkit-box-pack: center;
       -ms-flex-pack: center;
       justify-content: center;
-      height: 100vh;
     }
 
     button.close {
@@ -464,7 +461,7 @@
     }
 
     .label {
-      font-size: 0.875rem;
+      font-size: 1rem;
     }
 
     .p-footer {
@@ -499,7 +496,7 @@
 
     @media (min-width: 992px) {
       .container {
-        max-width: 960px;
+        max-width: 88vw;
       }
     }
 
@@ -1058,8 +1055,7 @@
     }
 
     .main-bg-texture {
-      background-color: #151515;
-      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='4' height='4' viewBox='0 0 4 4'%3E%3Cpath fill='%235f5d62' fill-opacity='0.46' d='M1 3h1v1H1V3zm2-2h1v1H3V1z'%3E%3C/path%3E%3C/svg%3E");
+      background-color: #222;
     }
 
     label {
@@ -1084,28 +1080,38 @@
       width: 22px;
       height: 22px;
     }
+
+    a.navbar-brand:hover {
+      opacity: .5;
+      transition: .3s;
+    }
+
+    a.credits-text:hover {
+      opacity: .5;
+      transition: .3s;
+    }
   </style>
 </head>
 
-<body>
+<body style="min-height:100vh;" >
   <nav class="navbar navbar-dark bg-dark border-bottom border-dark p-xl- d-flex flex-column justify-content-center align-items-center shadow-sm" style="max-height:70px; background-color: #151515!important;">
-    <div class="container d-flex justify-content-center p-xl-2 px-1"> <a class="navbar-brand d-flex align-items-center p-0 m-0 mr-auto" href="index.html"><img src="https://res.cloudinary.com/unmc/image/upload/v1642625051/logo/New_Project_6_avrb9d.svg" class="d-block img-fluid m-0" width="160"></a> </div>
+    <div class="container d-flex justify-content-center p-xl-2 px-1"> <a class="navbar-brand d-flex align-items-center p-0 m-0 mr-auto" href="index.html"><img src="data:image/svg+xml;base64,PHN2ZyB2ZXJzaW9uPSIxLjIiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgdmlld0JveD0iMCAwIDE2NzcgMzI3IiB3aWR0aD0iMTY3NyIgaGVpZ2h0PSIzMjciPjxzdHlsZT4uczB7ZmlsbDojYWQxMjJhfS5zMXtmaWxsOiNmZmZmZmZ9PC9zdHlsZT48cGF0aCBjbGFzcz0iczAiIGQ9Im0yODkgMzQuNnY5MC4xYzAgMzQuMy04IDcxLjMtMzQuMSAxMDhsLTExMC4xLTExN3Y3Mi4xbDc3IDgxLjljLTE5LjggMTguMi00NSAzNi4xLTc3IDUzLjNjLTExNy4yLTYzLjEtMTQ0LjItMTM1LjItMTQ0LjItMTk4LjN2LTkwLjFsODUuNiA5MXYtNzIuMWwtMTcuOC0xOC45aDc2LjRsODUuNiA5MXYtNzIuMWwtMTcuNy0xOC45eiIgLz48cGF0aCBjbGFzcz0iczEiIGQ9Im01MDEuOCAyNDAuNWwyLjIgNC40aC00MS4xdi0xMi40Yy04LjUgNy40LTIzLjIgMTcuNy00Ny4yIDE3LjdjLTYyLjIgMC02Mi4yLTUxLjItNjIuMi03OC43di01MS4zYzAtMTguNS0xLjctMjMuOS02LjYtMzUuOGwtMS44LTQuMmg0OGwtMS4zIDMuOWMtMi4zIDcuNC0zLjQgMTkuNi0zLjQgMzYuMXY1MS4zYzAgMjcuMyAyLjUgNTEuNyAzMy4zIDUxLjdoMC44YzM4LjgtMC40IDM4LjgtMjQuMiAzOC44LTUxLjd2LTUxLjNjMC0yMC40LTAuOC0yNS44LTUuOC0zNS42bC0yLjItNC40aDQ5LjZsLTEuNyA0LjJjLTMgNy4yLTUuNyAxNC40LTUuNyAyMi45djk0YzAgMjQuMiAwLjcgMjguMiA2LjMgMzkuMnoiIC8+PHBhdGggY2xhc3M9InMxIiBkPSJtNjMyLjEgODAuMmgzOS41bC0yLjIgNC40Yy00LjYgOC44LTQuOSAxMi40LTQuOSAyOC4zdjEzMmgtMTMuOGwtMTAzLjQtMTIzLjh2ODYuN2MwIDE3LjggMS4zIDIxLjIgNi44IDMyLjhsMiA0LjNoLTQyLjdsMi42LTQuNWM0LjctOC4yIDYuNC0xNC40IDYuNC0zMy4ydi04OS41YzAtMjAuOS0yLjctMjQuNi04LjUtMzIuN2wtMy40LTQuOGg0OS44bDAuOCAxLjhjMi44IDYuMyA4LjggMTMuNyAxNC4xIDIwLjNsMS40IDEuN2w2Mi43IDc1LjF2LTY2LjRjMC0xNS0wLjEtMTcuNy01LjEtMjguMnoiIC8+PHBhdGggY2xhc3M9InMxIiBkPSJtODg3LjcgMjQwLjhsMS42IDQuMmgtNDkuNWwxLjktNC4zYzIuMi00LjkgNC43LTExLjUgNC43LTE4LjNjMC0xLjktMC4yLTMuNy0wLjMtNS43cS0wLjItMS43LTAuMy0zLjZsLTExLjQtOTEuN2wtNTIuMiAxMjMuNmgtOS41bC01MC42LTEyMi4xbC0xMy4xIDg4LjRjLTAuNiA0LjktMS4yIDkuNC0xLjIgMTMuNmMwIDUuMSAxLjQgMTAuNCA0IDE1LjdsMi4yIDQuNGgtNDEuMmwzLjItNC44YzQuOS03LjMgNi40LTEzLjQgNy45LTI1LjJsMTUtMTA1LjJjMC4yLTEuNyAwLjUtMy41IDAuOC01LjNjMC40LTIuMiAwLjctNC4zIDAuNy02LjFjMC01LjctMS40LTguNy0zLjEtMTIuMXEtMC40LTAuOS0wLjktMS44bC0yLTQuM2g1MC45djNjMCA2LjUgMS4yIDExLjggNC44IDIwLjlsMzIuNCA3OS4xbDMyLjgtNzguMmM0LjQtMTAuOCA1LjMtMTUuNCA2LjYtMjIuM2wwLjUtMi40bDIuNS0wLjFoNDkuMmwtNC43IDVjLTIgMi4yLTQgNi41LTQgMTEuMmMwIDQuNSAwLjQgOS4zIDEuMSAxNC44bDEzLjQgMTAzLjhjMS4xIDkuMyAzLjIgMTQuNSA1LjkgMjEuMmMwLjYgMS40IDEuMiAzIDEuOSA0LjZ6IiAvPjxwYXRoIGNsYXNzPSJzMSIgZD0ibTEwMzQuOCAyMDUuNmwtOS42IDM5LjFsLTEuOCAwLjRjLTE1LjQgMy40LTI4LjIgNS0zOS4xIDVjLTU4LjkgMC05Ny0zNC40LTk3LTg3LjdjMC01MS41IDM5LjUtODcuNSA5Ni4xLTg3LjVjMTYuNyAwIDMxLjYgMi4zIDQ0LjIgNi44bDIgMC43djQxLjRsLTUuMy02LjFjLTUuNC02LjItMjEuMy0xNy44LTQzLjYtMTcuOGMtNDEuNiAwLTU2LjUgMzIuMS01Ni41IDYyLjFjMCAzMSAxNS43IDY0LjIgNTkuNyA2NC4yYzIxLjEgMCAzNS42LTEwLjEgNDQuNC0xNi4xeiIgLz48cGF0aCBjbGFzcz0iczEiIGQ9Im0xMDQ1LjMgODguNWMwLjEgMC44IDAuMiAyLjMgMi44IDIuM2MyLjQgMCAyLjctMS41IDIuNy0yLjFjMC0xLjMtMS0xLjUtMi43LTEuOWMtMS43LTAuNC0yLjUtMC42LTMuMS0xYy0wLjktMC43LTEuMi0xLjUtMS4yLTIuM2MwLTIuMyAyLjMtMy4zIDQuNC0zLjNjMC44IDAgMi4zIDAuMSAzLjIgMS4xYzAuNyAwLjcgMC43IDEuNSAwLjcgMS45aC0xLjZjLTAuMS0xLjQtMS4zLTEuNy0yLjQtMS43Yy0xLjYgMC0yLjYgMC43LTIuNiAxLjljMCAxIDAuNyAxLjMgMi4xIDEuN2MyLjcgMC43IDMgMC43IDMuNyAxLjJjMS4xIDAuNyAxLjEgMS44IDEuMSAyLjNjMCAyLTEuNiAzLjUtNC41IDMuNWMtMC45IDAtMi42LTAuMS0zLjYtMS4zYy0wLjYtMC44LTAuNi0xLjgtMC42LTIuM2gxLjZ6IiAvPjxwYXRoIGNsYXNzPSJzMSIgZD0ibTEwNTQuOCA4MC40aDIuOGwzLjMgOS40bDMuMy05LjRoMi42djExLjVoLTEuNnYtMTAuNGwtMy43IDEwLjRoLTEuNWwtMy43LTEwLjN2MTAuM2gtMS41eiIgLz48cGF0aCBjbGFzcz0iczEiIGQ9Im0xMTYyLjMgMC43aDExLjN2MzI1LjdoLTExLjN6IiAvPjxwYXRoIGNsYXNzPSJzMSIgZD0ibTEyNjcuNCAxMTYuOWgxMS42djEwLjVoLTExLjZ6bTEuMSAyMi4zaDkuNnY1MS4yaC05LjZ6IiAvPjxwYXRoIGNsYXNzPSJzMSIgZD0ibTEyOTUuNSAxMTYuN2g0Ni4ydjguN2gtMzZ2MjIuOWgzNC4zdjguNmgtMzQuM3YyNC41aDM2Ljh2OWgtNDd6IiAvPjxwYXRoIGNsYXNzPSJzMSIgZD0ibTEzNjguMiAxMTYuN2wxOS45IDI4LjRsMTkuOC0yOC40aDEyLjRsLTI2LjIgMzUuM2wyNy41IDM4LjRoLTEyLjhsLTIyLTMxLjZsLTIyLjQgMzEuNmgtMTIuM2wyOC41LTM4LjZsLTI1LjUtMzUuMXoiIC8+PHBhdGggY2xhc3M9InMxIiBkPSJtMTQ3Ny4xIDEzNi42Yy0wLjQtMi41LTEuNy0xMi43LTE1LjktMTIuN2MtMTcuNyAwLTIwLjkgMTguMS0yMC45IDMwLjRjMCAxMy44IDQgMjguOCAyMC44IDI4LjhjNC41IDAgOC44LTEuMSAxMi00LjNjMi42LTIuOSAzLjItNi4xIDMuNS03LjhoMTEuM2MtMS42IDE0LjUtMTQuOSAyMC41LTI3LjYgMjAuNWMtMjUuOSAwLTMwLjktMjIuOC0zMC45LTM3LjFjMC0xNS41IDYtMzguNyAzMi4yLTM4LjdjMTAuNSAwIDI1LjEgNC4yIDI2LjUgMjAuOWgtMTF6IiAvPjxwYXRoIGNsYXNzPSJzMSIgZD0ibTE0OTkuNiAxMTYuN2g0Ni4ydjguN2gtMzZ2MjIuOWgzNC4zdjguNmgtMzQuM3YyNC41aDM2Ljh2OWgtNDd6IiAvPjxwYXRoIGNsYXNzPSJzMSIgZD0ibTE1NjMuNyAxMTYuN2gxMC4xdjY0LjZoMzQuM3Y5LjFoLTQ0LjR6IiAvPjxwYXRoIGNsYXNzPSJzMSIgZD0ibTE2MTcuOSAxMzhjMC4xIDIuMSAwLjMgNi4yIDcuNSA2LjJjNi41IDAgNy4zLTQuMSA3LjMtNS42YzAtMy41LTIuOC00LjItNy4yLTUuM2MtNC43LTEuMi02LjktMS43LTguNS0yLjhjLTIuNS0xLjctMy4yLTQtMy4yLTYuMWMwLTYuNCA2LTkuMSAxMS45LTkuMWMyLjEgMCA2LjMgMC4zIDguOCAzYzEuNyAxLjkgMS44IDQuMSAxLjkgNS40aC00LjVjLTAuMi0zLjktMy41LTQuOC02LjYtNC44Yy00LjMgMC02LjkgMS45LTYuOSA1LjFjMCAyLjcgMS44IDMuNyA1LjYgNC42YzcuNSAxLjkgOC4zIDIuMSAxMC4xIDMuM2MyLjkgMS45IDMuMSA0LjkgMy4xIDYuMmMwIDUuNi00LjMgOS44LTEyLjMgOS44Yy0yLjQgMC03LjMtMC40LTkuNy0zLjZjLTEuOC0yLjMtMS44LTQuOC0xLjgtNi4zaDQuNXoiIC8+PHBhdGggY2xhc3M9InMxIiBkPSJtMTY0My43IDExNS44aDcuN2w4LjggMjUuOGw5LTI1LjhoNy4ydjMxLjNoLTQuM3YtMjguMWwtMTAuMiAyOC4xaC00LjFsLTkuOS0yOHYyOGgtNC4yeiIgLz48L3N2Zz4=" class="d-block img-fluid m-0" width="160"></a> </div>
   </nav>
   <div class="py-xl-4 py-3 shadow" style="background-color: rgb(48, 59, 65) !important;">
     <div class="container">
       <div class="row">
         <div class="col-md-12">
-          <h1 class="text-center text-white display-4">Taking Control of Your Pelvic Floor</h1>
+          <h1 class="text-center text-white display-4 lh-sm my-1">Taking Control of Your Pelvic Floor</h1>
         </div>
       </div>
     </div>
   </div>
-  <div class="py-4 min-height-90vh d-flex flex-column justify-content-start align-items-start main-bg-texture" style="min-height:90vh;">
+  <div class="py-4 min-height-90vh d-flex flex-column justify-content-start align-items-start main-bg-texture">
     <div class="container">
       <div class="row  mx-auto w-100 align-items-start">
         <div class="d-flex flex-column mb-3 col-xl-9 col-12 extra-padding justify-content-center align-items-start">
           <div class="d-flex flex-row w-100 justify-content-between align-items-center flex-wrap pb-1">
-            <div class="col col-lg-3 col-12">
+            <div class="col col-lg-3 col-sm-6 col-12">
               <div class="btn-group btn btn-lg btn-block mb-0 px-0">
                 <label class="btn btn-lg btn-primary w-auto" for="highlightToggleCheckbox">
                   <input id="highlightToggleCheckbox" onclick="document.getElementById('highl').click()" style="display:block;border-radius:2em;" type="checkbox">Musculature of the Pelvic Floor</label>
@@ -1122,8 +1128,8 @@
                 </ul>
               </div>
             </div>
-            <div class="col col-lg-3 col-12"><a class="btn btn-primary btn-block btn-lg border-dark custom-btn" href="#" data-bs-target="#staticBackdrop_excercises" data-bs-toggle="modal">Pelvic Muscle Exercises</a></div>
-            <div class="col  col-lg-3 col-12">
+            <div class="col col-lg-3 col-sm-6 col-12"><a class="btn btn-primary btn-block btn-lg border-dark custom-btn" href="#" data-bs-target="#staticBackdrop_excercises" data-bs-toggle="modal">Pelvic Muscle Exercises</a></div>
+            <div class="col col-lg-3 col-sm-6 col-12">
               <div class="btn-group btn btn-lg btn-block mb-0  px-0">
                 <button type="button" class="btn btn-lg btn-primary w-auto" id="a5" href="#" data-bs-target="#staticBackdroppp" data-bs-toggle="modal">Types of Urinary Incontinence</button>
                 <button type="button" class="btn btn-sm btn-primary dropdown-toggle dropdown-toggle-split ms-1 d-none" data-bs-toggle="dropdown" aria-expanded="false">
@@ -1137,7 +1143,7 @@
                 </ul>
               </div>
             </div>
-            <div class="col col-lg-3 col-12">
+            <div class="col col-lg-3 col-sm-6 col-12">
               <div class="btn-group btn btn-lg btn-block mb-0  px-0">
                 <button type="button" class="btn btn-lg btn-primary w-auto" onclick="document.getElementById('a6').click()" href="#" data-bs-target="#staticBackdrop" data-bs-toggle="modal">Lifestyle &amp; Behavior Modifications</button>
                 <button type="button" class="btn btn-sm btn-primary dropdown-toggle dropdown-toggle-split ms-1 d-none" data-bs-toggle="dropdown" aria-expanded="false">
@@ -1151,21 +1157,21 @@
               </div>
             </div>
             <div class="alert alert-primary p-3  d-sm-block alert alert-success alert-dismissible fade show w-100" role="alert">
-              <button type="button" class=" btn-close" aria-label="Close" data-bs-dismiss="alert">×</button>
+              <button type="button" class="btn-close border-left border-bottom" aria-label="Close" data-bs-dismiss="alert" style="padding:1.5rem;">×</button>
               <h3 class="alert-heading">How to use this model</h3>
-              <p class="fw-bold">(Toggle the first button on and off to highlight Musculaature of the Pelvic Floor).</p>
-              <p class="mb-">1. To move the model in 3D space, use your mouse’s left button to click and drag.</p>
-              <p class="mb-">2. To enlarge the object, use the mouse’s wheel.</p>
-              <p class="mb-">3. The right click and drag function moves the model across the horizontal plane.</p>
-              <p class="mb-">4. To highlight and cycle through anatomical descriptions, click on the “Select an annotation” link at the bottom of the window or click the left or right arrow.</p>
+              <p class="fw-bold">(Toggle the first button on and off to highlight Musculature of the Pelvic Floor).</p>
+              <p class="mb-"><span class="fw-bold">1.</span> To move the model in 3D space, use your mouse’s left button to click and drag.</p>
+              <p class="mb-"><span class="fw-bold">2.</span> To enlarge the object, use the mouse’s wheel.</p>
+              <p class="mb-"><span class="fw-bold">3.</span> The right click and drag function moves the model across the horizontal plane.</p>
+              <p class="mb-"><span class="fw-bold">4.</span> To highlight and cycle through anatomical descriptions, click on the “Select an annotation” link at the bottom of the window or click the left or right arrow.</p>
             </div>
           </div>
-          <iframe id="api-frame" width="100%" height="auto" allowfullscreen="" mozallowfullscreen="true" webkitallowfullscreen="true" class=" rounded shadow-lg embed-responsive embed-responsive-4by3 ratio border-0" loading="lazy" allow="vr; autoplay; fullscreen" src="https://sketchfab.com/models/c830d8a0f15d4ede82f455305f84ed11/embed?api_version=1.10.1&amp;api_id=10_api-frame&amp;autostart=1&amp;preload=1&amp;annotation_tooltip_visible=0&amp;max_texture_size=800"></iframe>
+          <iframe id="api-frame" width="100%" height="auto" allowfullscreen="" mozallowfullscreen="true" webkitallowfullscreen="true" class=" rounded shadow-lg embed-responsive embed-responsive-4by3 ratio border-0" loading="lazy" allow="vr; autoplay; fullscreen" src="https://sketchfab.com/models/c830d8a0f15d4ede82f455305f84ed11/embed?api_version=1.12.0&amp;api_id=10_api-frame&amp;autostart=1&amp;preload=1&amp;annotation_tooltip_visible=0&amp;max_texture_size=800"></iframe>
         </div>
         <div class="d-flex flex-column mx-auto col-xl-3 col-12 components-column">
           <div class="navTree" id="navTree">
           </div>
-          <div class="row mb- w-100 mx-auto mt- ">
+          <div class="row mb- w-100 mx-auto mt-1 ">
             <p class="px-2 p-custom d-flex flex-column align-self-center card bg-secondary border-dark shadow-lg">
               <font color="white"><br>
                 <label class="switch"> <input type="checkbox" id="midSaggitalCheckbox" onclick="document.getElementById('midSaggitalCheckbox').click()"><span class="slider round"></span></label>
@@ -1184,7 +1190,7 @@
                 <label>Annotation Numbers</label>
               </font><br>
             </p>
-            <span class="spany w-100 d-block px-2 py-2 lead bg-light text-center border-bottom border-info fw-normal">Please Select an Annotation</span>
+            <span class="spany w-100 d-block px-2 py-2 lead bg-light text-center border-bottom border-info fw-normal lh-sm">Please Select an Annotation</span>
           </div>
           <div class="controls" id="controls">
             <div id="annotations-sync"></div>
@@ -1200,7 +1206,7 @@
     <div class="container">
       <div class="row">
         <div class="col-md-12 text-center">
-          <p class="mb-0 text-light text-small footer-text">© 2021, Board of Regents of the University of Nebraska. All rights reserved. </p>
+          <p class="mb-0 text-light text-small footer-text">© 2022, Board of Regents of the University of Nebraska. All rights reserved. | <span class="credits text-decoration-underline  text-info"><a href="/credits" class="text-reset text-decoration-underline credits-text"> Credits</a></span></p>
         </div>
       </div>
     </div>
@@ -1215,17 +1221,17 @@
         </div>
         <div class="modal-body p-3 px-xl-3 px-2">
           <h3 class="my-3">1. Dietary </h3>
-          <p><span class="font-weight-bold">a.</span> Drink Plenty of Fluids! Normal fluid consumption is considered 64-70 oz of total fluids per day. A normal fluid consumption (not too little and not too much) helps maintain normal kidney and bladder function. </p>
+          <p><span class="font-weight-bold fs-5">a.</span> Drink Plenty of Fluids! Normal fluid consumption is considered 64-70 oz of total fluids per day. A normal fluid consumption (not too little and not too much) helps maintain normal kidney and bladder function. </p>
           <h5 class=" my-3 mb-3"> Benefits of a normal fluid consumption also include: </h5>
           <ul class="my-3 list-group shadow-sm mw-54em bg-teal">
             <li class="list-group-item-success text-capitalized bg-teal text-light py-2">• &nbsp;Decreasing Bladder Irritability leading to decreased bladder contractions </li>
             <li class="list-group-item-success text-capitalized bg-teal text-light py-2">• &nbsp;Prevention of Urinary Tract Infections </li>
             <li class="list-group-item-success text-capitalized bg-teal text-light py-2">• &nbsp;Prevention of Constipation </li>
           </ul>
-          <p><span class="font-weight-bold">b.</span> Limit or Decrease Bladder Irritants </p>
+          <p><span class="font-weight-bold fs-5">b.</span> Limit or Decrease Bladder Irritants </p>
           <!--<h3 class="my-4">2. Avoid Too Many Fluids! Just remember, whatever you take in, must come out! </h3>-->
           <ul class="my-3 my-4">
-            <li class="img-box px-xl-4 px-2 "><span class="title lead fw-bold pr-2">Carbonated beverages or aspartame</span> <span class="dds"><img src="https://res.cloudinary.com/unmc/image/upload/c_fill,dpr_1.0,fl_fast_scale,g_center,h_300,w_500/v1642023027/Pelvis_Models/beach-gb0740b55c_1280_gmiyed.jpg" width="500" class="img-fluid rounded border"></span></li>
+            <li class="img-box px-xl-4 px-2 "><span class="title lead fw-bold pr-2">Carbonated beverages <br> or aspartame</span> <span class="dds"><img src="https://res.cloudinary.com/unmc/image/upload/c_fill,dpr_1.0,fl_fast_scale,g_center,h_300,w_500/v1642023027/Pelvis_Models/beach-gb0740b55c_1280_gmiyed.jpg" width="500" class="img-fluid rounded border"></span></li>
             <li class="img-box px-xl-4 px-2"> <span class="title lead fw-bold pr-2">Caffeine</span> <span class="dds"><img src="https://res.cloudinary.com/unmc/image/upload/c_fill,dpr_1.0,fl_fast_scale,g_center,h_300,q_auto,w_500/v1642021110/Pelvis_Models/coffee-ge13adccff_1280_flfkzy.jpg" width="500" class="img-fluid rounded border"></span></li>
             <li class="img-box px-xl-4 px-2"><span class="title lead fw-bold pr-2">Alcohol</span> <span class="dds"><img width="500" src="https://res.cloudinary.com/unmc/image/upload/c_fill,dpr_1.0,fl_fast_scale,g_center,h_300,q_auto,w_500/v1642022374/Pelvis_Models/clinking-glasses-g3a78fdd42_1280_xggwas.jpg" class="img-fluid rounded border"></span></li>
             <li class="img-box px-xl-4 px-2"> <span class="title lead fw-bold pr-2"> Citrus Juices</span>
@@ -1233,9 +1239,9 @@
             <li class="img-box px-xl-4 px-2"> <span class="title lead fw-bold pr-2">Spicy foods</span>
               <!--<span class="dds"><img width="500" src="https://res.cloudinary.com/unmc/image/upload/c_fill,dpr_1.0,fl_fast_scale,g_center,h_300,q_auto,w_500/v1642024662/Pelvis_Models/california-g91a6e2436_1280_tdxzuu.jpg" class="img-fluid rounded border"></span>--><span class="dds"><img width="500" src="https://res.cloudinary.com/unmc/image/upload/c_fill,dpr_1.0,fl_fast_scale,g_center,h_300,w_500/v1642024662/Pelvis_Models/california-g91a6e2436_1280_tdxzuu.jpg" class="img-fluid rounded border"></span></li>
           </ul>
-          <p class="my-3"><span class="font-weight-bold">c.</span> Increase high-fiber foods – this will help decrease constipation. Constipation plays a role in difficulty emptying your bladder and bowels and can contribute to urinary tract infections. </p>
+          <p class="my-3"><span class="font-weight-bold fs-5">c.</span> Increase high-fiber foods – this will help decrease constipation. Constipation plays a role in difficulty emptying your bladder and bowels and can contribute to urinary tract infections. </p>
           <img src="https://res.cloudinary.com/unmc/image/upload/t_1000x1000_limit/v1643062231/Pelvis_Models/breakfast-gaf8b00802_1280_ayuum6.jpg" width="500" class="img-fluid my-2 rounded border">
-          <p class="my-3"><span class="font-weight-bold">d.</span> Maintain a healthy weight. Increased body weight has been associated with increased risk of both stress and urge UI. </p>
+          <p class="my-3"><span class="font-weight-bold fs-5">d.</span> Maintain a healthy weight. Increased body weight has been associated with increased risk of both stress and urge UI. </p>
           <hr>
           <h3 class="my-3">2. Core Strengthening</h3>
           <p>Core stabilization exercises that are commonly part of a Pilates, Yoga or Tai Chi class enhance strength and stability to enhance pelvic floor function. </p>
@@ -1398,14 +1404,14 @@
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
         <div class="modal-body">
-          <img src="https://res.cloudinary.com/unmc/image/upload/dpr_auto,fl_no_overflow,q_auto/v1644343091/Pelvis_Models/pelvic_floor_chart_swiguk.png" class="img-fluid d-block mx-auto mb-2 rounded border">
+          <img src="https://res.cloudinary.com/unmc/image/upload/dpr_auto,fl_no_overflow,q_auto/v1644343091/Pelvis_Models/pelvic_floor_chart_swiguk.png" class="img-fluid d-block mx-auto mb-3 rounded border">
           <div class="exercises px-2">
             <!--<h3 class="my-2"> Pelvic Floor Muscle Exercises</h3>-->
-            <p>1. Comprised of Skeletal muscle – responds to exercise like any other muscle. </p>
-            <p> 2. Endurance contractions incorporate the Type I muscle fibers (slow-twitch) and are referred to as “marathon runners”. The levator ani (puborectalis, iliococcygeus and pubococcygeus) comprise mostly slow-twitch muscle fibers and are responsible for sustained pelvic floor contractions. They comprise approximately 65% of the pelvic floor and are characterized by low force/low power/low speed.</p>
-            <p> 3. Contraction of the pelvic floor muscles compresses around the urethra, increasing resistance to prevent leakage. </p>
-            <p> 4. Stengthening these muscles increases muscle mass, allowing for a more effective contraction, whether to prevent stress or urge UI. </p>
-            <p> 5. Provides proprioception to enhance sexuality. </p>
+            <p><span class="fw-bold">1.</span> Comprised of Skeletal muscle – responds to exercise like any other muscle. </p>
+            <p><span class="fw-bold">2.</span> Endurance contractions incorporate the Type I muscle fibers (slow-twitch) and are referred to as “marathon runners”. The levator ani (puborectalis, iliococcygeus and pubococcygeus) comprise mostly slow-twitch muscle fibers and are responsible for sustained pelvic floor contractions. They comprise approximately 65% of the pelvic floor and are characterized by low force/low power/low speed.</p>
+            <p><span class="fw-bold">3.</span> Contraction of the pelvic floor muscles compresses around the urethra, increasing resistance to prevent leakage. </p>
+            <p><span class="fw-bold">4.</span> Stengthening these muscles increases muscle mass, allowing for a more effective contraction, whether to prevent stress or urge UI. </p>
+            <p><span class="fw-bold">5.</span> Provides proprioception to enhance sexuality. </p>
             <hr>
             <h3 class="my-2 mb-3" id="quick_flick">Quick Flicks Animation </h3>
             <div class="d-flex flex-column  flex-wrap">
@@ -1432,7 +1438,7 @@
     </div>
   </div>
   <!-- END MODAL-->
-  <script src="https://static.sketchfab.com/api/sketchfab-viewer-1.10.1.js"></script>
+  <script src="https://static.sketchfab.com/api/sketchfab-viewer-1.12.0.js"></script>
   <!--<script type="text/javascript" src="https://cdn.jsdelivr.net/gh/shaderbytes/Sketchfab-Viewer-API-Utility@v3.0.0.2/SketchfabAPIUtility.js"></script>-->
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
   <!--<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" style="">
@@ -1442,7 +1448,7 @@
   <!--<script src="https://res.cloudinary.com/unmc/raw/upload/v1620827204/js/sketchfab-custom.js"></script>-->
   <script type="text/javascript">
     // Sketchfab Viewer API: Start/Stop the viewer
-    var version = '1.10.1';
+    var version = '1.12.0';
     var uid = 'c830d8a0f15d4ede82f455305f84ed11';
     var urlParams = new URLSearchParams(window.location.search);
     var autoSpin = 0.0;
