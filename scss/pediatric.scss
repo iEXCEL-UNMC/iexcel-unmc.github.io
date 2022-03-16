@@ -1,0 +1,61 @@
+// Options
+// 
+// Quickly modify global styling by enabling or disabling optional features.
+  
+$enable-rounded:            true !default;
+$enable-shadows:            true;
+$enable-transitions:        true;
+$enable-hover-media-query:  true;
+$enable-grid-classes:       true;
+$enable-print-styles:       true;
+$enable-negative-margins:true;
+$enable-important-utilities:true;
+$enable-reduced-motion: false;
+$enable-rfs: true;
+
+// Variables
+//
+// Colors
+
+$theme-colors: (
+  primary: #ad122a,
+  secondary: #303b41,
+  light: #f3f3f3,
+  dark: #151515,
+  info: #ddd,
+  success: #28a745,
+  warning: #ffc107,
+  danger: #ad122a,
+);
+
+$body-bg: white;
+$body-color: #333;
+
+
+$body-color-inverse: invert($body-color) !default;
+$link-color: #3C64EE;
+
+$btn-disabled-opacity:.65;
+
+// Fonts
+$font-family-base: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+$headings-font-family: $font-family-base;
+$display-font-family: $font-family-base;
+
+
+$lead-font-size:   1.30rem;
+
+
+$enable-responsive-font-sizes: true;
+$enable-responsive-padding: true;
+$enable-smooth-scroll:true;
+$spacer: 2rem;
+
+
+
+
+
+
+
+
+@import 'bootstrap-4.3.1';
