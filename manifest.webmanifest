@@ -1,6 +1,6 @@
 {
     "name": "iEXCEL-UNMC PWA",
-    "short_name": "iEXCEL Pelvic Model",
+    "short_name": "iEXCEL_Pelvic_Model",
     "description": "3D Pelvic model as a Progressive Web App",
     "scope": "/iexcel-unmc/",
     "start_url": "/iexcel-unmc/",
