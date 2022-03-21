@@ -1,0 +1,17 @@
+{
+    "name": "iEXCEL-UNMC PWA",
+    "short_name": "iEXCEL Pelvic Model",
+    "description": "3D Pelvic model as a Progressive Web App",
+    "scope": "/iexcel-unmc/",
+    "start_url": "/iexcel-unmc/",
+    "background_color": "#ffffff",
+    "theme_color": "#ffffff",
+    "display": "standalone", 
+    "icons": [
+        {
+          "src": "/iexcel-unmc/img/icon.png",
+          "type": "image/png",
+          "sizes": "700x700"
+        }
+    ]
+  }
