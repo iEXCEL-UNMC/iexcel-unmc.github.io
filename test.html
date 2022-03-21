@@ -109,6 +109,31 @@
         <div class="d-flex flex-column mx-auto col-xl-3 col-12 components-column">
           <div class="navTree" id="navTree">
           </div>
+          <!-- Tablet Only -->
+          <div class="row tablet-only">
+            <div class="col-md-6"><p class="px-2 p-custom d-flex flex-column align-self-center card bg-secondary border-dark shadow-lg">
+                  <font color="white"><br>
+                    <label class="switch"> <input type="checkbox" id="midSaggitalCheckbox" onclick="document.getElementById('midSaggitalCheckbox').click()"><span class="slider round"></span></label>
+                    <label>(Side Pelvis) Midsaggital View </label><br>
+                    <label class="switch"> <input type="checkbox" id="skinCheckbox" onclick="document.getElementById('skinCheckbox').click()" checked=""><span class="slider round"></span></label>
+                    <label>Skin </label><br>
+                    <label class="switch"> <input type="checkbox" id="nervesCheckbox" onclick="document.getElementById('nervesCheckbox').click()" checked=""><span class="slider round"></span></label>
+                    <label>Nerves &amp; Arteries </label><br>
+                    <label class="switch"> <input type="checkbox" id="musclesCheckbox" onclick="document.getElementById('musclesCheckbox').click()" checked=""><span class="slider round"></span></label>
+                    <label>Pelvic Floor Muscles</label><br>
+                    <label class="switch"><input type="checkbox" id="bonesCheckbox" onclick="document.getElementById('bonesCheckbox').click()" checked=""><span class="slider round"></span></label>
+                    <label>Bones</label><br>
+                    <label class="switch"><input type="checkbox" id="organsCheckbox" onclick="document.getElementById('organsCheckbox').click()" checked=""><span class="slider round"></span></label>
+                    <label>Organs</label><br>
+                    <label class="switch"><input type="checkbox" id="annotationsCheckbox" onclick="document.getElementById('annotationsCheckbox').click()" checked=""><span class="slider round"></span></label>
+                    <label>Annotation Numbers</label>
+                  </font><br>
+                </p></div>
+            <div class="col-md-6"><span class="spany w-100 d-block px-2 py-2 lead bg-light text-center border-bottom border-info fw-normal lh-sm">Please Select an Annotation</span><div class="controls" id="controls">
+            <div id="annotations-sync"></div>
+           <h1 id="a0"></h1><h1 id="a1"></h1><h1 id="a2"></h1></div></div>
+          </div>
+          <!-- END Tablet Only -->
           <div class="row mb- w-100 mx-auto mt-1 ">
             <p class="px-2 p-custom d-flex flex-column align-self-center card bg-secondary border-dark shadow-lg">
               <font color="white"><br>
