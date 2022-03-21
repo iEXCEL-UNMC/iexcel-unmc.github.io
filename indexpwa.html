@@ -5,6 +5,10 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
   <meta content="ie=edge" http-equiv="x-ua-compatible">
+  <!-- PROGRESSIVE WEB APP -->
+  <link rel="canonical" href="https://iexcel-unmc.github.io/iexcel-unmc/" />
+  <link rel="manifest" href="/iexcel-unmc/manifest.webmanifest">
+<!-- END PWA CODE-->
   <link rel="preconnect" href="https://media.sketchfab.com" crossorigin="anonymous">
   <link rel="preconnect" href="https://static.sketchfab.com">
   <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin="anonymous">
@@ -374,6 +378,16 @@
     </div>
   </div>
   <!-- END MODAL-->
+<!-- PWA JS -->
+<script>
+    if (navigator.serviceWorker) {
+      navigator.serviceWorker.register (
+        '/iexcel-unmc/sw.js',
+        {scope: '/iexcel-unmc/'}
+      )
+    }
+</script>
+<!-- END PWA JS-->
   <script src="https://static.sketchfab.com/api/sketchfab-viewer-1.12.0.js"></script>
 
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
