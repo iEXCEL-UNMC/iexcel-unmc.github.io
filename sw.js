@@ -1,4 +1,4 @@
-var GHPATH = '/github-page-pwa';
+var GHPATH = '/iexcel-unmc.github.io';
 var APP_PREFIX = 'iexcel_pelvic_floor_';
 var VERSION = 'version_002';
 var URLS = [    
