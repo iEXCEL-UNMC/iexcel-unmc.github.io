@@ -435,116 +435,300 @@ display:none;} @media (max-width:1199px){ #tablet-only{ display:flex;}} @media (
   <script src="https://static.sketchfab.com/api/sketchfab-viewer-1.12.0.js"></script>
   <script src="https://res.cloudinary.com/unmc/raw/upload/v1647880699/js/bootstrap-bundle-min.js" defer="defer"></script>
   <script type="text/javascript">
-    var version = "1.12.0",
-      uid = "c830d8a0f15d4ede82f455305f84ed11",
-      urlParams = new URLSearchParams(window.location.search),
-      autoSpin = 0;
-    urlParams.has("autospin") && (autoSpin = urlParams.get("autospin")), urlParams.has("id") && (uid = urlParams.get("id"));
-    var iframe = document.getElementById("api-frame"),
-      client = new window.Sketchfab(version, iframe),
-      treeText = "",
-      error = function() {
-        console.error("Sketchfab API error")
-      },
-      idxNodes = 0,
-      myNodesByNameFromMap = {},
-      officialNodes = [],
-      objectID = -1,
-      success = function(e) {
-        e.start(function() {
-          e.addEventListener("viewerready", function() {
-            e.getNodeMap(function(n, t) {
-              if (!n) {
-                for (var a in t) {
-                  var r = t[a],
-                    o = r.name;
-                  o || (o = "noname_" + idxNodes++), myNodesByNameFromMap[o] = r
+    // Sketchfab Viewer API: Start/Stop the viewer
+    var version = '1.12.0';
+    var uid = 'c830d8a0f15d4ede82f455305f84ed11';
+    var urlParams = new URLSearchParams(window.location.search);
+    var autoSpin = 0.0;
+    if (urlParams.has('autospin')) {
+      autoSpin = urlParams.get('autospin');
+    }
+    if (urlParams.has('id')) {
+      uid = urlParams.get('id');
+    }
+    var iframe = document.getElementById('api-frame');
+    var client = new window.Sketchfab(version, iframe);
+    var treeText = '';
+    var error = function() {
+      console.error('Sketchfab API error');
+    };
+    //var myNodesByNameFromGraph = {};
+    var idxNodes = 0;
+    var myNodesByNameFromMap = {};
+    var officialNodes = [];
+    var objectID = -1;
+    /*
+    var computeAssociativeArray = function(node){
+        if (!node)  return;
+        var name = node.name;
+        if (!name) name = "noname_" + idxNodes++;       
+                    debugger;         		
+        myNodesByNameFromGraph[name] = node;
+        if (!node.children || !node.children.length) return;
+        for (var i = 0; i < node.children.length; i++){
+          computeAssociativeArray(node.children[i]);    
+        }
+    }
+    */
+    var success = function(api) {
+      api.start(function() {
+        api.addEventListener('viewerready', function() {
+          /*
+          api.getSceneGraph(function (err, result) {
+                if (err) {
+                    console.log('-------Scene Graph--------------')
+                    console.log('Error getting nodes');
+                    return;
                 }
-                rootNodeTree = myNodesByNameFromMap.RootNode, recurse(rootNodeTree, rootNodeTree.children.length, 0), generateTree();
-                for (var i = document.getElementsByClassName("Hide"), d = 0; d < i.length; d++) i[d].addEventListener("click", function() {
-                  this.style.backgroundColor = "red";
-                  var n = document.getElementById(this.value).getElementsByClassName("Hide");
-                  console.log(" Child Buttons: " + n.length), 0 == n.length && e.hide(this.value);
-                  for (var t = 0; t < n.length; t++) hideBTN = document.getElementById(n[t].id), hideBTN.style.backgroundColor = "red", e.hide(hideBTN.value)
-                });
-                var l = document.getElementsByClassName("Show");
-                for (d = 0; d < l.length; d++) l[d].addEventListener("click", function() {
-                  e.show(this.value), console.log(this.value);
-                  var n = document.getElementById(this.id + "_" + this.name + "Hide");
-                  n.style.backgroundColor = "green";
-                  for (var t = document.getElementById(this.value).getElementsByClassName("Show"), a = 0; a < t.length; a++) e.show(t[a].value), (n = document.getElementById(t[a].id + "_Hide")).style.backgroundColor = "green"
-                })
+                // get the id from that log
+                //console.log(result);
+              computeAssociativeArray(result);
+                console.log("nodes indexed by names from scene node graph");
+                console.log(myNodesByNameFromGraph);
+            });
+            */
+          api.getNodeMap(function(err, nodes) {
+            if (!err) {
+              for (var instanceID in nodes) {
+                var node = nodes[instanceID];
+                var name = node.name;
+                if (!name) name = "noname_" + idxNodes++;
+                myNodesByNameFromMap[name] = node;
               }
-            })
-          })
-        })
-      };
-
+              //console.log("nodes indexed by names from flattened array");
+              //console.log(myNodesByNameFromMap);
+              rootNodeTree = myNodesByNameFromMap['RootNode'];
+              recurse(rootNodeTree, rootNodeTree.children.length, 0);
+              //console.log(officialNodes);
+              //Now we can build the tree for the UI
+              generateTree();
+              var hideButtons = document.getElementsByClassName("Hide");
+              //console.log('HIDE BUTTONS LENGTH: ' + hideButtons.length);
+              for (var i = 0; i < hideButtons.length; i++) {
+                hideButtons[i].addEventListener("click", function() {
+                  //api.hide(this.value);
+                  this.style.backgroundColor = "red";
+                  var childButtons = document.getElementById(this.value).getElementsByClassName("Hide");
+                  console.log(' Child Buttons: ' + childButtons.length);
+                  if (childButtons.length == 0) {
+                    api.hide(this.value);
+                  }
+                  for (var i = 0; i < childButtons.length; i++) {
+                    hideBTN = document.getElementById(childButtons[i].id);
+                    //console.log(childButtons[i].id);
+                    hideBTN.style.backgroundColor = "red";
+                    api.hide(hideBTN.value);
+                  }
+                });
+              }
+              var showButtons = document.getElementsByClassName("Show");
+              //console.log('SHOW BUTTONS LENGTH: ' + showButtons.length);
+              for (var i = 0; i < showButtons.length; i++) {
+                showButtons[i].addEventListener("click", function() {
+                  api.show(this.value);
+                  console.log(this.value);
+                  var hideBTN = document.getElementById(this.id + "_" + this.name + 'Hide');
+                  hideBTN.style.backgroundColor = "green";
+                  var childButtons = document.getElementById(this.value).getElementsByClassName("Show");
+                  //console.log(' Child Buttons: ' + childButtons.length);
+                  for (var i = 0; i < childButtons.length; i++) {
+                    api.show(childButtons[i].value);
+                    hideBTN = document.getElementById(childButtons[i].id + '_Hide');
+                    hideBTN.style.backgroundColor = "green";
+                  }
+                });
+              }
+            }
+          });
+          /*  
+          document.getElementById('screenshot').addEventListener('click', function () {
+             api.getScreenShot(800, 800, 'image/png', function (err, result) {
+             if (!err) {
+               var anchor = document.createElement('a');
+               anchor.href = result;
+               anchor.download = 'screenshot.png';
+               anchor.innerHTML = '<img width="100" height="100" src=' + result + '>';
+               document.getElementById('navTree').appendChild(anchor);
+              }
+            });
+          });
+          */
+          /*
+            document.getElementById('show').addEventListener('click', function () {
+                api.show(id);
+            });
+            
+            */
+        });
+      });
+    };
+	/*
+    client.init(uid, {
+      success: success,
+      error: error,
+      autostart: 0,
+      preload: 1,
+      autospin: 0,
+      transparent: 1
+    });
+	*/
+    //////////////////////////////////
+    // GUI Code
+    //////////////////////////////////
     function initGui() {
-      document.getElementById("navTree").innerHTML = '<button id="screenshot"></button>'
+      var controls = document.getElementById('navTree');
+      var buttonsText = '';
+      buttonsText += '<button id="screenshot"></button>';
+      controls.innerHTML = buttonsText;
     }
-
+    //initGui();
     function generateTree() {
-      console.log("Total Node Count: " + officialNodes.length);
-      var e = unflatten(officialNodes);
-      document.getElementById("navTree").appendChild(to_ul(e, "myUL"));
-      var n, t = document.getElementsByClassName("caret");
-      for (n = 0; n < t.length; n++) t[n].addEventListener("click", function() {
-        this.parentElement.querySelector(".nested").classList.toggle("active"), this.classList.toggle("caret-down")
-      })
-    }
-
-    function unflatten(e) {
-      for (var n, t, a = [], r = {}, o = 0, i = e.length; o < i; o++) r[(n = e[o]).instanceID] = n, r[n.instanceID].children = [];
-      for (var d in r) r.hasOwnProperty(d) && ((t = r[d]).parentID ? r[t.parentID].children.push(t) : a.push(t));
-      return a
-    }
-
-    function to_ul(e, n = "", t = "") {
-      var a = document.createElement("ul");
-      "" != n && (a.id = n), "" != t && (a.className = t);
-      for (var r = 0, o = e.length; r < o; r++) {
-        var i = e[r],
-          d = document.createElement("li"),
-          l = i.name.replace(/_/g, " ");
-        l.length > 25 && (l = l.substring(0, 25), l += "...");
-        var c, s = document.createTextNode(l);
-        if (i.isParent)(c = document.createElement("span")).className = "caret", c.appendChild(s), d.appendChild(c), d.appendChild(createButton("Hide", i.instanceID, i.name)), d.appendChild(createButton("Show", i.instanceID, i.name));
-        else(c = document.createElement("span")).className = "caret_child", c.appendChild(s), d.appendChild(c), d.appendChild(createButton("Hide", i.instanceID, i.name)), d.appendChild(createButton("Show", i.instanceID, i.name));
-        i.children && d.appendChild(to_ul(i.children, i.instanceID, "nested")), a.appendChild(d)
+      console.log('Total Node Count: ' + officialNodes.length);
+      var tree = unflatten(officialNodes);
+      //console.log(tree);
+      //Create the HTML UL elemenet of the objects 
+      var navTree = document.getElementById('navTree');
+      navTree.appendChild(to_ul(tree, 'myUL'));
+      var toggler = document.getElementsByClassName("caret");
+      var i;
+      for (i = 0; i < toggler.length; i++) {
+        toggler[i].addEventListener("click", function() {
+          this.parentElement.querySelector(".nested").classList.toggle("active");
+          this.classList.toggle("caret-down");
+        });
       }
-      return console.log(a), a
     }
 
-    function createButton(e, n, t) {
-      var a = document.createElement("button");
-      a.type = "button", a.className = e, "Hide" == e ? (a.id = n + "_" + t + "_" + e, a.style.backgroundColor = "green") : a.id = n + "_" + t, a.value = n;
-      var r = document.createTextNode(e);
-      return a.appendChild(r), a
-    }
-
-    function recurse(e, n, t) {
-      if (void 0 !== e)
-        for (var a = 0; a < n; a++) {
-          var r = new Object;
-          r.name = e.children[a].name, r.type = e.children[a].type, r.instanceID = e.children[a].instanceID, r.isParent = !1, r.parentID = t, "MatrixTransform" == r.type && (r.isParent = isParent(e.children[a].children), console.log("   " + r.name + "(Node Type:" + r.type + ")(Instance ID: " + r.instanceID + ")(Is Parent: " + r.isParent + ")(Parent ID: " + r.parentID + ") Child Count :" + e.children[a].children.length), officialNodes.push(r), recurse(e.children[a], e.children[a].children.length, e.children[a].instanceID))
-        }
-    }
-
-    function isParent(e) {
-      for (var n = !1, t = 0; t < e.length; t++) {
-        if ("MatrixTransform" == e[t].type) {
-          n = !0, console.log("PARENT NODE DETECTED");
-          break
-        }
-        n = !1
+    function unflatten(arr) {
+      var tree = [],
+        mappedArr = {},
+        arrElem,
+        mappedElem;
+      // First map the nodes of the array to an object -> create a hash table.
+      for (var i = 0, len = arr.length; i < len; i++) {
+        arrElem = arr[i];
+        mappedArr[arrElem.instanceID] = arrElem;
+        mappedArr[arrElem.instanceID]['children'] = [];
       }
-      return n
+      for (var id in mappedArr) {
+        if (mappedArr.hasOwnProperty(id)) {
+          mappedElem = mappedArr[id];
+          // If the element is not at the root level, add it to its parent array of children.
+          if (mappedElem.parentID) {
+            mappedArr[mappedElem['parentID']]['children'].push(mappedElem);
+          }
+          // If the element is at the root level, add it to first level elements array.
+          else {
+            tree.push(mappedElem);
+          }
+        }
+      }
+      return tree;
     }
+    /**********************
+      GENERATE HTML UL TREE
+    **********************/
+    function to_ul(branches, setID = '', setClass = '') {
+      var outerul = document.createElement('ul');
+      var lengthOfName = 25;
+      if (setID != '') {
+        outerul.id = setID;
+      }
+      if (setClass != '') {
+        outerul.className = setClass;
+      }
+      for (var i = 0, n = branches.length; i < n; i++) {
+        var branch = branches[i];
+        var li = document.createElement('li');
+        var text = branch.name.replace(/_/g, " ");
+        if (text.length > lengthOfName) {
+          text = text.substring(0, lengthOfName);
+          text += '...';
+        }
+        var textNode = document.createTextNode(text);
+        if (branch.isParent) {
+          var sp = document.createElement('span');
+          sp.className = 'caret';
+          sp.appendChild(textNode);
+          li.appendChild(sp);
+          li.appendChild(createButton('Hide', branch.instanceID, branch.name));
+          li.appendChild(createButton('Show', branch.instanceID, branch.name));
+        } else {
+          var sp = document.createElement('span');
+          sp.className = 'caret_child';
+          sp.appendChild(textNode);
+          li.appendChild(sp);
+          li.appendChild(createButton('Hide', branch.instanceID, branch.name));
+          li.appendChild(createButton('Show', branch.instanceID, branch.name));
+        }
+        if (branch.children) {
+          li.appendChild(to_ul(branch.children, branch.instanceID, 'nested'));
+        }
+        outerul.appendChild(li);
+      }
+      console.log(outerul);
+      return outerul;
+    }
+
+    function createButton(btnType, instance, name) {
+      var btn = document.createElement('button');
+      btn.type = 'button';
+      btn.className = btnType;
+      if (btnType == 'Hide') {
+        btn.id = instance + '_' + name + '_' + btnType;
+        btn.style.backgroundColor = "green";
+      } else {
+        btn.id = instance + '_' + name;
+      }
+      btn.value = instance;
+      var btnText = document.createTextNode(btnType);
+      btn.appendChild(btnText);
+      return btn;
+    }
+    //////////////////////////////////
+    // GUI Code end
+    //////////////////////////////////
+    function recurse(nodeTree, childCount, theParentID) {
+      if (typeof nodeTree != 'undefined') {
+        //Process the children of this node tree  
+        for (var i = 0; i < childCount; i++) {
+          var node = new Object();
+          node['name'] = nodeTree.children[i].name;
+          node['type'] = nodeTree.children[i].type;
+          node['instanceID'] = nodeTree.children[i].instanceID;
+          node['isParent'] = false;
+          node['parentID'] = theParentID
+          if (node.type == 'MatrixTransform') {
+            //Determine if this node is a parent
+            node.isParent = isParent(nodeTree.children[i].children);
+            console.log('   ' + node['name'] + '(Node Type:' + node['type'] + ')' + '(Instance ID: ' + node['instanceID'] + ')' + '(Is Parent: ' + node['isParent'] + ')' + '(Parent ID: ' + node['parentID'] + ')' + ' Child Count :' + nodeTree.children[i].children.length);
+            //Add this node to the complete node array list we are constructing
+            officialNodes.push(node);
+            recurse(nodeTree.children[i], nodeTree.children[i].children.length, nodeTree.children[i].instanceID);
+          }
+        }
+      }
+    }
+
+    function isParent(children) {
+      //Look through all the children to see if a "MatrixTransform" type exists...
+      var result = false;
+      for (var i = 0; i < children.length; i++) {
+        if (children[i].type == 'MatrixTransform') {
+          result = true;
+          console.log('PARENT NODE DETECTED');
+          break;
+        } else {
+          result = false;
+        }
+      }
+      return result;
+    }
+    // Sets transparent background (assuming client.init options include transparent: 1)
     api.setBackground({
       transparent: 1
     }, function() {
-      window.console.log("Background changed")
+      window.console.log('Background changed');
     });
   </script>
   <script>
@@ -560,6 +744,7 @@ display:none;} @media (max-width:1199px){ #tablet-only{ display:flex;}} @media (
       var success = function success(api) {
         api.start(function() {});
         api.addEventListener('viewerready', function() {
+			
           api.getAnnotationList(function(err, annotations) {
             if (!err) {
               console.log(annotations);
@@ -593,40 +778,56 @@ display:none;} @media (max-width:1199px){ #tablet-only{ display:flex;}} @media (
           api.setMaterial(m);
         }
       });
-      */
+      */	
+
+
+
             document.getElementById('highlightToggleCheckbox').addEventListener('click', function() {
+				
+				
+				
               var musclesToHighlight = [
                 myMaterialsByName["l_bulbospongiosus_muscle_mat"],
                 myMaterialsByName["l_bulbospongiosus_muscle_mat"],
                 myMaterialsByName["l_ischiocavernosus_muscle_mat"],
                 myMaterialsByName["l_ileococcygeus_muscle_mat"],
                 myMaterialsByName["l_puborectalis_muscle_mat"],
-                myMaterialsByName["l_pubococcygeus_muscle_mat"],
-                myMaterialsByName["r_puboanalis_muscle_mat"],
-                myMaterialsByName["r_subcutaneous_external_sphincter_muscle_mat"],
-                myMaterialsByName["r_anococcygeal_ligament_mat"],
-                myMaterialsByName["l_external_anal_sphincter_muscle_mat"],
-                myMaterialsByName["r_perineum_mat"],
-                myMaterialsByName["r_anococcygeal_ligament_mat"],
-                myMaterialsByName["l_anococcygeal_ligament_mat"],
-                myMaterialsByName["l_superfical_transverse_perineal_muscle_mat"],
-                myMaterialsByName["l_deeo_transverse_perineal_muscle_mat"],
-                myMaterialsByName["r_conjoined_longitudinal_and_internal_anal_sphincter_muscle_mat"],
-                myMaterialsByName["l_conjoined_longitudinal_and_internal_anal_sphincter_muscle_mat"]
+				myMaterialsByName["l_pubococcygeus_muscle_mat"],
+				myMaterialsByName["r_puboanalis_muscle_mat"],
+
+				myMaterialsByName["r_subcutaneous_external_sphincter_muscle_mat"],
+				myMaterialsByName["r_anococcygeal_ligament_mat"],
+				myMaterialsByName["l_external_anal_sphincter_muscle_mat"],
+				myMaterialsByName["r_perineum_mat"],
+				myMaterialsByName["r_anococcygeal_ligament_mat"],
+				myMaterialsByName["l_anococcygeal_ligament_mat"],
+				myMaterialsByName["l_superfical_transverse_perineal_muscle_mat"],
+				myMaterialsByName["l_deeo_transverse_perineal_muscle_mat"],
+				myMaterialsByName["r_conjoined_longitudinal_and_internal_anal_sphincter_muscle_mat"],
+				myMaterialsByName["l_conjoined_longitudinal_and_internal_anal_sphincter_muscle_mat"]
+
               ];
-              var checkbox = document.getElementById('highlightToggleCheckbox');
-              if (checkbox.checked) {
-                for (var i = 0; i < musclesToHighlight.length; i++) {
-                  highlightMat(musclesToHighlight[i]);
-                }
-                //move camera to look-at the dorsolithotomy view
-                api.setCameraLookAt([0.04229585882505582, -0.5035818937954755, -1.669077200961981], [0.009803872036463247, 0.013644197169852861, -0.4202285147972783], 4.3, function(err) {});
-              } else {
-                for (var i = 0; i < musclesToHighlight.length; i++) {
-                  setToNormal(musclesToHighlight);
-                }
+
+			  var checkbox = document.getElementById('highlightToggleCheckbox');
+
+			  if (checkbox.checked) {
+              for (var i = 0; i < musclesToHighlight.length; i++) {
+                highlightMat(musclesToHighlight[i]);
               }
-              /*
+
+			   //move camera to look-at the dorsolithotomy view
+				api.setCameraLookAt([0.04229585882505582,-0.5035818937954755,-1.669077200961981], [0.009803872036463247,0.013644197169852861,-0.4202285147972783], 4.3, function(err) {});
+
+
+			  }
+			  else{
+				for (var i = 0; i < musclesToHighlight.length; i++) {
+                setToNormal(musclesToHighlight);
+              }
+
+			  }
+
+			  /*
               //setToNormal(musclesToHighlight);
               setTimeout(function() {
                 setToNormal(musclesToHighlight);
@@ -676,6 +877,7 @@ display:none;} @media (max-width:1199px){ #tablet-only{ display:flex;}} @media (
       */
             /////////////////////GET NODE MAP///////////////////////////
             //api.hide(myNodesByNameFromMap2["midsaggital_cutface"]);
+
             var myNodesByNameFromMap2 = {};
             var bartho = 0;
             api.getNodeMap(function(err, nodes) {
@@ -688,6 +890,9 @@ display:none;} @media (max-width:1199px){ #tablet-only{ display:flex;}} @media (
                 }
               }
             });
+
+	
+			
             //////////////////////////////MIDSAGGITAL VIEW///////////////////////////////////////////
             document.getElementById('midSaggitalCheckbox').addEventListener('click', function() {
               var midSaggitalToHide = [
@@ -769,8 +974,10 @@ display:none;} @media (max-width:1199px){ #tablet-only{ display:flex;}} @media (
               if (checkbox.checked == true) {
                 for (var i = 0; i < midSaggitalToHide.length; i++) {
                   api.hide(midSaggitalToHide[i]);
-                  //move camera to look-at the midsaggital side view
-                  api.setCameraLookAt([3.9606068085424737, -0.30469011435116544, 0.5732366512311388], [-0.20118379793902036, 0.4087152094897183, 0.7835704771423364], 4.3, function(err) {});
+
+				  //move camera to look-at the midsaggital side view
+				api.setCameraLookAt([3.9606068085424737,-0.30469011435116544,0.5732366512311388], [-0.20118379793902036,0.4087152094897183,0.7835704771423364], 4.3, function(err) {});
+
                 }
                 if (boneCheckbox.checked) {
                   api.show(myNodesByNameFromMap2["midsaggital_cutface"])
@@ -792,6 +999,8 @@ display:none;} @media (max-width:1199px){ #tablet-only{ display:flex;}} @media (
                   }
                 }
               }
+
+
             });
             /////////////////////////////////////////SKIN/////////////////////////////////////////
             document.getElementById('skinCheckbox').addEventListener('click', function() {
@@ -886,6 +1095,9 @@ display:none;} @media (max-width:1199px){ #tablet-only{ display:flex;}} @media (
               }
             });
             /////////////////////////////////////////PELVIC FLOOR MUSCLES/////////////////////////////////////////
+			
+
+
             document.getElementById('musclesCheckbox').addEventListener('click', function() {
               var musclesToHide = [myNodesByNameFromMap2["l_vastus_lateralis_muscle"],
                 myNodesByNameFromMap2["r_pubovaginalis_muscle_"],
@@ -994,62 +1206,65 @@ display:none;} @media (max-width:1199px){ #tablet-only{ display:flex;}} @media (
                 }
               }
             });
-            //////////////////////////////////////////ORGANS//////////////////////////////////////
-            document.getElementById('organsCheckbox').addEventListener('click', function() {
+			//////////////////////////////////////////ORGANS//////////////////////////////////////
+			document.getElementById('organsCheckbox').addEventListener('click', function() {
               var organsToHide = [
-                myNodesByNameFromMap2["r_Skenes_gland_"],
-                myNodesByNameFromMap2["l_Skenes_gland_"],
-                myNodesByNameFromMap2["r_Bartholins_gland_"],
-                myNodesByNameFromMap2["l_Bartholins_gland_"],
-                myNodesByNameFromMap2["l_crus_of_the_clitoris_"],
-                myNodesByNameFromMap2["r_crus_of_the_clitoris_"],
-                myNodesByNameFromMap2["clitoral_hood_"],
-                myNodesByNameFromMap2["vaginal_introitious_"],
-                myNodesByNameFromMap2["labia_minora_"],
-                myNodesByNameFromMap2["invis_vaginal_opening_"],
-                myNodesByNameFromMap2["vaginal_mucosa_"],
-                myNodesByNameFromMap2["r_vestibular_bulb_"],
-                myNodesByNameFromMap2["l_vestibular_bulb_"],
-                myNodesByNameFromMap2["endometrium_"],
-                myNodesByNameFromMap2["cervix_surface_"],
-                myNodesByNameFromMap2["r_ovary_"],
-                myNodesByNameFromMap2["r_uterosacral_ligament_"],
-                myNodesByNameFromMap2["l_uterosacral_ligament_"],
-                myNodesByNameFromMap2["outer_vaginal_surface_"],
-                myNodesByNameFromMap2["l_ovary_"],
-                myNodesByNameFromMap2["l_round_ligament_"],
-                myNodesByNameFromMap2["r_round_ligament_"],
-                myNodesByNameFromMap2["r_ovarian_ligament_"],
-                myNodesByNameFromMap2["l_ovarian_ligament_"],
-                myNodesByNameFromMap2["l_fallopian_tube_"],
-                myNodesByNameFromMap2["r_fallopian_tube_"],
-                myNodesByNameFromMap2["uterus_"],
-                myNodesByNameFromMap2["l_urethral_rhabdosphincter_"],
-                myNodesByNameFromMap2["r_urethral_rhabdosphincter_"],
-                myNodesByNameFromMap2["r_inter_muscular_ureter_"],
-                myNodesByNameFromMap2["l_inter_muscular_ureter_"],
-                myNodesByNameFromMap2["l_rhabdosphincter_muscle_"],
-                myNodesByNameFromMap2["r_rhabdosphincter_muscle_"],
-                myNodesByNameFromMap2["bladder_mucosa_"],
-                myNodesByNameFromMap2["bladder_"],
-                myNodesByNameFromMap2["r_ureter_"],
-                myNodesByNameFromMap2["l_ureter_"],
-                myNodesByNameFromMap2["colon"],
-                myNodesByNameFromMap2["l_urethrovaginal_sphincter_muscle_"],
-                myNodesByNameFromMap2["l_compressor_urethrae_muscle_"],
-                myNodesByNameFromMap2["r_compressor_urethrae_muscle_"],
-                myNodesByNameFromMap2["r_urethrovaginal_sphincter_muscle_"],
+			  myNodesByNameFromMap2["r_Skenes_gland_"],
+				myNodesByNameFromMap2["l_Skenes_gland_"],
+				myNodesByNameFromMap2["r_Bartholins_gland_"],
+				myNodesByNameFromMap2["l_Bartholins_gland_"],
+				myNodesByNameFromMap2["l_crus_of_the_clitoris_"],
+				myNodesByNameFromMap2["r_crus_of_the_clitoris_"],
+				myNodesByNameFromMap2["clitoral_hood_"],
+				myNodesByNameFromMap2["vaginal_introitious_"],
+				myNodesByNameFromMap2["labia_minora_"],
+				myNodesByNameFromMap2["invis_vaginal_opening_"],
+				myNodesByNameFromMap2["vaginal_mucosa_"],
+				myNodesByNameFromMap2["r_vestibular_bulb_"],
+				myNodesByNameFromMap2["l_vestibular_bulb_"],
+				myNodesByNameFromMap2["endometrium_"],
+				myNodesByNameFromMap2["cervix_surface_"],
+				myNodesByNameFromMap2["r_ovary_"],
+				myNodesByNameFromMap2["r_uterosacral_ligament_"],
+				myNodesByNameFromMap2["l_uterosacral_ligament_"],
+				myNodesByNameFromMap2["outer_vaginal_surface_"],
+				myNodesByNameFromMap2["l_ovary_"],
+				myNodesByNameFromMap2["l_round_ligament_"],
+				myNodesByNameFromMap2["r_round_ligament_"],
+				myNodesByNameFromMap2["r_ovarian_ligament_"],
+				myNodesByNameFromMap2["l_ovarian_ligament_"],
+				myNodesByNameFromMap2["l_fallopian_tube_"],
+				myNodesByNameFromMap2["r_fallopian_tube_"],
+				myNodesByNameFromMap2["uterus_"],
+				myNodesByNameFromMap2["l_urethral_rhabdosphincter_"],
+				myNodesByNameFromMap2["r_urethral_rhabdosphincter_"],
+				myNodesByNameFromMap2["r_inter_muscular_ureter_"],
+				myNodesByNameFromMap2["l_inter_muscular_ureter_"],
+				myNodesByNameFromMap2["l_rhabdosphincter_muscle_"],
+				myNodesByNameFromMap2["r_rhabdosphincter_muscle_"],
+				myNodesByNameFromMap2["bladder_mucosa_"],
+				myNodesByNameFromMap2["bladder_"],
+				myNodesByNameFromMap2["r_ureter_"],
+				myNodesByNameFromMap2["l_ureter_"],
+				myNodesByNameFromMap2["colon"],
+				myNodesByNameFromMap2["l_urethrovaginal_sphincter_muscle_"],
+				myNodesByNameFromMap2["l_compressor_urethrae_muscle_"],
+				myNodesByNameFromMap2["r_compressor_urethrae_muscle_"],
+				myNodesByNameFromMap2["r_urethrovaginal_sphincter_muscle_"],
               ];
+
               var checkbox = document.getElementById('organsCheckbox');
+
               if (checkbox.checked != true) {
                 for (var i = 0; i < organsToHide.length; i++) {
                   api.hide(organsToHide[i]);
                 }
               } else {
-                for (var i = 0; i < organsToHide.length; i++) {
-                  api.show(organsToHide[i]);
-                }
-              }
+                  for (var i = 0; i < organsToHide.length; i++) {
+                    api.show(organsToHide[i]);
+                  }
+                } 
+
             });
             /////////////////////////////////////////BONES/////////////////////////////////////////
             document.getElementById('bonesCheckbox').addEventListener('click', function() {
@@ -1215,7 +1430,7 @@ display:none;} @media (max-width:1199px){ #tablet-only{ display:flex;}} @media (
         autostart: 1,
         preload: 1,
         annotation_tooltip_visible: 0, // Usage: Setting to 0 will hide annotations tooltip by default.
-        max_texture_size: 800
+		max_texture_size: 800
       });
     }
     actionSkfb(); //////////////////////////////////
