@@ -1,0 +1,769 @@
+
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- PAGE settings -->
+  <link rel="icon" href="https://res.cloudinary.com/unmc/image/upload/v1618870187/iEXCEL_Favicon_vdbleh.ico">
+  <title>3D Dynamic Model | iEXCEL</title>
+  <meta name="description" content="Sketchfab dynamic model viewer">
+  <meta name="keywords" content="UNMC iEXCEL 3D Models">
+  <meta name="author" content="iEXCEL">
+  <!-- CSS dependencies -->
+  <link rel="preconnect" href="https://sketchfab.com/models" crossorigin="anonymous">
+  <link rel="preconnect" href="https://cdnjs.cloudflare.com">
+  <link rel="preconnect" href="https://res.cloudinary.com">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.1.1/css/all.min.css" type="text/css">
+  <link rel="stylesheet" href="https://res.cloudinary.com/unmc/raw/upload/v1619462284/CSS/wireframe.min_f82avv.css" type="text/css">
+  <style type="text/css">
+    .container {
+      width: 100%;
+      padding-right: 15px;
+      padding-left: 15px;
+      margin-right: auto;
+      margin-left: auto;
+    }
+
+    @media (min-width: 576px) {
+      .container {
+        max-width: 540px;
+      }
+    }
+
+    @media (min-width: 768px) {
+      .container {
+        max-width: 720px;
+      }
+    }
+
+    @media (min-width: 992px) {
+      .container {
+        max-width: 960px;
+      }
+    }
+
+    @media (min-width: 1200px) {
+      .container {
+        max-width: 1920px;
+      }
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    .container {
+      display: flex;
+      flex-direction: column;
+      height: 100%;
+    }
+
+    .iframe-container {
+      position: relative;
+      width: 100%;
+      flex: 1;
+      display: flex;
+    }
+
+    .iframe-container>iframe {
+      border: 0;
+      width: 100%;
+      flex: 1;
+    }
+
+    .controls {
+      display: flex;
+      align-items: center;
+      flex-wrap: wrap;
+      flex-shrink: 0;
+      height: 80px;
+      padding: 15px 0 0 15px;
+      background-color: #f2f2f2;
+      border-top: 1px solid #e7e7e7;
+      overflow: scroll;
+    }
+
+    .controls>* {
+      margin-right: 15px;
+      margin-bottom: 15px;
+    }
+
+    button {
+      display: inline-flex;
+      justify-content: center;
+      align-items: center;
+      position: relative;
+      border: 2px solid transparent;
+      border-radius: 4px;
+      padding: 0 13px;
+      font-family: "Open Sans", sans-serif;
+      font-weight: 600;
+      text-align: center;
+      text-shadow: none;
+      text-transform: uppercase;
+      line-height: 1.2;
+      cursor: pointer;
+      outline: none;
+      transition: background 0.2s;
+      color: white;
+      background-color: #0d6efd;
+      height: 25px;
+      font-size: .875rem;
+    }
+
+    button.disabled {
+      cursor: default;
+      pointer-events: none;
+      color: #ccc;
+      background-color: #e7e7e7;
+      transition: background-color 0.25s ease;
+    }
+
+    .description {
+      box-sizing: border-box;
+      position: absolute;
+      padding: 30px;
+      top: 30px;
+      right: 30px;
+      width: 240px;
+      background: rgba(0, 0, 0, 0.6);
+      color: #ffffff;
+      border-radius: 3px;
+      z-index: 2;
+      opacity: 0;
+      pointer-events: none;
+    }
+
+    .description.--active {
+      opacity: 1;
+      pointer-events: all;
+    }
+
+    .description iframe,
+    .description img {
+      max-width: 100%;
+      height: auto;
+    }
+
+    /* Remove default bullets */
+    ul,
+    #myUL {
+      list-style-type: none;
+    }
+
+    /* Remove margins and padding from the parent ul */
+    #myUL {
+      margin: 0;
+      padding: 0;
+    }
+
+    /* Style the caret/arrow */
+    .caret {
+      cursor: pointer;
+      user-select: none;
+      /* Prevent text selection */
+    }
+
+    /* Create the caret/arrow with a unicode, and style it */
+    .caret::before {
+      content: "\25B6";
+      color: black;
+      display: inline-block;
+      margin-right: 6px;
+    }
+
+    /* Rotate the caret/arrow icon when clicked on (using JavaScript) */
+    .caret-down::before {
+      transform: rotate(90deg);
+    }
+
+    /* Hide the nested list */
+    .nested {
+      display: none;
+    }
+
+    /* Show the nested list when the user clicks on the caret/arrow (with JavaScript) */
+    .active {
+      display: block;
+    }
+
+    #api-frame {
+      width: 100%;
+      height: 80vh;
+      max-width: 100vw;
+      border: 0;
+      padding: 0;
+      margin: 0;
+    }
+
+    ul#myUL {
+      color: black !important;
+    }
+
+    #navTree {
+      margin: 0;
+      width: 100%;
+      max-width: 100vw;
+      height: 80vh;
+      overflow-y: auto;
+      overflow-x: hidden;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    .container {
+      display: flex;
+      flex-direction: column;
+      height: 100%;
+    }
+
+    .iframe-container {
+      position: relative;
+      width: 100%;
+      flex: 1;
+      display: flex;
+    }
+
+    .iframe-container>iframe {
+      border: 0;
+      width: 100%;
+      flex: 1;
+    }
+
+    li {
+      padding: 1rem 1rem;
+      border-style: inset;
+      border-width: 0.5px;
+      border-color: #6c757d4f;
+      font-size: .875rem;
+      font-weight: 600;
+      display: flow-root;
+    }
+
+    ul.nested.active {
+      margin-top: 1.5rem;
+      margin-bottom: 1rem;
+      padding-left: 0;
+      background-color: #ffffffcc;
+      color: #444 !important;
+      text-transform: uppercase;
+      box-shadow: 0 .125rem .25rem rgba(0, 0, 0, .075) !important;
+    }
+
+    .controls {
+      display: flex;
+      align-items: center;
+      flex-wrap: wrap;
+      flex-shrink: 0;
+      height: 80px;
+      padding: 15px 0 0 15px;
+      background-color: #f2f2f2;
+      border-top: 1px solid #e7e7e7;
+      overflow: scroll;
+    }
+
+    .controls>* {
+      margin-right: 15px;
+      margin-bottom: 15px;
+    }
+
+    button {
+      margin-left: 1.5rem !important;
+      font-size: .875rem !important;
+      float: right;
+    }
+
+    span.caret {
+      margin-right: 15px;
+      text-transform: uppercase;
+      font-weight: 700;
+      font-size: 1rem !important;
+      color: black !important;
+      padding-top: 10px;
+      padding-bottom: 10px;
+      display: inline-block;
+    }
+
+    span.caret_child {
+      padding-top: 10px;
+      padding-bottom: 10px;
+      display: inline-flex;
+      align-items: center;
+    }
+
+    button {
+      display: inline-flex;
+      justify-content: center;
+      align-items: center;
+      position: relative;
+      border: 2px solid transparent;
+      border-radius: 0.25rem !important;
+      font-family: "Arial", sans-serif;
+      font-weight: 600;
+      text-align: center;
+      text-shadow: none;
+      text-transform: uppercase;
+      line-height: 1.2;
+      cursor: pointer;
+      outline: none;
+      transition: background 0.2s;
+      color: white;
+      background-color: #0d6efd;
+      height: 40px;
+      width: 80px;
+      font-size: 12px;
+      vertical-align: middle;
+    }
+
+    button.disabled {
+      cursor: default;
+      pointer-events: none;
+      color: #ccc;
+      background-color: #e7e7e7;
+      transition: background-color 0.25s ease;
+    }
+
+    button.Hide:hover {
+      opacity: .7;
+      transition: .25s;
+    }
+
+    button.Show:hover {
+      opacity: .7;
+      transition: .25s;
+    }
+
+    .description {
+      box-sizing: border-box;
+      position: absolute;
+      padding: 30px;
+      top: 30px;
+      right: 30px;
+      width: 240px;
+      background: rgba(0, 0, 0, 0.6);
+      color: #ffffff;
+      border-radius: 3px;
+      z-index: 2;
+      opacity: 0;
+      pointer-events: none;
+    }
+
+    .description.--active {
+      opacity: 1;
+      pointer-events: all;
+    }
+
+    .description iframe,
+    .description img {
+      max-width: 100%;
+      height: auto;
+    }
+
+    /* Remove default bullets */
+    ul,
+    #myUL {
+      list-style-type: none;
+    }
+
+    /* Remove margins and padding from the parent ul */
+    #myUL {
+      margin: 0;
+      padding: 0;
+      background: #e7eaf1;
+    }
+
+    /* Style the caret/arrow */
+    .caret {
+      cursor: pointer;
+      user-select: none;
+      /* Prevent text selection */
+    }
+
+    /* Create the caret/arrow with a unicode, and style it */
+    .caret::before {
+      vertical-align: middle;
+      color: black;
+      display: inline-block;
+      margin-right: 10px;
+      line-height: 0;
+      content: url(https://res.cloudinary.com/unmc/image/upload/v1620748497/SVG/angle-right-solid-svg_1_ig1xa1.svg);
+      transition: transform 0.35s ease;
+      transform-origin: 0.5em 50%;
+    }
+
+    li.nav-item.font-weight-bold.text-shadow {
+      border: inherit;
+      font-size: inherit;
+    }
+
+    li.nav-item {
+      border: inherit;
+      font-size: inherit;
+    }
+
+    #myUL,
+    li {
+      text-transform: uppercase;
+    }
+  </style>
+</head>
+
+<body>
+  <nav class="navbar navbar-expand-md navbar-dark bg-dark shadow-sm border-bottom border-primary" style="min-height:80px; max-height:80px">
+    <div class="container">
+      <button class="navbar-toggler navbar-toggler-right border-0 collapsed" type="button" data-toggle="collapse" data-target="#navbar12" aria-expanded="false"><span class="navbar-toggler-icon"></span></button>
+      <div class="navbar-collapse collapse navbar12" id="navbar12">
+        <a class='navbar-brand d-none d-md-block align-self-center' href='/'><img src="https://res.cloudinary.com/unmc/image/upload/v1618591007/SVG/Layer_jlzjda.svg" class="img-fluid m-auto" style="max-width:25px"> <b>&nbsp;iEXCEL</b></a>
+        <ul class="navbar-nav mx-auto">
+          <li class="nav-item font-weight-bold text-shadow">
+            <a class='nav-link' href='/'>3D Models</a>
+          </li>
+          <li class="nav-item font-weight-bold text-shadow">
+            <a class='nav-link' href='/video'>Video</a>
+          </li>
+        </ul>
+        <ul class="navbar-nav">
+          <li class="nav-item">
+            <a class='nav-link' href='/sign-up'><i class="fa fa-user fa-fw mx-1 text-white"></i><span class="font-weight-bold">&nbsp;Sign Up</span></a>
+          </li>
+          <li class="nav-item">
+            <a class='nav-link text-light' href='/login'><i class="fas fa-sign-in-alt mx-1"></i><span class="font-weight-bold">&nbsp;Login</span></a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+  <div class="py-5 min-height-90vh bg-secondary">
+    <div class="container">
+      <div class="row ">
+        <div class="col-md-7 mb-3">
+          <iframe id="api-frame" width="100%" height="auto" allowfullscreen="" mozallowfullscreen="true" webkitallowfullscreen="true" class="mb-3 rounded shadow embed-responsive embed-responsive-4by3 border-light border" loading="lazy"></iframe>
+        </div>
+        <div class="col-md-5">
+          <div class="navTree" id="navTree">
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="pt-4 bg-dark border-top border-primary">
+    <div class="container">
+      <div class="row pb-3">
+        <div class="col-md-12 text-center d-md-flex align-items-center mx-auto"><a class='mx-auto' href='/'><img src="https://res.cloudinary.com/unmc/image/upload/v1618511376/SVG/logo_constl.svg" width="400" class="d-block mx-auto img-fluid"></a></div>
+      </div>
+    </div>
+  </div>
+  <div class="bg-dark py-3 outline-footer">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-12">
+          <p class="text-center text-light small">All Rights Reserved. | University of Nebraska Board of Regents. | Terms of Use | Privacy Policy | iexcel@unmc.edu</p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <script type="text/javascript" src="https://static.sketchfab.com/api/sketchfab-viewer-1.12.0.js"></script>
+  <script type="text/javascript" src="https://cdn.jsdelivr.net/gh/shaderbytes/Sketchfab-Viewer-API-Utility@v3.0.0.2/SketchfabAPIUtility.js"></script>
+  <!-- <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" >
+  </script> -->
+  <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js">
+  </script> -->
+  <script src="https://res.cloudinary.com/unmc/raw/upload/v1619466882/bootstrap_cdn.min_p7fzqt.js">
+  </script>
+  <!--<script src="https://res.cloudinary.com/unmc/raw/upload/v1620756934/js/sketchfab_new_js_sazf3w.js"></script>-->
+  <script type="text/javascript">
+    // Sketchfab Viewer API: Start/Stop the viewer
+    var version = '1.12.0';
+    var uid = '3549f428043547759fe9e70debb811b9';
+    var urlParams = new URLSearchParams(window.location.search);
+    var autoSpin = 0.0;
+    if (urlParams.has('autospin')) {
+      autoSpin = urlParams.get('autospin');
+    }
+    if (urlParams.has('id')) {
+      uid = urlParams.get('id');
+    }
+    var iframe = document.getElementById('api-frame');
+    var client = new window.Sketchfab(version, iframe);
+    var treeText = '';
+    var error = function() {
+      console.error('Sketchfab API error');
+    };
+    //var myNodesByNameFromGraph = {};
+    var idxNodes = 0;
+    var myNodesByNameFromMap = {};
+    var officialNodes = [];
+    var objectID = -1;
+    /*
+    var computeAssociativeArray = function(node){
+        if (!node)  return;
+        var name = node.name;
+        if (!name) name = "noname_" + idxNodes++;       
+                    debugger;         		
+        myNodesByNameFromGraph[name] = node;
+        if (!node.children || !node.children.length) return;
+        for (var i = 0; i < node.children.length; i++){
+          computeAssociativeArray(node.children[i]);    
+        }
+    }
+    */
+    var success = function(api) {
+      api.start(function() {
+        api.addEventListener('viewerready', function() {
+          /*
+          api.getSceneGraph(function (err, result) {
+                if (err) {
+                    console.log('-------Scene Graph--------------')
+                    console.log('Error getting nodes');
+                    return;
+                }
+                // get the id from that log
+                //console.log(result);
+              computeAssociativeArray(result);
+                console.log("nodes indexed by names from scene node graph");
+                console.log(myNodesByNameFromGraph);
+            });
+            */
+          api.getNodeMap(function(err, nodes) {
+            if (!err) {
+              for (var instanceID in nodes) {
+                var node = nodes[instanceID];
+                var name = node.name;
+                if (!name) name = "noname_" + idxNodes++;
+                myNodesByNameFromMap[name] = node;
+              }
+              //console.log("nodes indexed by names from flattened array");
+              //console.log(myNodesByNameFromMap);
+              rootNodeTree = myNodesByNameFromMap['RootNode'];
+              recurse(rootNodeTree, rootNodeTree.children.length, 0);
+              //console.log(officialNodes);
+              //Now we can build the tree for the UI
+              generateTree();
+              var hideButtons = document.getElementsByClassName("Hide");
+              //console.log('HIDE BUTTONS LENGTH: ' + hideButtons.length);
+              for (var i = 0; i < hideButtons.length; i++) {
+                hideButtons[i].addEventListener("click", function() {
+                  //api.hide(this.value);
+                  this.style.backgroundColor = "red";
+                  var childButtons = document.getElementById(this.value).getElementsByClassName("Hide");
+                  console.log(' Child Buttons: ' + childButtons.length);
+                  if (childButtons.length == 0) {
+                    api.hide(this.value);
+                  }
+                  for (var i = 0; i < childButtons.length; i++) {
+                    hideBTN = document.getElementById(childButtons[i].id);
+                    //console.log(childButtons[i].id);
+                    hideBTN.style.backgroundColor = "red";
+                    api.hide(hideBTN.value);
+                  }
+                });
+              }
+              var showButtons = document.getElementsByClassName("Show");
+              //console.log('SHOW BUTTONS LENGTH: ' + showButtons.length);
+              for (var i = 0; i < showButtons.length; i++) {
+                showButtons[i].addEventListener("click", function() {
+                  api.show(this.value);
+                  console.log(this.value);
+                  var hideBTN = document.getElementById(this.id + "_" + this.name + 'Hide');
+                  hideBTN.style.backgroundColor = "green";
+                  var childButtons = document.getElementById(this.value).getElementsByClassName("Show");
+                  //console.log(' Child Buttons: ' + childButtons.length);
+                  for (var i = 0; i < childButtons.length; i++) {
+                    api.show(childButtons[i].value);
+                    hideBTN = document.getElementById(childButtons[i].id + '_Hide');
+                    hideBTN.style.backgroundColor = "green";
+                  }
+                });
+              }
+            }
+          });
+          /*  
+          document.getElementById('screenshot').addEventListener('click', function () {
+             api.getScreenShot(800, 800, 'image/png', function (err, result) {
+             if (!err) {
+               var anchor = document.createElement('a');
+               anchor.href = result;
+               anchor.download = 'screenshot.png';
+               anchor.innerHTML = '<img width="100" height="100" src=' + result + '>';
+               document.getElementById('navTree').appendChild(anchor);
+              }
+            });
+          });
+          */
+          /*
+            document.getElementById('show').addEventListener('click', function () {
+                api.show(id);
+            });
+            
+            */
+        });
+      });
+    };
+    client.init(uid, {
+      success: success,
+      error: error,
+      autostart: 1,
+      preload: 1,
+      autospin: autoSpin,
+      transparent: 1
+    });
+    //////////////////////////////////
+    // GUI Code
+    //////////////////////////////////
+    function initGui() {
+      var controls = document.getElementById('navTree');
+      var buttonsText = '';
+      buttonsText += '<button id="screenshot"></button>';
+      controls.innerHTML = buttonsText;
+    }
+    //initGui();
+    function generateTree() {
+      console.log('Total Node Count: ' + officialNodes.length);
+      var tree = unflatten(officialNodes);
+      //console.log(tree);
+      //Create the HTML UL elemenet of the objects 
+      var navTree = document.getElementById('navTree');
+      navTree.appendChild(to_ul(tree, 'myUL'));
+      var toggler = document.getElementsByClassName("caret");
+      var i;
+      for (i = 0; i < toggler.length; i++) {
+        toggler[i].addEventListener("click", function() {
+          this.parentElement.querySelector(".nested").classList.toggle("active");
+          this.classList.toggle("caret-down");
+        });
+      }
+    }
+
+    function unflatten(arr) {
+      var tree = [],
+        mappedArr = {},
+        arrElem,
+        mappedElem;
+      // First map the nodes of the array to an object -> create a hash table.
+      for (var i = 0, len = arr.length; i < len; i++) {
+        arrElem = arr[i];
+        mappedArr[arrElem.instanceID] = arrElem;
+        mappedArr[arrElem.instanceID]['children'] = [];
+      }
+      for (var id in mappedArr) {
+        if (mappedArr.hasOwnProperty(id)) {
+          mappedElem = mappedArr[id];
+          // If the element is not at the root level, add it to its parent array of children.
+          if (mappedElem.parentID) {
+            mappedArr[mappedElem['parentID']]['children'].push(mappedElem);
+          }
+          // If the element is at the root level, add it to first level elements array.
+          else {
+            tree.push(mappedElem);
+          }
+        }
+      }
+      return tree;
+    }
+    /**********************
+      GENERATE HTML UL TREE
+    **********************/
+    function to_ul(branches, setID = '', setClass = '') {
+      var outerul = document.createElement('ul');
+      var lengthOfName = 25;
+      if (setID != '') {
+        outerul.id = setID;
+      }
+      if (setClass != '') {
+        outerul.className = setClass;
+      }
+      for (var i = 0, n = branches.length; i < n; i++) {
+        var branch = branches[i];
+        var li = document.createElement('li');
+        var text = branch.name.replace(/_/g, " ");
+        if (text.length > lengthOfName) {
+          text = text.substring(0, lengthOfName);
+          text += '...';
+        }
+        var textNode = document.createTextNode(text);
+        if (branch.isParent) {
+          var sp = document.createElement('span');
+          sp.className = 'caret';
+          sp.appendChild(textNode);
+          li.appendChild(sp);
+          li.appendChild(createButton('Hide', branch.instanceID, branch.name));
+          li.appendChild(createButton('Show', branch.instanceID, branch.name));
+        } else {
+          var sp = document.createElement('span');
+          sp.className = 'caret_child';
+          sp.appendChild(textNode);
+          li.appendChild(sp);
+          li.appendChild(createButton('Hide', branch.instanceID, branch.name));
+          li.appendChild(createButton('Show', branch.instanceID, branch.name));
+        }
+        if (branch.children) {
+          li.appendChild(to_ul(branch.children, branch.instanceID, 'nested'));
+        }
+        outerul.appendChild(li);
+      }
+      console.log(outerul);
+      return outerul;
+    }
+
+    function createButton(btnType, instance, name) {
+      var btn = document.createElement('button');
+      btn.type = 'button';
+      btn.className = btnType;
+      if (btnType == 'Hide') {
+        btn.id = instance + '_' + name + '_' + btnType;
+        btn.style.backgroundColor = "green";
+      } else {
+        btn.id = instance + '_' + name;
+      }
+      btn.value = instance;
+      var btnText = document.createTextNode(btnType);
+      btn.appendChild(btnText);
+      return btn;
+    }
+    //////////////////////////////////
+    // GUI Code end
+    //////////////////////////////////
+    function recurse(nodeTree, childCount, theParentID) {
+      if (typeof nodeTree != 'undefined') {
+        //Process the children of this node tree  
+        for (var i = 0; i < childCount; i++) {
+          var node = new Object();
+          node['name'] = nodeTree.children[i].name;
+          node['type'] = nodeTree.children[i].type;
+          node['instanceID'] = nodeTree.children[i].instanceID;
+          node['isParent'] = false;
+          node['parentID'] = theParentID
+          if (node.type == 'MatrixTransform') {
+            //Determine if this node is a parent
+            node.isParent = isParent(nodeTree.children[i].children);
+            console.log('   ' + node['name'] + '(Node Type:' + node['type'] + ')' + '(Instance ID: ' + node['instanceID'] + ')' + '(Is Parent: ' + node['isParent'] + ')' + '(Parent ID: ' + node['parentID'] + ')' + ' Child Count :' + nodeTree.children[i].children.length);
+            //Add this node to the complete node array list we are constructing
+            officialNodes.push(node);
+            recurse(nodeTree.children[i], nodeTree.children[i].children.length, nodeTree.children[i].instanceID);
+          }
+        }
+      }
+    }
+
+    function isParent(children) {
+      //Look through all the children to see if a "MatrixTransform" type exists...
+      var result = false;
+      for (var i = 0; i < children.length; i++) {
+        if (children[i].type == 'MatrixTransform') {
+          result = true;
+          console.log('PARENT NODE DETECTED');
+          break;
+        } else {
+          result = false;
+        }
+      }
+      return result;
+    }
+  </script>
+</body>
+
+</html>
