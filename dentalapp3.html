@@ -1,0 +1,1091 @@
+
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- PAGE settings -->
+  <link rel="icon" href="https://res.cloudinary.com/unmc/image/upload/v1618870187/iEXCEL_Favicon_vdbleh.ico">
+  <title>Dentistry | iEXCEL</title>
+  <meta name="description" content="Pelvis Models created by iEXCEL at University of Nebraska Medical Center. Medically reviewed for accuracy.">
+  <meta name="keywords" content="UNMC iEXCEL 3D Models">
+  <meta name="author" content="iEXCEL">
+  <!-- CSS dependencies -->
+  <link rel="preconnect" href="//cdnjs.cloudflare.com">
+  <link rel="preconnect" href="//res.cloudinary.com">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,300;0,400;0,500;0,700;1,400&amp;display=swap" rel="stylesheet">
+  <!--<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">-->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+  <!--link rel="stylesheet" href="pediatric.css"-->
+  <link rel="stylesheet" href="https://res.cloudinary.com/unmc/raw/upload/v1642699939/CSS/pediatric_l0atiy.css">
+  <style type="text/css">
+    @media (min-width: 1200px) {
+      .container {
+        max-width: 1920px !important;
+      }
+    }
+
+    .container {
+      width: 100%;
+      padding-right: 15px;
+      padding-left: 15px;
+      margin-right: auto;
+      margin-left: auto;
+    }
+
+    #controls.controls {
+      
+      padding: 0;
+      margin: 0;
+      height: 320px;
+
+    }
+
+
+
+
+    @media (min-width: 576px) {
+      .container {
+        max-width: 540px;
+      }
+    }
+
+    @media (min-width: 768px) {
+      .container {
+        max-width: 720px;
+      }
+    }
+
+    @media (min-width: 992px) {
+      .container {
+        max-width: 960px;
+      }
+    }
+
+    @media (min-width: 1200px) {
+      .container {
+        max-width: 1920px;
+      }
+    }
+
+    @media(max-width: 767px) {
+      #api-frame {
+        height: 50vh !important;
+      }
+    }
+
+    @media(max-width: 767px) {
+      .extra-padding {
+        padding-left: 3vmax;
+        padding-right: 3vmax;
+      }
+    }
+
+    @media(max-width: 767px) {
+      .components-column {
+        flex-direction: column-reverse !important;
+      }
+    }
+
+    @media (max-width: 800px) {
+      .lead.fw-bold {
+        font-size: calc(1rem + 0.06vw);
+      }
+    }
+
+    @media (max-width: 800px) {
+
+      span.dds,
+      img {
+        max-width: 200px;
+      }
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    .container {
+      display: flex;
+      flex-direction: column;
+      height: 100%;
+    }
+
+    .btn-primary,
+    a.background-color {
+      background-color: #ad122a !important;
+    }
+
+    .display-4,
+    p,
+    li,
+    span,
+    lead,
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    a,
+    button span {
+      font-family: 'Roboto',
+        sans-serif !important;
+    }
+
+    .iframe-container {
+      position: relative;
+      width: 100%;
+      flex: 1;
+      display: flex;
+    }
+
+    .iframe-container>iframe {
+      border: 0;
+      width: 100%;
+      flex: 1;
+    }
+
+    .btn-group-lg>.btn,
+    .btn-lg {
+      padding: .5rem 1rem;
+      font-size: 0.75rem;
+      line-height: 1.5;
+      border-radius: .3rem;
+    }
+
+    .controls {
+      display: flex;
+      align-items: start;
+      flex-wrap: wrap;
+      flex-shrink: 0;
+      height: 80px;
+      padding: 15px 0 0 15px;
+      background-color: #f2f2f2;
+      border-top: 1px solid #e7e7e7;
+      overflow: scroll;
+    }
+
+    button.btn.btn-sm.btn-primary.dropdown-toggle.dropdown-toggle-split.ms-1 {
+      height: 65px;
+      min-width: 3vmax;
+      max-width: 65px;
+    }
+
+    .controls>* {
+      margin-right: 15px;
+      margin-bottom: 15px;
+    }
+
+    button {
+      display: inline-flex;
+      justify-content: center;
+      align-items: center;
+      position: relative;
+      border: 2px solid transparent;
+      border-radius: 4px;
+      padding: 0 13px;
+      font-family: "Open Sans", sans-serif;
+      font-weight: 600;
+      text-align: center;
+      text-shadow: none;
+      text-transform: uppercase;
+      line-height: 1.2;
+      cursor: pointer;
+      outline: none;
+      transition: background 0.2s;
+      color: white;
+      background-color: #0d6efd;
+      height: 25px;
+      font-size: .875rem;
+    }
+
+    button.disabled {
+      cursor: default;
+      pointer-events: none;
+      color: #ccc;
+      background-color: #e7e7e7;
+      transition: background-color 0.25s ease;
+    }
+
+    span.title.lead {
+      color: #842029;
+    }
+
+    .description {
+      box-sizing: border-box;
+      position: absolute;
+      padding: 30px;
+      top: 30px;
+      right: 30px;
+      width: 240px;
+      background: rgba(0, 0, 0, 0.6);
+      color: #ffffff;
+      border-radius: 3px;
+      z-index: 2;
+      opacity: 0;
+      pointer-events: none;
+    }
+
+    .description.--active {
+      opacity: 1;
+      pointer-events: all;
+    }
+
+    .description iframe,
+    .description img {
+      max-width: 100%;
+      height: auto;
+    }
+
+    /* Remove default bullets */
+    ul,
+    #myUL {
+      list-style-type: none;
+    }
+
+    /* Remove margins and padding from the parent ul */
+    #myUL {
+      margin: 0;
+      padding: 0;
+    }
+
+    /* Style the caret/arrow */
+    .caret {
+      cursor: pointer;
+      user-select: none;
+      /* Prevent text selection */
+    }
+
+    /* Create the caret/arrow with a unicode, and style it */
+    .caret::before {
+      content: "\25B6";
+      color: black;
+      display: inline-block;
+      margin-right: 6px;
+    }
+
+    /* Rotate the caret/arrow icon when clicked on (using JavaScript) */
+    .caret-down::before {
+      transform: rotate(90deg);
+    }
+
+    /* Hide the nested list */
+    .nested {
+      display: none;
+    }
+
+    /* Show the nested list when the user clicks on the caret/arrow (with JavaScript) */
+    .active {
+      display: block;
+    }
+
+    #api-frame {
+      width: 100%;
+      min-height: 60vh;
+      max-width: 100vw;
+      border: none !important;
+      padding: 0;
+      margin: 0;
+      outline-style: solid;
+      outline-color: #ddd;
+      outline-width: 1px;
+    }
+
+    ul#myUL {
+      color: black !important;
+    }
+
+    #navTree {
+      margin: 0;
+      width: 100%;
+      max-width: 600px;
+      height: 80vh;
+      overflow-y: auto;
+      overflow-x: hidden;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    .container {
+      display: flex;
+      flex-direction: column;
+      height: 100%;
+    }
+
+    .iframe-container {
+      position: relative;
+      width: 100%;
+      flex: 1;
+      display: flex;
+    }
+
+    .iframe-container>iframe {
+      border: 0;
+      width: 100%;
+      flex: 1;
+    }
+
+    li {
+      padding: 1rem 1rem;
+      border-style: inset;
+      border-width: 0.5px;
+      border-color: #6c757d4f;
+      font-size: .875rem;
+      font-weight: 600;
+      display: flow-root;
+    }
+
+    ul.nested.active {
+      margin-top: 1.5rem;
+      margin-bottom: 1rem;
+      padding-left: 0;
+      background-color: #ffffffcc;
+      color: #444 !important;
+      text-transform: uppercase;
+      box-shadow: 0 .125rem .25rem rgba(0, 0, 0, .075) !important;
+    }
+
+    .controls {
+      display: flex;
+      align-items: start;
+      flex-wrap: wrap;
+      flex-shrink: 0;
+      height: 80px;
+      padding: 15px 0 0 15px;
+      background-color: #f2f2f2;
+      border-top: 1px solid #e7e7e7;
+      overflow: scroll;
+    }
+
+    .controls>* {
+      margin-right: 15px;
+      margin-bottom: 15px;
+    }
+
+    button {
+      margin-left: 1.5rem !important;
+      font-size: .875rem !important;
+      float: right;
+    }
+
+    span.caret {
+      margin-right: 15px;
+      text-transform: uppercase;
+      font-weight: 700;
+      font-size: 1rem !important;
+      color: black !important;
+      padding-top: 10px;
+      padding-bottom: 10px;
+      display: inline-block;
+    }
+
+    span.caret_child {
+      padding-top: 10px;
+      padding-bottom: 10px;
+      display: inline-flex;
+      align-items: center;
+    }
+
+    button {
+      display: inline-flex;
+      justify-content: center;
+      align-items: center;
+      position: relative;
+      border: 2px solid transparent;
+      border-radius: 0.25rem !important;
+      font-family: "Arial", sans-serif;
+      font-weight: 600;
+      text-align: center;
+      text-shadow: none;
+      text-transform: uppercase;
+      line-height: 1.2;
+      cursor: pointer;
+      outline: none;
+      transition: background 0.2s;
+      color: white;
+      background-color: #0d6efd;
+      height: 40px;
+      width: 80px;
+      font-size: 1rem;
+      vertical-align: middle;
+    }
+
+    button.disabled {
+      cursor: default;
+      pointer-events: none;
+      color: #ccc;
+      background-color: #e7e7e7;
+      transition: background-color 0.25s ease;
+    }
+
+    button.Hide:hover {
+      opacity: .7;
+      transition: .25s;
+    }
+
+    button.Show:hover {
+      opacity: .7;
+      transition: .25s;
+    }
+
+    .description {
+      box-sizing: border-box;
+      position: absolute;
+      padding: 30px;
+      top: 30px;
+      right: 30px;
+      width: 240px;
+      background: rgba(0, 0, 0, 0.6);
+      color: #ffffff;
+      border-radius: 3px;
+      z-index: 2;
+      opacity: 0;
+      pointer-events: none;
+    }
+
+    .description.--active {
+      opacity: 1;
+      pointer-events: all;
+    }
+
+    .description iframe,
+    .description img {
+      max-width: 100%;
+      height: auto;
+    }
+
+    /* Remove default bullets */
+    ul,
+    #myUL {
+      list-style-type: none;
+    }
+
+    /* Remove margins and padding from the parent ul */
+    #myUL {
+      margin: 0;
+      padding: 0;
+      background: #e7eaf1;
+    }
+
+    /* Style the caret/arrow */
+    .caret {
+      cursor: pointer;
+      user-select: none;
+      /* Prevent text selection */
+    }
+
+    /* Create the caret/arrow with a unicode, and style it */
+    .caret::before {
+      vertical-align: middle;
+      color: black;
+      display: inline-block;
+      margin-right: 10px;
+      line-height: 0;
+      content: url(https://res.cloudinary.com/unmc/image/upload/v1620748497/SVG/angle-right-solid-svg_1_ig1xa1.svg);
+      transition: transform 0.35s ease;
+      transform-origin: 0.5em 50%;
+    }
+
+    li.nav-item.font-weight-bold.text-shadow {
+      border: inherit;
+      font-size: inherit;
+    }
+
+    li.nav-item {
+      border: inherit;
+      font-size: inherit;
+    }
+
+    #myUL,
+    li {
+      text-transform: capitalize;
+      font-size: 1rem;
+    }
+  </style>
+  <style type="text/css">
+    html,
+    body {
+      padding: 0;
+      margin: 0;
+      width: 100vw;
+      height: 100vh;
+      -webkit-font-smoothing: subpixel-antialiased !important;
+      -moz-font-smoothing: grayscale;
+      font-family: 'Roboto', sans-serif;
+      overflow-x: hidden;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    .container {
+      display: flex;
+      flex-direction: column;
+      height: 100%;
+    }
+
+    .iframe-container {
+      position: relative;
+      width: 100%;
+      flex: 1;
+      display: flex;
+    }
+
+    .iframe-container>iframe {
+      border: 0;
+      width: 100%;
+      flex: 1;
+    }
+
+    .controls {
+      display: flex;
+      align-items: center;
+      flex-wrap: wrap;
+      flex-shrink: 0;
+      height: 80px;
+      padding: 15px 0 0 15px;
+      background-color: #F2F2F2;
+      border-top: 1px solid #e7e7e7;
+      overflow: scroll;
+    }
+
+    .controls>* {
+      margin-right: 15px;
+      margin-bottom: 15px;
+    }
+
+    button {
+      display: inline-flex;
+      justify-content: center;
+      align-items: center;
+      position: relative;
+      border: 2px solid transparent;
+      border-radius: 4px;
+      padding: 0 13px;
+      font-family: "Roboto", sans-serif;
+      font-weight: 600;
+      text-align: center;
+      text-shadow: none;
+      text-transform: uppercase;
+      line-height: 1.2;
+      cursor: pointer;
+      outline: none;
+      transition: background .2s;
+      color: white;
+      background-color: #1caad9;
+      height: 25px;
+      font-size: 1rem;
+    }
+
+    a.btn.btn-primary.btn-block.btn-lg {
+      font-size: 0.875rem;
+      font-weight: 400;
+      border-radius: 100px;
+      width: auto;
+      min-width: 165px;
+      margin-left: 0 !important;
+      margin-right: 0 !important;
+    }
+
+    button.disabled {
+      cursor: default;
+      pointer-events: none;
+      color: #ccc;
+      background-color: #e7e7e7;
+      transition: .25s ease;
+    }
+
+    .description {
+      box-sizing: border-box;
+      position: absolute;
+      padding: 30px;
+      top: 30px;
+      right: 30px;
+      width: 240px;
+      background: rgba(0, 0, 0, 0.6);
+      color: #ffffff;
+      border-radius: 3px;
+      z-index: 2;
+      opacity: 0;
+      pointer-events: none;
+    }
+
+    .description.--active {
+      opacity: 1;
+      pointer-events: all;
+    }
+
+    .description iframe,
+    .description img {
+      max-width: 100%;
+      height: auto;
+    }
+
+
+
+    .controls {
+      padding: 2rem;
+      overflow-x: hidden;
+    }
+
+    div#text {
+      margin-bottom: 10px;
+    }
+
+    #navTree {
+      display: none !important;
+    }
+
+    div#navTree {
+      display: none;
+    }
+
+    .switch {
+      position: relative;
+      display: inline-block;
+      width: 60px;
+      height: 34px;
+      margin-right: 10px;
+      margin-top: 10px;
+    }
+
+    .switch input {
+      opacity: 0;
+      width: 0;
+      height: 0;
+    }
+
+    .slider {
+      position: absolute;
+      cursor: pointer;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background-color: #ccc;
+      -webkit-transition: .4s;
+      transition: .4s;
+    }
+
+    .slider:before {
+      position: absolute;
+      content: "";
+      height: 26px;
+      width: 26px;
+      left: 4px;
+      bottom: 4px;
+      background-color: white;
+      -webkit-transition: .4s;
+      transition: .4s;
+    }
+
+    input:checked+.slider {
+      background-color: #ad122a;
+    }
+
+    input:focus+.slider {
+      box-shadow: 0 0 1px #2196F3;
+    }
+
+    input:checked+.slider:before {
+      -webkit-transform: translateX(26px);
+      -ms-transform: translateX(26px);
+      transform: translateX(26px);
+    }
+
+    /* Rounded sliders */
+    .slider.round {
+      border-radius: 34px;
+    }
+
+    .slider.round:before {
+      border-radius: 50%;
+    }
+
+    .btn-lg {
+      min-height: 65px;
+      min-width: 165px;
+      margin-bottom: 20px;
+      height: auto;
+    }
+
+    a.btn.btn-primary.btn-block.btn-lg {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    label {
+      padding-top: 5px;
+    }
+
+    .components-column {
+      justify-content: center;
+    }
+
+    button.close {
+      font-size: 1.1rem !important;
+      margin-top: 5px;
+    }
+
+    .svg-custom,
+    .path {
+      animation: hideshow 3s ease-in infinite;
+      padding: 5px;
+    }
+
+    @keyframes hideshow {
+      0% {
+        opacity: 1;
+      }
+
+      10% {
+        opacity: 1;
+      }
+
+      15% {
+        opacity: .3;
+      }
+
+      100% {
+        opacity: 1;
+      }
+    }
+
+    #controls {
+      margin-bottom: 2rem;
+    }
+
+    button.btn.btn-lg.btn-primary.w-auto {
+      text-transform: capitalize;
+      font-family: 'Roboto';
+      margin-left: 0 !important;
+    }
+
+    div.show {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    .model-open {
+      display: flex !important;
+    }
+
+    a.dropdown-item {
+      font-weight: 500;
+      font-size: 1rem;
+    }
+
+    .custom-btn {
+      border-radius: 4px !important;
+    }
+
+    .btn-primary {
+      border-color: #333 !important;
+    }
+
+    div#controls {
+      align-items: start !important;
+    }
+
+    li.img-box {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      justify-content: space-between;
+      padding-left: 5em;
+      padding-right: 5em;
+      background-color: #f8d7da;
+    }
+
+    div.list-group-item-success {
+      color: #155724;
+      background-color: #c3e6cb;
+    }
+
+    .mw-54em {
+      max-width: 54em;
+    }
+
+    li.list-group-item-success.text-capitalized:before {
+      content: '\2014';
+      position: relative;
+      font-weight: 700;
+      padding-right: 5px;
+    }
+
+    ul.my-3.my-4 {
+      padding-left: 0;
+      padding-right: 0;
+      max-width: 64rem;
+    }
+
+    .modal-header {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      padding-bottom: 1rem !important;
+      padding-top: 1rem !important;
+    }
+
+    p.px-2.p-custom.card.card-body {
+      background-color: #129DBF !important;
+    }
+
+    input:checked+.slider {
+      background-color: #002957;
+      box-shadow: 0 0.125rem 0.25rem rgb(0 0 0 / 8%) !important;
+      cursor: pointer;
+    }
+
+    label {
+      font-weight: 500;
+      text-shadow: .0 .1px .1px #333
+    }
+
+    .vmax {
+      padding-left: 2vmax !important;
+      padding-right: 2vmax !important;
+    }
+
+    .form-check-input[type=checkbox] {
+      border-radius: 19.25em;
+      padding: 9px;
+    }
+
+    .slider.round {
+      border-radius: 34px;
+      box-shadow: 0 0.125rem 0.25rem rgb(0 0 0 / 8%) !important;
+    }
+
+    svg.bi.bi-question-circle-fill:hover {
+      opacity: .6;
+      transition: .35s ease;
+    }
+
+    .bg-blue {
+      background-color: #002957;
+    }
+
+    .bg-light-blue {
+      background-color: #D9E8F1;
+    }
+
+    label.fs-5 {
+    color: #111;
+}
+  </style>
+</head>
+
+<body>
+  <nav class="navbar navbar-dark bg-dark border-bottom border-dark p-xl- d-flex flex-column justify-content-center align-items-center" style="max-height:80px">
+    <div class="container d-flex justify-content-center p-xl-2 px-1"> <a class="navbar-brand d-flex align-items-center p-0 m-0 mr-auto" href="index.html"><img src="https://res.cloudinary.com/unmc/image/upload/v1642625051/logo/New_Project_6_avrb9d.svg" class="d-block img-fluid m-0" width="175"></a> </div>
+  </nav>
+  <div class="py-4 min-height-90vh d-flex flex-column justify-content-start align-items-start" style="min-height:90vh; background-color:#002957!important;">
+    <div class="container">
+      
+      <div class="row  mx-auto w-100 align-items-start">
+        
+
+        <div class="d-flex flex-column mx-auto col-xl-2 col-12 components-column col-md-2 px-2">
+        <div class="card card-body mb-2 vmax bg-light-blue" >
+          
+          <div class="navTree" id="navTree" >
+            <span class="sadasd">div</span>
+          </div>
+          <div class="row mb- w-100 mx-auto mt- ">
+            <p class="px-2 p-custom text-center fw-bold text-black-75 mb-1">
+              <span class="fs-5 d-block  w-100 mb-2">Main Page</span>
+            </p>
+            <form class="d-flex px-0 flex-row no-wrap " role="search">
+              <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+              <button class=" py-2 mx-0 d-flex flex-column bg-blue" type="submit">Search</button>
+            </form>
+            <nav class="nav flex-column nav flex-column border-info rounded mt-2 px-0 border-0 mb-2">
+              <li class="nav-item dropdown pl-0 border rounded mb-1">
+                <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false">Dropdown</a>
+                <ul class="dropdown-menu py-0" style="position: absolute; left: 0px; top: 0px; margin: 0px;">
+                  <li><a class="dropdown-item" href="#">Action</a></li>
+                  <li><a class="dropdown-item" href="#">Another action</a></li>
+                  <li><a class="dropdown-item" href="#">Something else here</a></li>
+                  <li><a class="dropdown-item" href="#">Separated link</a></li>
+                </ul>
+              </li>
+              <a class="nav-link active mt-2" aria-current="page" href="#">Active</a>
+              <a class="nav-link" href="#">Link</a>
+              <a class="nav-link" href="#">Link</a>
+              <a class="nav-link disabled">Disabled</a>
+            </nav>
+            <br>
+            <span class="d-inline text-right pt-2 border-top border-info"><a href="#"><span class="pr-2">More info</span><svg width="32" height="32" fill="currentColor" class="bi bi-question-circle-fill" viewBox="0 0 16 16" style="color:#002957" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM5.496 6.033h.825c.138 0 .248-.113.266-.25.09-.656.54-1.134 1.342-1.134.686 0 1.314.343 1.314 1.168 0 .635-.374.927-.965 1.371-.673.489-1.206 1.06-1.168 1.987l.003.217a.25.25 0 0 0 .25.246h.811a.25.25 0 0 0 .25-.25v-.105c0-.718.273-.927 1.01-1.486.609-.463 1.244-.977 1.244-2.056 0-1.511-1.276-2.241-2.673-2.241-1.267 0-2.655.59-2.75 2.286a.237.237 0 0 0 .241.247zm2.325 6.443c.61 0 1.029-.394 1.029-.927 0-.552-.42-.94-1.029-.94-.584 0-1.009.388-1.009.94 0 .533.425.927 1.01.927z"></path>
+                </svg></a></span>
+          </div>
+
+        </div>
+
+        <div class="px-2 p-custom mb-2 card card-body vmax" style="height: 330px;">
+          <div id="teeth-info-title" align="center" class="fs-5 d-block  w-100 mb-2">Selected Tooth</div>
+        <div  id="info"><br>None</div>
+        <br>
+        <div  id="compareLeft"><br></div>
+        <br>
+        <div  id="compareRight"><br></div>
+
+
+      </div>
+
+      <div class="px-2  p-custom card card-body vmax">
+        <div  align="center" class="fs-5 d-block  w-100 mb-2">Functions</div>
+        <br>
+      <button id="isolateButton" style="align-self: center; width:250px;">Isolate Selected (I)</button>
+      <br>
+      <button id="unIsolateButton" style="align-self: center;width:250px;">Un-Isolate Selected (U)</button>
+      <br>
+      <button id="devLobeButton" style="align-self: center;width:250px;">Developmental Lobe (D)</button>
+
+    </div>
+      </div>
+        <!--BROKEN-->
+        <!--div id="info" class="px-2 p-custom card card-body vmax" style="width:200px;"></div-->
+
+        <div class="d-flex flex-column mb-3 col-xl-7 col-12 extra-padding justify-content-center align-items-start col-md-7 px-3" >
+          <!-- <div class="d-flex flex-row w-100 justify-content-between align-items-center flex-wrap" ></div>-->
+          <div class="row no-gutters">
+            <div class="col-md-12">
+              <div class="alert alert-primary p-3 d-lg-none d-sm-block alert alert-warning alert-dismissible fade show" role="alert">
+                <button type="button" class="close btn-close" aria-label="Close" data-bs-dismiss="alert">×</button>
+                <h3 class="alert-heading"> Continue Scrolling to view the 3D Pelvis Model. Select the numbered annotations on the model<svg width="40" class="svg-custom fa-fw  ml-2 d-inline" viewBox="0 0 295 295" fill="none" xmlns="http://www.w3.org/2000/svg" height="50">
+                    <path d="M295 147.5C295 228.982 228.982 295 147.5 295C66.0181 295 0 228.982 0 147.5C0 66.0181 66.0181 0 147.5 0C228.982 0 295 66.0181 295 147.5ZM209.593 130.312L166.532 175.216V66.6129C166.532 58.7026 160.168 52.3387 152.258 52.3387H142.742C134.832 52.3387 128.468 58.7026 128.468 66.6129V175.216L85.4073 130.312C79.876 124.542 70.6573 124.423 65.0071 130.074L58.5242 136.616C52.9335 142.207 52.9335 151.247 58.5242 156.778L137.389 235.703C142.98 241.293 152.02 241.293 157.551 235.703L236.476 156.778C242.067 151.188 242.067 142.147 236.476 136.616L229.993 130.074C224.343 124.423 215.124 124.542 209.593 130.312Z" fill="#5A0916"></path>
+                  </svg></h3>
+                <p class="mb-0">Hide or show Skin, Muscles and Bones. Select annotations on the 3D Pelvis Model.</p>
+              </div>
+            </div>
+          </div>
+         <!--iframe  src="/dentistry-iframe.html" height = 1075 width="100%" ></iframe-->
+
+
+          <div>
+         <canvas id="threejs-canvas" style="border-radius: 6px;" >
+          <script async src="https://unpkg.com/es-module-shims@1.3.6/dist/es-module-shims.js"></script>
+         <script type="importmap">
+           {
+             "imports": {
+               "three": "./three/build/three.module.js"
+             }
+           }
+         </script>
+         <script type="module" src ="./dentistry_js.js"></script>
+        </canvas>
+      </div>
+
+
+        </div>
+
+
+        <div class="d-flex flex-column mx-auto col-xl-3 col-12 components-column col-md-3 px-2" >
+          <div class="navTree" id="navTree" >
+            <span class="sadasd">div</span>
+          </div>
+          <div class="row mb- w-100 mx-auto mt- ">
+            <div class="card card-body mb-2 vmax bg-light-blue">
+              <div class="form-check d-flex flex-row align-items-center py-1">
+                <input class="form-check-input" type="checkbox" value="" id="jawViewCheckbox">
+                <label class="form-check-label pl-2 fs-5" for="flexCheckDefault">Jaw View</label>
+              </div>
+              <div class="form-check d-flex flex-row align-items-center py-1">
+                <input class="form-check-input" type="checkbox" value="" id="jawOpenCheckbox">
+                <label class="form-check-label pl-2 fs-5" for="flexCheckDefault">Open Jaw</label>
+              </div>
+              <div class="form-check d-flex flex-row align-items-center py-1">
+                <input class="form-check-input" type="checkbox" value="" id="compareCheckbox">
+                <label class="form-check-label pl-2 fs-5" for="flexCheckDefault">Compare</label>
+              </div>
+            </div>
+
+            <div class="card px-0 mb-2">
+                <h5 class="card-header text-center">Visibility</h5>
+                <div class="card-body px-4">
+                 <font color="white"><br>
+                              <label class="switch"> <input type="checkbox" id="gumsCheckbox" onclick="document.getElementById('gumsCheckbox').click()" checked=""><span class="slider round"></span></label>
+                              <label class="fs-5">Gums </label><br>
+                              <label class="switch"> <input type="checkbox" id="bonesCheckbox" onclick="document.getElementById('bonesCheckbox').click()" checked=""><span class="slider round"></span></label>
+                              <label class="fs-5">Bones</label><br>
+                              <label class="switch"> <input type="checkbox" id="nervesCheckbox" onclick="document.getElementById('nervesCheckbox').click()"><span class="slider round"></span></label>
+                              <label class="fs-5">Nerves</label><br>
+                              <label class="switch"> <input type="checkbox" id="speeCheckbox" onclick="document.getElementById('speeCheckbox').click()"><span class="slider round"></span></label>
+                              <label class="fs-5">Curve of Spee</label><br>
+                              <label class="switch"> <input type="checkbox" id="wilsonCheckbox" onclick="document.getElementById('wilsonCheckbox').click()"><span class="slider round"></span></label>
+                              <label class="fs-5">Curve of Wilson</label><br>
+                              <label class="switch"> <input type="checkbox" id="monsonCheckbox" onclick="document.getElementById('monsonCheckbox').click()"><span class="slider round"></span></label>
+                              <label class="fs-5">Sphere of Monson</label><br>
+                              
+                              <!--<label class="switch"><input type="checkbox" id="bonesCheckbox" onclick="document.getElementById('bonesCheckbox').click()" checked=""><span class="slider round"></span></label>
+                              <label>Bones</label>--><br>
+                              <!--<label class="switch"><input type="checkbox" id="annotationsCheckbox" onclick="document.getElementById('annotationsCheckbox').click()" checked=""><span class="slider round"></span></label>
+                              <label>Annotation Numbers</label>-->
+                            </font>
+                </div>
+              </div>
+            
+            <!--<p class="px-2 p-custom card card-body vmax">
+              <span class="text-center fs-5 fw-bold text-secondary">Visibility</span>
+              <font color="white"><br>
+                <label class="switch"> <input type="checkbox" id="gumsCheckbox" onclick="document.getElementById('gumsCheckbox').click()" checked=""><span class="slider round"></span></label>
+                <label class="fs-5">Gums </label><br>
+                <label class="switch"> <input type="checkbox" id="bonesCheckbox" onclick="document.getElementById('bonesCheckbox').click()" checked=""><span class="slider round"></span></label>
+                <label class="fs-5">Bones</label><br>
+                <label class="switch"> <input type="checkbox" id="nervesCheckbox" onclick="document.getElementById('nervesCheckbox').click()" ><span class="slider round"></span></label>
+                <label class="fs-5">Nerves</label><br>
+                <label class="switch"> <input type="checkbox" id="speeCheckbox" onclick="document.getElementById('speeCheckbox').click()" ><span class="slider round"></span></label>
+                <label class="fs-5">Curve of Spee</label><br>
+                <label class="switch"> <input type="checkbox" id="wilsonCheckbox" onclick="document.getElementById('wilsonCheckbox').click()" ><span class="slider round"></span></label>
+                <label class="fs-5">Curve of Wilson</label><br>
+                <label class="switch"> <input type="checkbox" id="monsonCheckbox" onclick="document.getElementById('monsonCheckbox').click()" ><span class="slider round"></span></label>
+                <label class="fs-5">Sphere of Monson</label><br>
+                
+                <label class="switch"><input type="checkbox" id="bonesCheckbox" onclick="document.getElementById('bonesCheckbox').click()" checked=""><span class="slider round"></span></label>
+                <label>Bones</label>--><br>
+                <!--<label class="switch"><input type="checkbox" id="annotationsCheckbox" onclick="document.getElementById('annotationsCheckbox').click()" checked=""><span class="slider round"></span></label>
+                <label>Annotation Numbers</label>
+              </font><br>
+            </p>-->
+            <span class="spany w-100 d-block px-2 py-2 lead bg-light text-center border-bottom border-light fw-bold" >Tooth Selection</span>
+          </div>
+          <div class="controls" id="controls">
+            <div id="annotations-sync"></div>
+            <h1 id="a0"></h1>
+            <h1 id="a1"></h1>
+            <h1 id="a2"></h1>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="bg-dark border-top border-dark py-3">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-12 text-center">
+          <p class="mb-0 text-light">© 2021, Board of Regents of the University of Nebraska. All rights reserved. </p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- MODAL INFORMATION -->
+  <!--script src="https://static.sketchfab.com/api/sketchfab-viewer-1.11.0.js"></script-->
+  <!-- END MODAL-->
+  <script type="text/javascript" src="https://cdn.jsdelivr.net/gh/shaderbytes/Sketchfab-Viewer-API-Utility@v3.0.0.2/SketchfabAPIUtility.js"></script>
+  <!-- JavaScript Bundle with Popper -->
+  <!-- JavaScript Bundle with Popper -->
+  <script crossorigin="anonymous" integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js"></script>
+
+</body>
+
+</html>
