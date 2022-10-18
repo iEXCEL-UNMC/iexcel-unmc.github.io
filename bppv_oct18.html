@@ -1,0 +1,881 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!--FONT ROBOTO-->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="anonymous">
+
+    <link rel="stylesheet" href="https://res.cloudinary.com/unmc/raw/upload/v1659989301/BPPV/bppvnew.css">
+    <!-- CSS only -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
+
+    <!-- <link rel="stylesheet" href="roundSlider3.css"> -->
+
+    <link rel="stylesheet" href="https://res.cloudinary.com/unmc/raw/upload/v1665776267/js/roundSlider3_cdn.css">
+
+    <script defer src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3" crossorigin="anonymous">
+    </script>
+    <style>
+        body,html{height:100%}*,::after,::before{-webkit-box-sizing:border-box;box-sizing:border-box}.dropdown-item.font-weight-bold{padding-top:10px;padding-bottom:10px;font-size:clamp(1.1rem,-.5vw + 1.3rem,1rem)!important}div#posValue{font-size:clamp(1.1rem,-.5vw + 1.3rem,1rem)!important}span#mode{font-size:clamp(1.1rem,-.5vw + 1.3rem,1rem)!important}div#rotX_rightButton:hover{opacity:.8;-webkit-transition:.25s ease-in-out;-o-transition:.25s ease-in-out;transition:.25s ease-in-out;-webkit-transform:scale(.9);-ms-transform:scale(.9);transform:scale(.9)}div#rotX_leftButton:hover{opacity:.8;-webkit-transition:.25s ease-in-out;-o-transition:.25s ease-in-out;transition:.25s ease-in-out;-webkit-transform:scale(.9);-ms-transform:scale(.9);transform:scale(.9)}div#rotY_leftButton:hover{opacity:.8;-webkit-transition:.25s ease-in-out;-o-transition:.25s ease-in-out;transition:.25s ease-in-out;-webkit-transform:scale(.9);-ms-transform:scale(.9);transform:scale(.9)}div#rotY_rightButton:hover{opacity:.8;-webkit-transition:.25s ease-in-out;-o-transition:.25s ease-in-out;transition:.25s ease-in-out;-webkit-transform:scale(.9);-ms-transform:scale(.9);transform:scale(.9)}div#rotZ_leftButton:hover{opacity:.8;-webkit-transition:.25s ease-in-out;-o-transition:.25s ease-in-out;transition:.25s ease-in-out;-webkit-transform:scale(.9);-ms-transform:scale(.9);transform:scale(.9)}div#rotZ_rightButton:hover{opacity:.8;-webkit-transition:.25s ease-in-out;-o-transition:.25s ease-in-out;transition:.25s ease-in-out;-webkit-transform:scale(.9);-ms-transform:scale(.9);transform:scale(.9)}a#hideControlsButton{display:-webkit-box;display:-ms-flexbox;display:flex;-webkit-box-orient:vertical;-webkit-box-direction:normal;-ms-flex-direction:column;flex-direction:column;-webkit-box-pack:center;-ms-flex-pack:center;justify-content:center}a#resetButton{display:-webkit-box;display:-ms-flexbox;display:flex;-webkit-box-orient:horizontal;-webkit-box-direction:normal;-ms-flex-direction:row;flex-direction:row;-webkit-box-pack:center;-ms-flex-pack:center;justify-content:center;-webkit-box-align:center;-ms-flex-align:center;align-items:center}div#selectionDiv{display:-webkit-box;display:-ms-flexbox;display:flex;-webkit-box-orient:vertical;-webkit-box-direction:normal;-ms-flex-direction:column;flex-direction:column;-webkit-box-pack:justify;-ms-flex-pack:justify;justify-content:space-between}@font-face{font-family:Roboto;font-style:italic;font-weight:700;font-display:swap;src:url(https://fonts.gstatic.com/s/roboto/v30/KFOjCnqEu92Fr1Mu51TzBic3CsTYl4BOQ3o.woff2) format('woff2');unicode-range:U + 460-052F,U + 1C80-1C88,U + 20B4,U + 2DE0-2DFF,U+A640-A69F,U+FE2E-FE2F}@font-face{font-family:Roboto;font-style:italic;font-weight:700;font-display:swap;src:url(https://fonts.gstatic.com/s/roboto/v30/KFOjCnqEu92Fr1Mu51TzBic-CsTYl4BOQ3o.woff2) format('woff2');unicode-range:U + 301,U + 400-045F,U + 490-0491,U + 4B0-04B1,U + 2116}@font-face{font-family:Roboto;font-style:italic;font-weight:700;font-display:swap;src:url(https://fonts.gstatic.com/s/roboto/v30/KFOjCnqEu92Fr1Mu51TzBic2CsTYl4BOQ3o.woff2) format('woff2');unicode-range:U + 1F00-1FFF}@font-face{font-family:Roboto;font-style:italic;font-weight:700;font-display:swap;src:url(https://fonts.gstatic.com/s/roboto/v30/KFOjCnqEu92Fr1Mu51TzBic5CsTYl4BOQ3o.woff2) format('woff2');unicode-range:U + 370-03FF}@font-face{font-family:Roboto;font-style:italic;font-weight:700;font-display:swap;src:url(https://fonts.gstatic.com/s/roboto/v30/KFOjCnqEu92Fr1Mu51TzBic1CsTYl4BOQ3o.woff2) format('woff2');unicode-range:U + 102-0103,U + 110-0111,U + 128-0129,U + 168-0169,U + 1A0-01A1,U + 1AF-01B0,U + 1EA0-1EF9,U + 20 AB}@font-face{font-family:Roboto;font-style:italic;font-weight:700;font-display:swap;src:url(https://fonts.gstatic.com/s/roboto/v30/KFOjCnqEu92Fr1Mu51TzBic0CsTYl4BOQ3o.woff2) format('woff2');unicode-range:U + 100-024F,U + 259,U + 1E00-1EFF,U + 2020,U + 20A0-20AB,U + 20AD-20CF,U + 2113,U + 2C60-2C7F,U+A720-A7FF}@font-face{font-family:Roboto;font-style:italic;font-weight:700;font-display:swap;src:url(https://fonts.gstatic.com/s/roboto/v30/KFOjCnqEu92Fr1Mu51TzBic6CsTYl4BO.woff2) format('woff2');unicode-range:U + 0-00FF,U + 131,U + 152-0153,U + 2BB-02BC,U + 2C6,U + 2 DA,U + 2 DC,U + 2000-206F,U + 2074,U + 20 AC,U + 2122,U + 2191,U + 2193,U + 2212,U + 2215,U+FEFF,U+FFFD}@font-face{font-family:Roboto;font-style:normal;font-weight:300;font-display:swap;src:url(https://fonts.gstatic.com/s/roboto/v30/KFOlCnqEu92Fr1MmSU5fCRc4AMP6lbBP.woff2) format('woff2');unicode-range:U + 460-052F,U + 1C80-1C88,U + 20B4,U + 2DE0-2DFF,U+A640-A69F,U+FE2E-FE2F}@font-face{font-family:Roboto;font-style:normal;font-weight:300;font-display:swap;src:url(https://fonts.gstatic.com/s/roboto/v30/KFOlCnqEu92Fr1MmSU5fABc4AMP6lbBP.woff2) format('woff2');unicode-range:U + 301,U + 400-045F,U + 490-0491,U + 4B0-04B1,U + 2116}@font-face{font-family:Roboto;font-style:normal;font-weight:300;font-display:swap;src:url(https://fonts.gstatic.com/s/roboto/v30/KFOlCnqEu92Fr1MmSU5fCBc4AMP6lbBP.woff2) format('woff2');unicode-range:U + 1F00-1FFF}@font-face{font-family:Roboto;font-style:normal;font-weight:300;font-display:swap;src:url(https://fonts.gstatic.com/s/roboto/v30/KFOlCnqEu92Fr1MmSU5fBxc4AMP6lbBP.woff2) format('woff2');unicode-range:U + 370-03FF}@font-face{font-family:Roboto;font-style:normal;font-weight:300;font-display:swap;src:url(https://fonts.gstatic.com/s/roboto/v30/KFOlCnqEu92Fr1MmSU5fCxc4AMP6lbBP.woff2) format('woff2');unicode-range:U + 102-0103,U + 110-0111,U + 128-0129,U + 168-0169,U + 1A0-01A1,U + 1AF-01B0,U + 1EA0-1EF9,U + 20 AB}@font-face{font-family:Roboto;font-style:normal;font-weight:300;font-display:swap;src:url(https://fonts.gstatic.com/s/roboto/v30/KFOlCnqEu92Fr1MmSU5fChc4AMP6lbBP.woff2) format('woff2');unicode-range:U + 100-024F,U + 259,U + 1E00-1EFF,U + 2020,U + 20A0-20AB,U + 20AD-20CF,U + 2113,U + 2C60-2C7F,U+A720-A7FF}@font-face{font-family:Roboto;font-style:normal;font-weight:300;font-display:swap;src:url(https://fonts.gstatic.com/s/roboto/v30/KFOlCnqEu92Fr1MmSU5fBBc4AMP6lQ.woff2) format('woff2');unicode-range:U + 0-00FF,U + 131,U + 152-0153,U + 2BB-02BC,U + 2C6,U + 2 DA,U + 2 DC,U + 2000-206F,U + 2074,U + 20 AC,U + 2122,U + 2191,U + 2193,U + 2212,U + 2215,U+FEFF,U+FFFD}@font-face{font-family:Roboto;font-style:normal;font-weight:400;font-display:swap;src:url(https://fonts.gstatic.com/s/roboto/v30/KFOmCnqEu92Fr1Mu72xKKTU1Kvnz.woff2) format('woff2');unicode-range:U + 460-052F,U + 1C80-1C88,U + 20B4,U + 2DE0-2DFF,U+A640-A69F,U+FE2E-FE2F}@font-face{font-family:Roboto;font-style:normal;font-weight:400;font-display:swap;src:url(https://fonts.gstatic.com/s/roboto/v30/KFOmCnqEu92Fr1Mu5mxKKTU1Kvnz.woff2) format('woff2');unicode-range:U + 301,U + 400-045F,U + 490-0491,U + 4B0-04B1,U + 2116}@font-face{font-family:Roboto;font-style:normal;font-weight:400;font-display:swap;src:url(https://fonts.gstatic.com/s/roboto/v30/KFOmCnqEu92Fr1Mu7mxKKTU1Kvnz.woff2) format('woff2');unicode-range:U + 1F00-1FFF}@font-face{font-family:Roboto;font-style:normal;font-weight:400;font-display:swap;src:url(https://fonts.gstatic.com/s/roboto/v30/KFOmCnqEu92Fr1Mu4WxKKTU1Kvnz.woff2) format('woff2');unicode-range:U + 370-03FF}@font-face{font-family:Roboto;font-style:normal;font-weight:400;font-display:swap;src:url(https://fonts.gstatic.com/s/roboto/v30/KFOmCnqEu92Fr1Mu7WxKKTU1Kvnz.woff2) format('woff2');unicode-range:U + 102-0103,U + 110-0111,U + 128-0129,U + 168-0169,U + 1A0-01A1,U + 1AF-01B0,U + 1EA0-1EF9,U + 20 AB}@font-face{font-family:Roboto;font-style:normal;font-weight:400;font-display:swap;src:url(https://fonts.gstatic.com/s/roboto/v30/KFOmCnqEu92Fr1Mu7GxKKTU1Kvnz.woff2) format('woff2');unicode-range:U + 100-024F,U + 259,U + 1E00-1EFF,U + 2020,U + 20A0-20AB,U + 20AD-20CF,U + 2113,U + 2C60-2C7F,U+A720-A7FF}@font-face{font-family:Roboto;font-style:normal;font-weight:400;font-display:swap;src:url(https://fonts.gstatic.com/s/roboto/v30/KFOmCnqEu92Fr1Mu4mxKKTU1Kg.woff2) format('woff2');unicode-range:U + 0-00FF,U + 131,U + 152-0153,U + 2BB-02BC,U + 2C6,U + 2 DA,U + 2 DC,U + 2000-206F,U + 2074,U + 20 AC,U + 2122,U + 2191,U + 2193,U + 2212,U + 2215,U+FEFF,U+FFFD}@font-face{font-family:Roboto;font-style:normal;font-weight:500;font-display:swap;src:url(https://fonts.gstatic.com/s/roboto/v30/KFOlCnqEu92Fr1MmEU9fCRc4AMP6lbBP.woff2) format('woff2');unicode-range:U + 460-052F,U + 1C80-1C88,U + 20B4,U + 2DE0-2DFF,U+A640-A69F,U+FE2E-FE2F}@font-face{font-family:Roboto;font-style:normal;font-weight:500;font-display:swap;src:url(https://fonts.gstatic.com/s/roboto/v30/KFOlCnqEu92Fr1MmEU9fABc4AMP6lbBP.woff2) format('woff2');unicode-range:U + 301,U + 400-045F,U + 490-0491,U + 4B0-04B1,U + 2116}@font-face{font-family:Roboto;font-style:normal;font-weight:500;font-display:swap;src:url(https://fonts.gstatic.com/s/roboto/v30/KFOlCnqEu92Fr1MmEU9fCBc4AMP6lbBP.woff2) format('woff2');unicode-range:U + 1F00-1FFF}@font-face{font-family:Roboto;font-style:normal;font-weight:500;font-display:swap;src:url(https://fonts.gstatic.com/s/roboto/v30/KFOlCnqEu92Fr1MmEU9fBxc4AMP6lbBP.woff2) format('woff2');unicode-range:U + 370-03FF}@font-face{font-family:Roboto;font-style:normal;font-weight:500;font-display:swap;src:url(https://fonts.gstatic.com/s/roboto/v30/KFOlCnqEu92Fr1MmEU9fCxc4AMP6lbBP.woff2) format('woff2');unicode-range:U + 102-0103,U + 110-0111,U + 128-0129,U + 168-0169,U + 1A0-01A1,U + 1AF-01B0,U + 1EA0-1EF9,U + 20 AB}@font-face{font-family:Roboto;font-style:normal;font-weight:500;font-display:swap;src:url(https://fonts.gstatic.com/s/roboto/v30/KFOlCnqEu92Fr1MmEU9fChc4AMP6lbBP.woff2) format('woff2');unicode-range:U + 100-024F,U + 259,U + 1E00-1EFF,U + 2020,U + 20A0-20AB,U + 20AD-20CF,U + 2113,U + 2C60-2C7F,U+A720-A7FF}@font-face{font-family:Roboto;font-style:normal;font-weight:500;font-display:swap;src:url(https://fonts.gstatic.com/s/roboto/v30/KFOlCnqEu92Fr1MmEU9fBBc4AMP6lQ.woff2) format('woff2');unicode-range:U + 0-00FF,U + 131,U + 152-0153,U + 2BB-02BC,U + 2C6,U + 2 DA,U + 2 DC,U + 2000-206F,U + 2074,U + 20 AC,U + 2122,U + 2191,U + 2193,U + 2212,U + 2215,U+FEFF,U+FFFD}@font-face{font-family:Roboto;font-style:normal;font-weight:700;font-display:swap;src:url(https://fonts.gstatic.com/s/roboto/v30/KFOlCnqEu92Fr1MmWUlfCRc4AMP6lbBP.woff2) format('woff2');unicode-range:U + 460-052F,U + 1C80-1C88,U + 20B4,U + 2DE0-2DFF,U+A640-A69F,U+FE2E-FE2F}@font-face{font-family:Roboto;font-style:normal;font-weight:700;font-display:swap;src:url(https://fonts.gstatic.com/s/roboto/v30/KFOlCnqEu92Fr1MmWUlfABc4AMP6lbBP.woff2) format('woff2');unicode-range:U + 301,U + 400-045F,U + 490-0491,U + 4B0-04B1,U + 2116}@font-face{font-family:Roboto;font-style:normal;font-weight:700;font-display:swap;src:url(https://fonts.gstatic.com/s/roboto/v30/KFOlCnqEu92Fr1MmWUlfCBc4AMP6lbBP.woff2) format('woff2');unicode-range:U + 1F00-1FFF}@font-face{font-family:Roboto;font-style:normal;font-weight:700;font-display:swap;src:url(https://fonts.gstatic.com/s/roboto/v30/KFOlCnqEu92Fr1MmWUlfBxc4AMP6lbBP.woff2) format('woff2');unicode-range:U + 370-03FF}@font-face{font-family:Roboto;font-style:normal;font-weight:700;font-display:swap;src:url(https://fonts.gstatic.com/s/roboto/v30/KFOlCnqEu92Fr1MmWUlfCxc4AMP6lbBP.woff2) format('woff2');unicode-range:U + 102-0103,U + 110-0111,U + 128-0129,U + 168-0169,U + 1A0-01A1,U + 1AF-01B0,U + 1EA0-1EF9,U + 20 AB}@font-face{font-family:Roboto;font-style:normal;font-weight:700;font-display:swap;src:url(https://fonts.gstatic.com/s/roboto/v30/KFOlCnqEu92Fr1MmWUlfChc4AMP6lbBP.woff2) format('woff2');unicode-range:U + 100-024F,U + 259,U + 1E00-1EFF,U + 2020,U + 20A0-20AB,U + 20AD-20CF,U + 2113,U + 2C60-2C7F,U+A720-A7FF}@font-face{font-family:Roboto;font-style:normal;font-weight:700;font-display:swap;src:url(https://fonts.gstatic.com/s/roboto/v30/KFOlCnqEu92Fr1MmWUlfBBc4AMP6lQ.woff2) format('woff2');unicode-range:U + 0-00FF,U + 131,U + 152-0153,U + 2BB-02BC,U + 2C6,U + 2 DA,U + 2 DC,U + 2000-206F,U + 2074,U + 20 AC,U + 2122,U + 2191,U + 2193,U + 2212,U + 2215,U+FEFF,U+FFFD}@font-face{font-family:Roboto;font-style:normal;font-weight:900;font-display:swap;src:url(https://fonts.gstatic.com/s/roboto/v30/KFOlCnqEu92Fr1MmYUtfCRc4AMP6lbBP.woff2) format('woff2');unicode-range:U + 460-052F,U + 1C80-1C88,U + 20B4,U + 2DE0-2DFF,U+A640-A69F,U+FE2E-FE2F}@font-face{font-family:Roboto;font-style:normal;font-weight:900;font-display:swap;src:url(https://fonts.gstatic.com/s/roboto/v30/KFOlCnqEu92Fr1MmYUtfABc4AMP6lbBP.woff2) format('woff2');unicode-range:U + 301,U + 400-045F,U + 490-0491,U + 4B0-04B1,U + 2116}@font-face{font-family:Roboto;font-style:normal;font-weight:900;font-display:swap;src:url(https://fonts.gstatic.com/s/roboto/v30/KFOlCnqEu92Fr1MmYUtfCBc4AMP6lbBP.woff2) format('woff2');unicode-range:U + 1F00-1FFF}@font-face{font-family:Roboto;font-style:normal;font-weight:900;font-display:swap;src:url(https://fonts.gstatic.com/s/roboto/v30/KFOlCnqEu92Fr1MmYUtfBxc4AMP6lbBP.woff2) format('woff2');unicode-range:U + 370-03FF}@font-face{font-family:Roboto;font-style:normal;font-weight:900;font-display:swap;src:url(https://fonts.gstatic.com/s/roboto/v30/KFOlCnqEu92Fr1MmYUtfCxc4AMP6lbBP.woff2) format('woff2');unicode-range:U + 102-0103,U + 110-0111,U + 128-0129,U + 168-0169,U + 1A0-01A1,U + 1AF-01B0,U + 1EA0-1EF9,U + 20 AB}@font-face{font-family:Roboto;font-style:normal;font-weight:900;font-display:swap;src:url(https://fonts.gstatic.com/s/roboto/v30/KFOlCnqEu92Fr1MmYUtfChc4AMP6lbBP.woff2) format('woff2');unicode-range:U + 100-024F,U + 259,U + 1E00-1EFF,U + 2020,U + 20A0-20AB,U + 20AD-20CF,U + 2113,U + 2C60-2C7F,U+A720-A7FF}@font-face{font-family:Roboto;font-style:normal;font-weight:900;font-display:swap;src:url(https://fonts.gstatic.com/s/roboto/v30/KFOlCnqEu92Fr1MmYUtfBBc4AMP6lQ.woff2) format('woff2');unicode-range:U + 0-00FF,U + 131,U + 152-0153,U + 2BB-02BC,U + 2C6,U + 2 DA,U + 2 DC,U + 2000-206F,U + 2074,U + 20 AC,U + 2122,U + 2191,U + 2193,U + 2212,U + 2215,U+FEFF,U+FFFD}
+    </style>
+    <!--END FONT-->
+
+    <!-- PAGE settings -->
+    <link rel="icon" href="https://res.cloudinary.com/unmc/image/upload/v1618870187/iEXCEL_Favicon_vdbleh.ico">
+    <title>iEXCEL | BPPV</title>
+    <meta name="description" content="BPPV">
+    <meta name="keywords" content="BPPV">
+    <meta name="author" content="BPPV">
+    <!-- CSS dependencies -->
+    <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+                                    type="text/css"> -->
+
+
+    <!--link rel="stylesheet" href="wireframe.css"-->
+
+    <!-- CSS only -->
+
+    <style>
+        body,html{overflow-x:hidden!important}div#rotationButtons{display:-webkit-box;display:-ms-flexbox;display:flex;-webkit-box-orient:horizontal;-webkit-box-direction:normal;-ms-flex-direction:row;flex-direction:row;-webkit-box-pack:center;-ms-flex-pack:center;justify-content:center;width:100%;cursor:pointer}div.rotate_wrapper{display:block;margin-top:-40px;margin-bottom:20px}div#rotX_spacer{cursor:default}div#center-canvas{width:100%!important;display:-webkit-box;display:-ms-flexbox;display:flex;-webkit-box-orient:horizontal;-webkit-box-direction:normal;-ms-flex-direction:row;flex-direction:row;-webkit-box-pack:justify;-ms-flex-pack:justify;justify-content:space-between;padding-left:5rem;padding-right:5rem}canvas#threejs-canvas2{-ms-touch-action:none;touch-action:none;display:-webkit-box!important;display:-ms-flexbox!important;display:flex!important;-webkit-box-orient:vertical!important;-webkit-box-direction:normal!important;-ms-flex-direction:column!important;flex-direction:column!important;width:500px!important;height:500px!important;text-align:center!important;-webkit-box-pack:center!important;-ms-flex-pack:center!important;justify-content:center!important;-webkit-box-align:center!important;-ms-flex-align:center!important;align-items:center!important;-ms-flex-item-align:center!important;-ms-grid-row-align:center!important;align-self:center!important}canvas#threejs-canvas{-ms-touch-action:none;touch-action:none;display:-webkit-box!important;display:-ms-flexbox!important;display:flex!important;-webkit-box-orient:vertical!important;-webkit-box-direction:normal!important;-ms-flex-direction:column!important;flex-direction:column!important;width:970px;height:980px;text-align:center!important;-webkit-box-pack:center!important;-ms-flex-pack:center!important;justify-content:center!important;-webkit-box-align:center!important;-ms-flex-align:center!important;align-items:center!important;-ms-flex-item-align:center!important;-ms-grid-row-align:center!important;align-self:center!important}.card.shadow.overflow-hidden{height:1100px}video#eyeVideo{margin-top:-34px}h1.intro-text{font-size:clamp(1.5rem,8vw - 2rem,3rem)!important}div#mw-card-3{height:1120px}body,h1,h2,h3,h4,h5,html,p,span{font-family:Roboto,sans-serif!important}a#hideControlsButton{width:auto;white-space:nowrap}a#rollRightButton{font-size:clamp(1.1rem,-.5vw + 1.3rem,1rem)!important;min-width:133px!important;display:-webkit-box;display:-ms-flexbox;display:flex;-webkit-box-pack:justify;-ms-flex-pack:justify;justify-content:space-between}a#rollLeftButton{font-size:clamp(1.1rem,-.5vw + 1.3rem,1rem)!important;min-width:133px!important;display:-webkit-box;display:-ms-flexbox;display:flex;-ms-flex-pack:distribute;justify-content:space-around}a#rollProneButton{font-size:clamp(1.1rem,-.5vw + 1.3rem,1rem)!important}.text-black{color:#111!important}a.btn{cursor:pointer}div.fw-400{font-weight:400}#box-slider{-ms-flex-pack:distribute;justify-content:space-around;display:-webkit-box;display:-ms-flexbox;display:flex;-webkit-box-orient:vertical;-webkit-box-direction:normal;-ms-flex-direction:column;flex-direction:column;height:150px}.bg-black{background-color:#272425!important}.bg-teal{background-color:#303b41!important}#eye_viewer{height:180px}.fw-600{font-weight:600}.bg-lightgray{background-color:#f7fafc!important}.clamp-font{font-size:clamp(1.1rem,-.5vw + 1.3rem,1rem)!important}#card-space{display:-webkit-box;display:-ms-flexbox;display:flex;-webkit-box-orient:vertical;-webkit-box-direction:normal;-ms-flex-direction:column;flex-direction:column;-webkit-box-pack:center;-ms-flex-pack:center;justify-content:center;-ms-flex-item-align:center;-ms-grid-row-align:center;align-self:center}.bg-lightergray{background-color:#e2e8f0!important}#resetButton{min-width:259px!important;white-space:nowrap}#hideControlsButton{width:auto}#sitButton{display:-webkit-box!important;display:-ms-flexbox!important;display:flex!important;-webkit-box-orient:horizontal;-webkit-box-direction:normal;-ms-flex-direction:row;flex-direction:row;-webkit-box-pack:center;-ms-flex-pack:center;justify-content:center;white-space:nowrap;vertical-align:middle;flex-direction:row;-webkit-box-align:center;-ms-flex-align:center;align-items:center;font-size:clamp(1.1rem,-.5vw + 1.3rem,1rem)!important}#layDownButton{display:-webkit-box!important;display:-ms-flexbox!important;display:flex!important;-webkit-box-orient:horizontal;-webkit-box-direction:normal;-ms-flex-direction:row;flex-direction:row;-webkit-box-pack:center;-ms-flex-pack:center;justify-content:center;white-space:nowrap;vertical-align:middle;display:flex!important;flex-direction:row;-webkit-box-align:center;-ms-flex-align:center;align-items:center;font-size:clamp(1.1rem,-.5vw + 1.3rem,1rem)!important}.fw-500{font-weight:500!important}.text-smaller{font-size:.875rem!important}.mw-2000{max-width:2000px}.rotX_leftButton{border-radius:25px!important;display:-webkit-box;display:-ms-flexbox;display:flex;-webkit-box-orient:horizontal;-webkit-box-direction:normal;-ms-flex-direction:row;flex-direction:row;-webkit-box-pack:start;-ms-flex-pack:start;justify-content:flex-start;-webkit-box-align:center;-ms-flex-align:center;align-items:center;background-color:#dbe8ff!important}.rotX_leftButton:hover{-webkit-transition:.2s ease-out;-o-transition:.2s ease-out;transition:.2s ease-out;opacity:.6}.rotX_rightButton{border-radius:25px!important;rotate:90deg}svg.rotateleft_{rotate:-90deg}span.ggggg.rounded-pill.bg-unmcred.px-4.py-2{cursor:pointer}span.ggggg.rounded-pill.bg-unmcred.px-4.py-2:hover{opacity:.6;-webkit-transition:.2s ease-out;-o-transition:.2s ease-out;transition:.2s ease-out}a#restartModule{min-width:259px}span.lead.enter{font-weight:400;text-shadow:0 0 10px #000}div#mw-card-1{max-width:48em;margin-left:auto;margin-right:auto}div#mw-card-2{max-width:1000px;margin-left:auto;margin-right:auto}div#group-wrap{max-width:25em}.lds-spinner{color:official;display:inline-block;position:relative;width:80px;height:80px}.lds-spinner div{-webkit-transform-origin:40px 40px;-ms-transform-origin:40px 40px;transform-origin:40px 40px;-webkit-animation:lds-spinner 1.2s linear infinite;animation:lds-spinner 1.2s linear infinite}.lds-spinner div:after{content:" ";display:block;position:absolute;top:3px;left:37px;width:6px;height:18px;border-radius:20%;background:#fff}.lds-spinner div:nth-child(1){-webkit-transform:rotate(0);-ms-transform:rotate(0);transform:rotate(0);-webkit-animation-delay:-1.1s;animation-delay:-1.1s}.lds-spinner div:nth-child(2){-webkit-transform:rotate(30deg);-ms-transform:rotate(30deg);transform:rotate(30deg);-webkit-animation-delay:-1s;animation-delay:-1s}.lds-spinner div:nth-child(3){-webkit-transform:rotate(60deg);-ms-transform:rotate(60deg);transform:rotate(60deg);-webkit-animation-delay:-.9s;animation-delay:-.9s}.lds-spinner div:nth-child(4){-webkit-transform:rotate(90deg);-ms-transform:rotate(90deg);transform:rotate(90deg);-webkit-animation-delay:-.8s;animation-delay:-.8s}.lds-spinner div:nth-child(5){-webkit-transform:rotate(120deg);-ms-transform:rotate(120deg);transform:rotate(120deg);-webkit-animation-delay:-.7s;animation-delay:-.7s}.lds-spinner div:nth-child(6){-webkit-transform:rotate(150deg);-ms-transform:rotate(150deg);transform:rotate(150deg);-webkit-animation-delay:-.6s;animation-delay:-.6s}.lds-spinner div:nth-child(7){-webkit-transform:rotate(180deg);-ms-transform:rotate(180deg);transform:rotate(180deg);-webkit-animation-delay:-.5s;animation-delay:-.5s}.lds-spinner div:nth-child(8){-webkit-transform:rotate(210deg);-ms-transform:rotate(210deg);transform:rotate(210deg);-webkit-animation-delay:-.4s;animation-delay:-.4s}.lds-spinner div:nth-child(9){-webkit-transform:rotate(240deg);-ms-transform:rotate(240deg);transform:rotate(240deg);-webkit-animation-delay:-.3s;animation-delay:-.3s}.lds-spinner div:nth-child(10){-webkit-transform:rotate(270deg);-ms-transform:rotate(270deg);transform:rotate(270deg);-webkit-animation-delay:-.2s;animation-delay:-.2s}.lds-spinner div:nth-child(11){-webkit-transform:rotate(300deg);-ms-transform:rotate(300deg);transform:rotate(300deg);-webkit-animation-delay:-.1s;animation-delay:-.1s}.lds-spinner div:nth-child(12){-webkit-transform:rotate(330deg);-ms-transform:rotate(330deg);transform:rotate(330deg);-webkit-animation-delay:0s;animation-delay:0s}@-webkit-keyframes lds-spinner{0%{opacity:1}100%{opacity:0}}@keyframes lds-spinner{0%{opacity:1}100%{opacity:0}}
+
+        /* #left-card-space {display: flex;
+flex-direction: column;
+justify-content: center;
+align-self: center;} */
+
+        /* @media (prefers-color-scheme: light) {
+#home_header {
+background-color:red!important;
+}
+}
+*/
+    </style>
+
+<script async src="https://res.cloudinary.com/unmc/raw/upload/v1666026445/js/ammo.wasm_lyrfdj.js"></script>
+</head>
+
+<body class="text-center bg-dark">
+    <header id="home_header">
+
+        <!-- <div id="loadingPage"
+            style="font-size: 50px;/* padding:50vh; */opacity:1;position: absolute;z-index: 5;width: 100%;height: 100%;background-color: black;align-content: center;display: flex;flex-direction: column;justify-content: center;">
+            <div class="dsdsdsdddd "
+                style="min-height: 300px;display:flex;flex-direction: column; align-items: center; justify-content: space-between; ">
+                <span class="fs-6 fixed-bottom pb-5 lh-sm">© 2022, Board of Regents of the University of Nebraska. All
+                    rights reserved.</span>
+                <img class="img-fluid d-block mx-auto"
+                    src="https://res.cloudinary.com/unmc/image/upload/v1665694712/SVG/Group_1_3_higw7v.png">
+                <div id="loadingText" class="display-4 fw-bo text-shadow">Loading...</div>
+                <div id="loadingText" class="lds-spinner">
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                </div>
+                <a id="enterButton"
+                    class="btn btn-dark m-auto shadow  border border-dark btn-lg rounded-pill text-light mt-2 mb-3 mx-0 px-5 ggggg rounded-pill bg-unmcred shadow-lg"
+                    role="button" data-bs-toggle="button" style="display: none;">
+                    <span class="lead enter px-4 fs-4 ">Enter</span>
+                </a>
+            </div>
+        </div> -->
+
+        <div class="py-1 shadow-sm" style="background-color:#111;">
+            <div class="container-fluid" style="max-width:2000px;">
+                <div class="row">
+                    <div class="col-md-12">
+                        <nav class="navbar navbar-light px-2 py-3">
+                            <a class="navbar-brand text-primary" href="#">
+                                <img alt="iEXCEL | UNMC" src="https://iexcel-unmc.github.io/img/iexcel-logo.svg"
+                                    class="d-block img-fluid m-0" width="160" height="32">
+                            </a>
+                            <div id="posValue"></div>
+                            <span class="d-block flex-wrap text-light shadow">
+                                <span class="diagnosis"
+                                    style="
+                                                                                                                                                                                                        display: inline-flex;vertical-align: middle;
+                                                                                                                                                                                    display: flex;
+                                                                                                                                                                                    justify-content: center;
+                                                                                                                                                                                    align-items: center;
+                                                                                                                                                                                                    ">
+                                    <span id="mode">Diagnosis Mode</span>
+                                    <span class="fa-fw ml-2">
+                                        <svg width="18" height="16" viewbox="0 0 20 20" fill="none"
+                                            xmlns="http://www.w3.org/2000/svg">
+                                            <path
+                                                d="M3.31404 2.22222C3.92841 2.22222 4.42644 1.72476 4.42644 1.11111C4.42644 0.497461 3.92841 0 3.31404 0C2.90228 0 2.54281 0.223444 2.35048 0.555556H2.20164C1.2801 0.555556 0.533044 1.30175 0.533044 2.22222V7.22222C0.225878 7.22222 -0.0257629 7.4715 0.00211378 7.77706C0.131424 9.19439 0.753121 10.5289 1.76884 11.5434C2.51367 12.2874 3.43073 12.8197 4.42644 13.1017V14.4444C4.42644 15.1702 4.89086 15.7876 5.53906 16.0163C5.56275 18.2205 7.35899 20 9.57127 20C11.7983 20 13.6037 18.1967 13.6037 15.9722V13.75C13.6037 12.5994 14.5375 11.6667 15.6895 11.6667C16.8414 11.6667 17.7752 12.5994 17.7752 13.75V15.0948C17.1271 15.3236 16.6628 15.941 16.6628 16.6667C16.6628 17.5872 17.4098 18.3333 18.3314 18.3333C19.253 18.3333 20 17.5872 20 16.6667C20 15.941 19.5357 15.3236 18.8876 15.0948V13.75C18.8876 11.9858 17.4557 10.5556 15.6895 10.5556C13.9232 10.5556 12.4913 11.9858 12.4913 13.75V15.9722C12.4913 17.5831 11.184 18.8889 9.57127 18.8889C7.97326 18.8889 6.67509 17.6067 6.65156 16.0162C7.29948 15.7873 7.76363 15.17 7.76363 14.4444V13.1017C8.75933 12.8197 9.67645 12.2874 10.4213 11.5434C11.437 10.5289 12.0586 9.19439 12.188 7.77706C12.2159 7.4715 11.9642 7.22222 11.657 7.22222V2.22222C11.657 1.30175 10.91 0.555556 9.98842 0.555556H9.83958C9.64725 0.223444 9.28778 0 8.87603 0C8.26165 0 7.76363 0.497461 7.76363 1.11111C7.76363 1.72476 8.26165 2.22222 8.87603 2.22222C9.28778 2.22222 9.64725 1.99878 9.83958 1.66667H9.98842C10.2956 1.66667 10.5446 1.9154 10.5446 2.22222V7.22222H10.6611C10.354 7.22222 10.1089 7.47217 10.0665 7.77606C9.9466 8.63367 9.55053 9.435 8.93048 10.0544C8.17844 10.8055 7.15854 11.2275 6.09503 11.2275C5.03158 11.2275 4.01162 10.8055 3.25964 10.0544C2.63954 9.435 2.24352 8.63367 2.12366 7.77606C2.08119 7.47217 1.83614 7.22222 1.52896 7.22222H1.64544V2.22222C1.64544 1.9154 1.89446 1.66667 2.20164 1.66667H2.35048C2.54281 1.99878 2.90228 2.22222 3.31404 2.22222Z"
+                                                fill="#FAFAFA"></path>
+                                        </svg>
+                                    </span>
+                                </span>
+                        </nav>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+    <!-- <div class="py-2">
+                                                            <div class="container-fluid" style="max-width:2000px;">
+                                                                <div class="row">
+                                                                    <div class="col-md-12">
+                                                                        <div class="list-group">
+                                                                            <h4 href="#" class="list-group-item d-flex flex-column justify-content-center align-self-center w-100 my-0 intro-text text-dark fw-bold py-2  font-weight-bold bg-lightgray">Diagnosis Mode</h4>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div> -->
+    <div class="pt-5 pb-5 bd-gray-500">
+        <div class="container-fluid" style="max-width:2000px;">
+            <div class="row">
+                <div id="mw-card-1" class="col-xxl-2 col-xl-3 col-lg-12">
+                    <div class="card text-center shadow">
+                        <div class="card-header text-dark font-weight-bold bg-lightgray">
+                            <span class="clamp-font">
+                                Patient Controls</span>
+                        </div>
+                        <div id="left-card-space" class="card-body py-4">
+                            <!--img class="img-fluid mb-2" width="190"
+                                                                                                                                                                src="https://res.cloudinary.com/unmc/image/upload/v1658935707/Screenshot_2022-07-27_102738_mko6ck.png"-->
+
+                            <!--SLIDERS PROTOTYPE BEGIN-->
+                            <input id="rotX" type="range" class="c-rng" min="0" max="160" step="1" value="0"
+                                data-range="circular"> </input>
+                            <div class="rotate_wrapper">
+                                <div id="rotationButtons" class="ration_aaa" style="display: flex;">
+                                    <div id="rotX_leftButton" class="btn btn-lg"
+                                        style="display:flex; flex-direction: row;
+                                                                                                                                                                                        justify-content: flex-start;
+                                                                                                                                                                                        align-items: center; border: thin solid black; width:44px; border-radius: 25px;rotate:90deg;background-color:#111">
+                                        <!--<svg width="44" height="44" viewbox="0 0 187 319" fill="currentcolor" xmlns="http://www.w3.org/2000/svg" class="rotateleft_">
+                                                                                                                                        <g filter="url(#filter0_d_301_3)">
+                                                                                                                                            <path fill-rule="evenodd" clip-rule="evenodd" d="M176.204 39.5364C185.265 30.492 185.265 15.8276 176.204 6.78328C167.142 -2.26107 152.45 -2.26107 143.388 6.78328L10.7962 139.123C1.73461 148.168 1.73461 162.832 10.7962 171.877L143.388 304.217C152.45 313.261 167.142 313.261 176.204 304.217C185.265 295.172 185.265 280.508 176.204 271.464L59.9536 155.44L176.204 39.5364Z" fill="black"></path>
+                                                                                                                                        </g>
+                                                                                                                                        <defs>
+                                                                                                                                            <filter id="filter0_d_301_3" x="0" y="0" width="187" height="319" filterunits="userSpaceOnUse" color-interpolation-filters="sRGB">
+                                                                                                                                                <feFlood flood-opacity="0" result="BackgroundImageFix"></feFlood>
+                                                                                                                                                <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha"></feColorMatrix>
+                                                                                                                                                <feOffset dy="4"></feOffset>
+                                                                                                                                                <feGaussianBlur stddeviation="2"></feGaussianBlur>
+                                                                                                                                                <feComposite in2="hardAlpha" operator="out"></feComposite>
+                                                                                                                                                <feColorMatrix type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.25 0"></feColorMatrix>
+                                                                                                                                                <feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow_301_3"></feBlend>
+                                                                                                                                                <feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow_301_3" result="shape"></feBlend>
+                                                                                                                                            </filter>
+                                                                                                                                        </defs>
+                                                                                                                                    </svg>-->
+                                        <svg width="44" height="44" viewbox="0 0 79 131" fill="currentcolor"
+                                            xmlns="http://www.w3.org/2000/svg" style="rotate:270deg;">
+                                            <g filter="url(#filter0_d_510_5)">
+                                                <path fill-rule="evenodd" clip-rule="evenodd"
+                                                    d="M72.3045 15.6366C75.8985 12.0595 75.8985 6.25978 72.3045 2.68277C68.71 -0.894256 62.8825 -0.894256 59.2881 2.68277L6.6957 55.0229C3.10143 58.6002 3.10143 64.3998 6.6957 67.9771L59.2881 120.317C62.8825 123.894 68.71 123.894 72.3045 120.317C75.8985 116.74 75.8985 110.94 72.3045 107.364L26.1939 61.4763L72.3045 15.6366Z"
+                                                    fill="white" />
+                                            </g>
+                                            <defs>
+                                                <filter id="filter0_d_510_5" x="0" y="0" width="79" height="131"
+                                                    filterunits="userSpaceOnUse" color-interpolation-filters="sRGB">
+                                                    <feFlood flood-opacity="0" result="BackgroundImageFix" />
+                                                    <feColorMatrix in="SourceAlpha" type="matrix"
+                                                        values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0"
+                                                        result="hardAlpha" />
+                                                    <feOffset dy="4" />
+                                                    <feGaussianBlur stddeviation="2" />
+                                                    <feComposite in2="hardAlpha" operator="out" />
+                                                    <feColorMatrix type="matrix"
+                                                        values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.25 0" />
+                                                    <feBlend mode="normal" in2="BackgroundImageFix"
+                                                        result="effect1_dropShadow_510_5" />
+                                                    <feBlend mode="normal" in="SourceGraphic"
+                                                        in2="effect1_dropShadow_510_5" result="shape" />
+                                                </filter>
+                                            </defs>
+                                        </svg>
+                                    </div>
+                                    <div id="rotX_spacer" style=" width:100px"></div>
+                                    <div id="rotX_rightButton" class="btn btn-lg"
+                                        style="display:flex; flex-direction: row;
+                                                                                                                                        justify-content: flex-start;
+                                                                                                                                        align-items: center; border: thin solid black; width:44px; border-radius: 25px;rotate:90deg;background-color:#111">
+                                        <svg width="44" height="44" viewbox="0 0 79 131" fill="currentcolor"
+                                            xmlns="http://www.w3.org/2000/svg" style="rotate:90deg;">
+                                            <g filter="url(#filter0_d_510_5)">
+                                                <path fill-rule="evenodd" clip-rule="evenodd"
+                                                    d="M72.3045 15.6366C75.8985 12.0595 75.8985 6.25978 72.3045 2.68277C68.71 -0.894256 62.8825 -0.894256 59.2881 2.68277L6.6957 55.0229C3.10143 58.6002 3.10143 64.3998 6.6957 67.9771L59.2881 120.317C62.8825 123.894 68.71 123.894 72.3045 120.317C75.8985 116.74 75.8985 110.94 72.3045 107.364L26.1939 61.4763L72.3045 15.6366Z"
+                                                    fill="white" />
+                                            </g>
+                                            <defs>
+                                                <filter id="filter0_d_510_5" x="0" y="0" width="79" height="131"
+                                                    filterunits="userSpaceOnUse" color-interpolation-filters="sRGB">
+                                                    <feFlood flood-opacity="0" result="BackgroundImageFix" />
+                                                    <feColorMatrix in="SourceAlpha" type="matrix"
+                                                        values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0"
+                                                        result="hardAlpha" />
+                                                    <feOffset dy="4" />
+                                                    <feGaussianBlur stddeviation="2" />
+                                                    <feComposite in2="hardAlpha" operator="out" />
+                                                    <feColorMatrix type="matrix"
+                                                        values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.25 0" />
+                                                    <feBlend mode="normal" in2="BackgroundImageFix"
+                                                        result="effect1_dropShadow_510_5" />
+                                                    <feBlend mode="normal" in="SourceGraphic"
+                                                        in2="effect1_dropShadow_510_5" result="shape" />
+                                                </filter>
+                                            </defs>
+                                        </svg>
+                                    </div>
+                                </div>
+                            </div>
+                            <input id="rotY" type="range" class="c-rng" min="0" max="160" step="1" value="0"
+                                data-range="circular"></input>
+                            <div id="rotationButtons" style="display: flex; margin-top:-35px;margin-bottom:20px;">
+                                <div id="rotY_leftButton" class="btn btn-lg"
+                                    style="display:flex; flex-direction: row;
+                                                                                                                                                                        justify-content: flex-start;
+                                                                                                                                                                        align-items: center; border: thin solid black; width:44px; border-radius: 25px;rotate:270deg;background-color:#111">
+
+                                    <svg width="44" height="44" viewbox="0 0 79 131" fill="currentcolor"
+                                        xmlns="http://www.w3.org/2000/svg" style="rotate:90deg;">
+                                        <g filter="url(#filter0_d_510_5)">
+                                            <path fill-rule="evenodd" clip-rule="evenodd"
+                                                d="M72.3045 15.6366C75.8985 12.0595 75.8985 6.25978 72.3045 2.68277C68.71 -0.894256 62.8825 -0.894256 59.2881 2.68277L6.6957 55.0229C3.10143 58.6002 3.10143 64.3998 6.6957 67.9771L59.2881 120.317C62.8825 123.894 68.71 123.894 72.3045 120.317C75.8985 116.74 75.8985 110.94 72.3045 107.364L26.1939 61.4763L72.3045 15.6366Z"
+                                                fill="white" />
+                                        </g>
+                                        <defs>
+                                            <filter id="filter0_d_510_5" x="0" y="0" width="79" height="131"
+                                                filterunits="userSpaceOnUse" color-interpolation-filters="sRGB">
+                                                <feFlood flood-opacity="0" result="BackgroundImageFix" />
+                                                <feColorMatrix in="SourceAlpha" type="matrix"
+                                                    values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0"
+                                                    result="hardAlpha" />
+                                                <feOffset dy="4" />
+                                                <feGaussianBlur stddeviation="2" />
+                                                <feComposite in2="hardAlpha" operator="out" />
+                                                <feColorMatrix type="matrix"
+                                                    values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.25 0" />
+                                                <feBlend mode="normal" in2="BackgroundImageFix"
+                                                    result="effect1_dropShadow_510_5" />
+                                                <feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow_510_5"
+                                                    result="shape" />
+                                            </filter>
+                                        </defs>
+                                    </svg>
+                                </div>
+                                <div id="rotY_spacer" style=" width:100px"></div>
+                                <div id="rotY_rightButton" class="btn btn-lg"
+                                    style="display:flex; flex-direction: row;
+                                                                                                                        justify-content: flex-start;
+                                                                                                                        align-items: center; border: thin solid black; width:44px; border-radius: 25px;rotate:90deg;background-color:#111">
+                                    <svg width="44" height="44" viewbox="0 0 79 131" fill="currentcolor"
+                                        xmlns="http://www.w3.org/2000/svg" style="rotate:90deg;">
+                                        <g filter="url(#filter0_d_510_5)">
+                                            <path fill-rule="evenodd" clip-rule="evenodd"
+                                                d="M72.3045 15.6366C75.8985 12.0595 75.8985 6.25978 72.3045 2.68277C68.71 -0.894256 62.8825 -0.894256 59.2881 2.68277L6.6957 55.0229C3.10143 58.6002 3.10143 64.3998 6.6957 67.9771L59.2881 120.317C62.8825 123.894 68.71 123.894 72.3045 120.317C75.8985 116.74 75.8985 110.94 72.3045 107.364L26.1939 61.4763L72.3045 15.6366Z"
+                                                fill="white" />
+                                        </g>
+                                        <defs>
+                                            <filter id="filter0_d_510_5" x="0" y="0" width="79" height="131"
+                                                filterunits="userSpaceOnUse" color-interpolation-filters="sRGB">
+                                                <feFlood flood-opacity="0" result="BackgroundImageFix" />
+                                                <feColorMatrix in="SourceAlpha" type="matrix"
+                                                    values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0"
+                                                    result="hardAlpha" />
+                                                <feOffset dy="4" />
+                                                <feGaussianBlur stddeviation="2" />
+                                                <feComposite in2="hardAlpha" operator="out" />
+                                                <feColorMatrix type="matrix"
+                                                    values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.25 0" />
+                                                <feBlend mode="normal" in2="BackgroundImageFix"
+                                                    result="effect1_dropShadow_510_5" />
+                                                <feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow_510_5"
+                                                    result="shape" />
+                                            </filter>
+                                        </defs>
+                                    </svg>
+
+                                </div>
+                            </div>
+                            <input id="rotZ" type="range" class="c-rng" min="0" max="160" step="1" value="0"
+                                data-range="circular"></inpu>
+                            <div id="rotationButtons" style="display: flex;margin-top:-30px;margin-bottom:30px;">
+                                <div id="rotZ_leftButton" class="btn btn-lg"
+                                    style="display:flex; flex-direction: row;
+                                                                                                            justify-content: flex-start;
+                                                                                                            align-items: center; border: thin solid black; width:44px; border-radius: 25px;rotate:270deg;background-color:#111">
+
+                                    <svg width="44" height="44" viewbox="0 0 79 131" fill="currentcolor"
+                                        xmlns="http://www.w3.org/2000/svg" style="rotate:90deg;">
+                                        <g filter="url(#filter0_d_510_5)">
+                                            <path fill-rule="evenodd" clip-rule="evenodd"
+                                                d="M72.3045 15.6366C75.8985 12.0595 75.8985 6.25978 72.3045 2.68277C68.71 -0.894256 62.8825 -0.894256 59.2881 2.68277L6.6957 55.0229C3.10143 58.6002 3.10143 64.3998 6.6957 67.9771L59.2881 120.317C62.8825 123.894 68.71 123.894 72.3045 120.317C75.8985 116.74 75.8985 110.94 72.3045 107.364L26.1939 61.4763L72.3045 15.6366Z"
+                                                fill="white" />
+                                        </g>
+                                        <defs>
+                                            <filter id="filter0_d_510_5" x="0" y="0" width="79" height="131"
+                                                filterunits="userSpaceOnUse" color-interpolation-filters="sRGB">
+                                                <feFlood flood-opacity="0" result="BackgroundImageFix" />
+                                                <feColorMatrix in="SourceAlpha" type="matrix"
+                                                    values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0"
+                                                    result="hardAlpha" />
+                                                <feOffset dy="4" />
+                                                <feGaussianBlur stddeviation="2" />
+                                                <feComposite in2="hardAlpha" operator="out" />
+                                                <feColorMatrix type="matrix"
+                                                    values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.25 0" />
+                                                <feBlend mode="normal" in2="BackgroundImageFix"
+                                                    result="effect1_dropShadow_510_5" />
+                                                <feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow_510_5"
+                                                    result="shape" />
+                                            </filter>
+                                        </defs>
+                                    </svg>
+
+                                </div>
+                                <div id="rotZ_spacer" style=" width:100px"></div>
+                                <div id="rotZ_rightButton" class="btn btn-lg"
+                                    style="display:flex; flex-direction: row;
+                                                                                                                    justify-content: flex-start;
+                                                                                                                    align-items: center; border: thin solid black; width:44px; border-radius: 25px;rotate:90deg;background-color:#111">
+                                    <svg width="44" height="44" viewbox="0 0 79 131" fill="currentcolor"
+                                        xmlns="http://www.w3.org/2000/svg" style="rotate:90deg;">
+                                        <g filter="url(#filter0_d_510_5)">
+                                            <path fill-rule="evenodd" clip-rule="evenodd"
+                                                d="M72.3045 15.6366C75.8985 12.0595 75.8985 6.25978 72.3045 2.68277C68.71 -0.894256 62.8825 -0.894256 59.2881 2.68277L6.6957 55.0229C3.10143 58.6002 3.10143 64.3998 6.6957 67.9771L59.2881 120.317C62.8825 123.894 68.71 123.894 72.3045 120.317C75.8985 116.74 75.8985 110.94 72.3045 107.364L26.1939 61.4763L72.3045 15.6366Z"
+                                                fill="white"></path>
+                                        </g>
+                                        <defs>
+                                            <filter id="filter0_d_510_5" x="0" y="0" width="79" height="131"
+                                                filterunits="userSpaceOnUse" color-interpolation-filters="sRGB">
+                                                <feFlood flood-opacity="0" result="BackgroundImageFix"></feFlood>
+                                                <feColorMatrix in="SourceAlpha" type="matrix"
+                                                    values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0"
+                                                    result="hardAlpha"></feColorMatrix>
+                                                <feOffset dy="4"></feOffset>
+                                                <feGaussianBlur stddeviation="2"></feGaussianBlur>
+                                                <feComposite in2="hardAlpha" operator="out"></feComposite>
+                                                <feColorMatrix type="matrix"
+                                                    values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.25 0"></feColorMatrix>
+                                                <feBlend mode="normal" in2="BackgroundImageFix"
+                                                    result="effect1_dropShadow_510_5"></feBlend>
+                                                <feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow_510_5"
+                                                    result="shape"></feBlend>
+                                            </filter>
+                                        </defs>
+                                    </svg>
+                                </div>
+                            </div>
+
+                            <script
+                                src="https://res.cloudinary.com/unmc/raw/upload/v1665775811/js/roundSlider3_mpmlxy.js">
+                            </script>
+
+                            <!-- <script src="./roundSlider3.js"></script> -->
+
+                            <!--HIDE BOX SLIDER FOR THIS VIEW-->
+                            <!--div id="box-slider"
+                                                                                                                                                        class="card card-body my-4 rounded fw-600 py-3 shadow-sm text-body bg-lightgray "
+                                                                                                                                                        style="border-radius:5px!important;">
+                                                                                                                                                        <div style="display:flex ;" class=" d-flex flex-row justify-content-center">
+                                                                                                                                                          <div class="pr-1">Rotation X </div>
+                                                                                                                                                          <input type="range" id="rotX" min="0" max="180" step="1" value="90" class="ml-2">
+                                                                                                                                                          <span id="rotXvalue"></span>
+                                                                                                                                                        </div>
+                                                                                                                                                        <div style="display:flex ;" class="flex-row justify-content-center">
+                                                                                                                                                          <div class="pr-1">Rotation Y </div>
+                                                                                                                                                          <input type="range" id="rotY" min="0" max="80" step="1" value="40" class="ml-2">
+                                                                                                                                                          <span id="rotYvalue"></span>
+                                                                                                                                                        </div>
+                                                                                                                                                        <div style="display:flex ;" class="  flex-row justify-content-center">
+                                                                                                                                                          <div class="flex-row justify-content-center pr-1">Rotation Z </div>
+                                                                                                                                                          <input type="range" id="rotZ" min="0" max="80" step="1" value="40" class="ml-2">
+                                                                                                                                                          <span id="rotZvalue"></span>
+                                                                                                                                                        </div>
+                                                                                                                                                      </div-->
+
+
+                            <!--SLIDERS PROTOTYPE END-->
+                            <div id="group-wrap" class="_outerbuttons mx-auto">
+                                <div class="_dfddsdsgggghjkkkk justify-content-between flex-wrap justify-sm-center"
+                                    style="display:flex;"> <a id="sitButton"
+                                        class="btn btn-dark d-block m-auto shadow font-weight-bold border border-secondary btn-lg rounded-pill text-light mt-2 mb-3 mx-0"
+                                        role="button" data-bs-toggle="button">
+                                        <span class="ml-2">Sit Up
+                                        </span>
+                                        <span class="sit-up-icon mb- ml-2 pl-1 pr-2">
+                                            <svg width="9" height="16" viewBox="0 0 79 131" fill="currentcolor"
+                                                xmlns="http://www.w3.org/2000/svg" style="rotate:90deg;">
+                                                <g filter="url(#filter0_d_510_5)">
+                                                    <path fill-rule="evenodd" clip-rule="evenodd"
+                                                        d="M72.3045 15.6366C75.8985 12.0595 75.8985 6.25978 72.3045 2.68277C68.71 -0.894256 62.8825 -0.894256 59.2881 2.68277L6.6957 55.0229C3.10143 58.6002 3.10143 64.3998 6.6957 67.9771L59.2881 120.317C62.8825 123.894 68.71 123.894 72.3045 120.317C75.8985 116.74 75.8985 110.94 72.3045 107.364L26.1939 61.4763L72.3045 15.6366Z"
+                                                        fill="white"></path>
+                                                </g>
+                                                <defs>
+                                                    <filter id="filter0_d_510_5" x="0" y="0" width="79" height="131"
+                                                        filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+                                                        <feFlood flood-opacity="0" result="BackgroundImageFix">
+                                                        </feFlood>
+                                                        <feColorMatrix in="SourceAlpha" type="matrix"
+                                                            values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0"
+                                                            result="hardAlpha"></feColorMatrix>
+                                                        <feOffset dy="4"></feOffset>
+                                                        <feGaussianBlur stdDeviation="2"></feGaussianBlur>
+                                                        <feComposite in2="hardAlpha" operator="out"></feComposite>
+                                                        <feColorMatrix type="matrix"
+                                                            values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.25 0">
+                                                        </feColorMatrix>
+                                                        <feBlend mode="normal" in2="BackgroundImageFix"
+                                                            result="effect1_dropShadow_510_5"></feBlend>
+                                                        <feBlend mode="normal" in="SourceGraphic"
+                                                            in2="effect1_dropShadow_510_5" result="shape"></feBlend>
+                                                    </filter>
+                                                </defs>
+                                            </svg>
+                                        </span>
+                                    </a>
+
+                                    <a id="layDownButton"
+                                        class="btn btn-dark mt-2 mb-3 m-auto shadow font-weight-bold border border-secondary btn-lg rounded-pill text-light mx-0"
+                                        role="button" data-bs-toggle="button"><span class="pl-1">Lay
+                                            Down
+                                        </span><span class="lay-down-icon ml-2 pl-1">
+                                            <svg width="9" height="16" viewBox="0 0 79 131" fill="currentcolor"
+                                                xmlns="http://www.w3.org/2000/svg" style="rotate:270deg;">
+                                                <g filter="url(#filter0_d_510_5)">
+                                                    <path fill-rule="evenodd" clip-rule="evenodd"
+                                                        d="M72.3045 15.6366C75.8985 12.0595 75.8985 6.25978 72.3045 2.68277C68.71 -0.894256 62.8825 -0.894256 59.2881 2.68277L6.6957 55.0229C3.10143 58.6002 3.10143 64.3998 6.6957 67.9771L59.2881 120.317C62.8825 123.894 68.71 123.894 72.3045 120.317C75.8985 116.74 75.8985 110.94 72.3045 107.364L26.1939 61.4763L72.3045 15.6366Z"
+                                                        fill="white"></path>
+                                                </g>
+                                                <defs>
+                                                    <filter id="filter0_d_510_5" x="0" y="0" width="79" height="131"
+                                                        filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+                                                        <feFlood flood-opacity="0" result="BackgroundImageFix">
+                                                        </feFlood>
+                                                        <feColorMatrix in="SourceAlpha" type="matrix"
+                                                            values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0"
+                                                            result="hardAlpha"></feColorMatrix>
+                                                        <feOffset dy="4"></feOffset>
+                                                        <feGaussianBlur stdDeviation="2"></feGaussianBlur>
+                                                        <feComposite in2="hardAlpha" operator="out"></feComposite>
+                                                        <feColorMatrix type="matrix"
+                                                            values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.25 0">
+                                                        </feColorMatrix>
+                                                        <feBlend mode="normal" in2="BackgroundImageFix"
+                                                            result="effect1_dropShadow_510_5"></feBlend>
+                                                        <feBlend mode="normal" in="SourceGraphic"
+                                                            in2="effect1_dropShadow_510_5" result="shape"></feBlend>
+                                                    </filter>
+                                                </defs>
+                                            </svg>
+                                        </span>
+                                    </a>
+                                </div>
+                                <div id="rightleftbuttons" class="d-flex justify-content-between flex-wrap">
+                                    <a id="rollLeftButton"
+                                        class="btn btn-dark mt-2 mb-3 m-auto shadow font-weight-bold border border-secondary btn-lg rounded-pill text-light mx-0"
+                                        role="button" data-bs-toggle="button"><span class="roll-left ">Roll Left</span>
+                                        <span class="lay-down-icon">
+                                            <svg width="9" height="16" viewBox="0 0 79 131" fill="currentcolor"
+                                                xmlns="http://www.w3.org/2000/svg">
+                                                <g filter="url(#filter0_d_510_5)">
+                                                    <path fill-rule="evenodd" clip-rule="evenodd"
+                                                        d="M72.3045 15.6366C75.8985 12.0595 75.8985 6.25978 72.3045 2.68277C68.71 -0.894256 62.8825 -0.894256 59.2881 2.68277L6.6957 55.0229C3.10143 58.6002 3.10143 64.3998 6.6957 67.9771L59.2881 120.317C62.8825 123.894 68.71 123.894 72.3045 120.317C75.8985 116.74 75.8985 110.94 72.3045 107.364L26.1939 61.4763L72.3045 15.6366Z"
+                                                        fill="white"></path>
+                                                </g>
+                                                <defs>
+                                                    <filter id="filter0_d_510_5" x="0" y="0" width="79" height="131"
+                                                        filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+                                                        <feFlood flood-opacity="0" result="BackgroundImageFix">
+                                                        </feFlood>
+                                                        <feColorMatrix in="SourceAlpha" type="matrix"
+                                                            values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0"
+                                                            result="hardAlpha"></feColorMatrix>
+                                                        <feOffset dy="4"></feOffset>
+                                                        <feGaussianBlur stdDeviation="2"></feGaussianBlur>
+                                                        <feComposite in2="hardAlpha" operator="out"></feComposite>
+                                                        <feColorMatrix type="matrix"
+                                                            values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.25 0">
+                                                        </feColorMatrix>
+                                                        <feBlend mode="normal" in2="BackgroundImageFix"
+                                                            result="effect1_dropShadow_510_5"></feBlend>
+                                                        <feBlend mode="normal" in="SourceGraphic"
+                                                            in2="effect1_dropShadow_510_5" result="shape"></feBlend>
+                                                    </filter>
+                                                </defs>
+                                            </svg>
+                                        </span>
+                                    </a>
+                                    <a id="rollRightButton"
+                                        class="btn btn-dark mt-2 mb-3 m-auto shadow font-weight-bold border border-secondary btn-lg rounded-pill text-light mx-0"
+                                        role="button" data-bs-toggle="button"><span class="roll-right">Roll Right</span>
+                                        <span class="lay-down-icon">
+                                            <svg width="9" height="16" viewBox="0 0 79 131" fill="currentcolor"
+                                                xmlns="http://www.w3.org/2000/svg" style="rotate:180deg;">
+                                                <g filter="url(#filter0_d_510_5)">
+                                                    <path fill-rule="evenodd" clip-rule="evenodd"
+                                                        d="M72.3045 15.6366C75.8985 12.0595 75.8985 6.25978 72.3045 2.68277C68.71 -0.894256 62.8825 -0.894256 59.2881 2.68277L6.6957 55.0229C3.10143 58.6002 3.10143 64.3998 6.6957 67.9771L59.2881 120.317C62.8825 123.894 68.71 123.894 72.3045 120.317C75.8985 116.74 75.8985 110.94 72.3045 107.364L26.1939 61.4763L72.3045 15.6366Z"
+                                                        fill="white"></path>
+                                                </g>
+                                                <defs>
+                                                    <filter id="filter0_d_510_5" x="0" y="0" width="79" height="131"
+                                                        filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+                                                        <feFlood flood-opacity="0" result="BackgroundImageFix">
+                                                        </feFlood>
+                                                        <feColorMatrix in="SourceAlpha" type="matrix"
+                                                            values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0"
+                                                            result="hardAlpha"></feColorMatrix>
+                                                        <feOffset dy="4"></feOffset>
+                                                        <feGaussianBlur stdDeviation="2"></feGaussianBlur>
+                                                        <feComposite in2="hardAlpha" operator="out"></feComposite>
+                                                        <feColorMatrix type="matrix"
+                                                            values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.25 0">
+                                                        </feColorMatrix>
+                                                        <feBlend mode="normal" in2="BackgroundImageFix"
+                                                            result="effect1_dropShadow_510_5"></feBlend>
+                                                        <feBlend mode="normal" in="SourceGraphic"
+                                                            in2="effect1_dropShadow_510_5" result="shape"></feBlend>
+                                                    </filter>
+                                                </defs>
+                                            </svg>
+                                        </span>
+                                    </a>
+                                </div>
+
+                                <a id="rollDownButton"
+                                    class="btn btn-dark mt-2 mb-3 m-auto shadow font-weight-bold border border-secondary btn-lg rounded-pill text-light w-100"
+                                    role="button" data-bs-toggle="button"><span class="roll-to-prone">Roll to
+                                        Prone</span>
+
+                                    <span class="lay-down-icon ml-2">
+                                        <svg width="9" height="16" viewBox="0 0 79 131" fill="currentcolor"
+                                            xmlns="http://www.w3.org/2000/svg" style="rotate:270deg;">
+                                            <g filter="url(#filter0_d_510_5)">
+                                                <path fill-rule="evenodd" clip-rule="evenodd"
+                                                    d="M72.3045 15.6366C75.8985 12.0595 75.8985 6.25978 72.3045 2.68277C68.71 -0.894256 62.8825 -0.894256 59.2881 2.68277L6.6957 55.0229C3.10143 58.6002 3.10143 64.3998 6.6957 67.9771L59.2881 120.317C62.8825 123.894 68.71 123.894 72.3045 120.317C75.8985 116.74 75.8985 110.94 72.3045 107.364L26.1939 61.4763L72.3045 15.6366Z"
+                                                    fill="white"></path>
+                                            </g>
+                                            <defs>
+                                                <filter id="filter0_d_510_5" x="0" y="0" width="79" height="131"
+                                                    filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+                                                    <feFlood flood-opacity="0" result="BackgroundImageFix"></feFlood>
+                                                    <feColorMatrix in="SourceAlpha" type="matrix"
+                                                        values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0"
+                                                        result="hardAlpha"></feColorMatrix>
+                                                    <feOffset dy="4"></feOffset>
+                                                    <feGaussianBlur stdDeviation="2"></feGaussianBlur>
+                                                    <feComposite in2="hardAlpha" operator="out"></feComposite>
+                                                    <feColorMatrix type="matrix"
+                                                        values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.25 0">
+                                                    </feColorMatrix>
+                                                    <feBlend mode="normal" in2="BackgroundImageFix"
+                                                        result="effect1_dropShadow_510_5"></feBlend>
+                                                    <feBlend mode="normal" in="SourceGraphic"
+                                                        in2="effect1_dropShadow_510_5" result="shape"></feBlend>
+                                                </filter>
+                                            </defs>
+                                        </svg>
+                                    </span>
+                                </a>
+                            </div>
+                        </div>
+                        <div class="card-footer text-muted d-none">
+                            <span class="invisible">2 days ago</span>
+                        </div>
+                    </div>
+                </div>
+                <div id="mw-card-2" class="col-xxl-6 col-xl-5 col-lg-12">
+
+                    <div class="card shadow overflow-hidden">
+                        <!--img class="card-img-top" src="https://res.cloudinary.com/unmc/image/upload/v1658935420/New_Project_83_lauskj.jpg" alt="Card image cap"-->
+
+
+                        <canvas id="threejs-canvas" style="margin:0 0 0 0; padding:0; ">
+
+                            <!-- <script async src="./bundle.js"></script> -->
+                            <script async src="https://res.cloudinary.com/unmc/raw/upload/v1665775935/js/bundle_cdn.js">
+                            </script>
+
+                        </canvas>
+
+
+                        <div id="center-canvas" class="card-body ml-auto py-4 bg-lightgray d-flex flex-wrap">
+                            <a id="hideControlsButton"
+                                class="btn btn-dark mt-2 px-4 shadow font-weight-bold mb-2 border border-secondary btn-lg text-light"
+                                style="border-radius:25px" role="button" data-bs-target="#staticBackdrop_welcome"
+                                data-bs-toggle="modal">
+                                <span class="controls-icon">
+                                    <svg width="20" class="mr-1 mb-1 fa-fw" height="20" viewbox="0 0 56 56" fill="none"
+                                        xmlns="http://www.w3.org/2000/svg">
+                                        <path fill-rule="evenodd" clip-rule="evenodd"
+                                            d="M13.2028 49.828C12.3653 50.6326 11.0181 50.6162 10.1912 49.7889L6.21213 45.8077C5.38622 44.9815 5.36909 43.6326 6.17341 42.7957L7.74678 41.158C8.5511 40.3208 8.8414 38.7676 8.39997 37.7025L7.27999 34.9986C6.83619 33.9277 5.53528 33.0405 4.37459 33.0171L2.10419 32.9715C0.943158 32.9482 0.0017136 31.9842 0.0017136 30.8146L9.35203e-08 25.1857C-0.000342585 24.0175 0.941094 23.0518 2.10178 23.0284L4.37253 22.9828C5.53356 22.9595 6.83725 22.0665 7.27828 21.001L8.3986 18.2968C8.8424 17.2255 8.54974 15.6778 7.74542 14.8406L6.17205 13.2028C5.36738 12.3653 5.38383 11.0181 6.21111 10.1912L10.1923 6.21213C11.0185 5.38622 12.3674 5.36909 13.2043 6.17341L14.842 7.74678C15.6793 8.5511 17.2324 8.8414 18.2975 8.39997L21.0014 7.27999C22.0723 6.83619 22.9595 5.53528 22.9829 4.37459L23.0285 2.10419C23.0518 0.943158 24.0158 0.0017136 25.1854 0.0017136L30.8143 9.35203e-08C31.9825 -0.000342585 32.9482 0.941094 32.9716 2.10178L33.0172 4.37253C33.0405 5.53356 33.9335 6.83725 34.999 7.27828L37.7032 8.3986C38.7745 8.8424 40.3222 8.54974 41.1594 7.74542L42.7972 6.17204C43.6347 5.36738 44.9819 5.38383 45.8088 6.21111L49.7879 10.1923C50.6138 11.0185 50.6309 12.3674 49.8266 13.2043L48.2532 14.842C47.4489 15.6792 47.1586 17.2324 47.6 18.2975L48.72 21.0014C49.1638 22.0723 50.4647 22.9595 51.6254 22.9829L53.8958 23.0285C55.0568 23.0518 55.9983 24.0158 55.9983 25.1854L56 30.8143C56.0003 31.9825 55.0589 32.9482 53.8982 32.9716L51.6275 33.0172C50.4664 33.0405 49.1627 33.9335 48.7217 34.999L47.6014 37.7032C47.1576 38.7745 47.4503 40.3222 48.2546 41.1594L49.828 42.7972C50.6326 43.6347 50.6162 44.9819 49.7889 45.8088L45.8077 49.7879C44.9815 50.6138 43.6326 50.6309 42.7957 49.8266L41.158 48.2532C40.3207 47.4489 38.7676 47.1586 37.7025 47.6L34.9986 48.72C33.9277 49.1638 33.0405 50.4647 33.0171 51.6254L32.9715 53.8958C32.9482 55.0568 31.9842 55.9983 30.8146 55.9983L25.1857 56C24.0175 56.0003 23.0518 55.0589 23.0284 53.8982L22.9828 51.6275C22.9595 50.4664 22.0665 49.1627 21.001 48.7217L18.2968 47.6014C17.2255 47.1576 15.6778 47.4503 14.8406 48.2546L13.2028 49.828ZM22.762 40.6442C29.7453 43.537 37.7518 40.2207 40.6434 33.2374C43.5362 26.2542 40.2198 18.2477 33.2366 15.356C26.2534 12.4633 18.2468 15.7796 15.3552 22.7628C12.4625 29.7461 15.7788 37.7526 22.762 40.6442V40.6442Z"
+                                            fill="white"></path>
+                                    </svg>
+                                    <span id="hideControlsLabel">Randomize Position</span><br></a>
+                            <a id="resetButton"
+                                class="btn bg-unmcred mt-2 px-4 shadow font-weight-bold mb-2 border btn-lg text-light"
+                                style="border-radius:25px">
+                                <span class="ds">
+                                    <svg class="mr-1 mb-1 fa-fw" width="20" height="18" viewbox="0 0 60 61" fill="none"
+                                        xmlns="http://www.w3.org/2000/svg">
+                                        <path
+                                            d="M52.9386 11.0315C48.953 6.19545 43.6001 2.70156 37.4251 1.04637C29.5944 -1.05012 21.4113 0.0251387 14.3874 4.07974C7.3646 8.13435 2.34055 14.6816 0.241198 22.5151C0.14237 22.8834 0.0854896 23.2557 0.000717163 23.626H6.96164C8.69116 17.8193 12.4916 12.9639 17.7603 9.92228C23.2222 6.76769 29.5834 5.93093 35.6784 7.56358C41.1209 9.02165 45.7535 12.304 48.9301 16.8791H36.0714V23.6258H59.6849V0.0117574H52.9382L52.9386 11.0315Z"
+                                            fill="white"></path>
+                                        <path
+                                            d="M41.9246 50.7971C36.4627 53.9517 30.1016 54.7891 24.0065 53.1565C18.5641 51.6984 13.9314 48.416 10.7548 43.8409H23.6135V37.0942H0V60.7077H6.74671V49.6892C10.7324 54.5253 16.0853 58.0192 22.2602 59.6738C30.0909 61.771 38.2735 60.695 45.298 56.6404C52.3207 52.5858 57.3448 46.0396 59.4436 38.2056C59.5424 37.8373 59.5993 37.465 59.6841 37.0947H52.7237C50.994 42.9014 47.1935 47.7562 41.925 50.7979L41.9246 50.7971Z"
+                                            fill="white"></path>
+                                    </svg>
+                                </span>Reset Position<br></a>
+                        </div>
+                    </div>
+                </div>
+                <div id="mw-card-3" class="col-xxl-4 col-xl-4 col-lg-12">
+                    <div class="card shadow overflow-hidden">
+
+                        <video id="eyeVideo" width="640" height="240" class="embed-responsive" controls autoplay>
+                            <source id="eyeVideoSrc" src="./videos/LAC_sec.mp4" type="video/mp4">
+                        </video>
+
+                        <!--CANAL SELECTION DIV BEGIN-->
+                        <div id="selectionDiv" class="card-body p-4 px-5 pt-5">
+                            <h3 class="text-left font-weight-bold mb-3 text-body mt-1">Test Yourself</h3>
+                            <p class="card-text text-black-50 font-weight-bold text-left fs-5">1. Use the patient
+                                control panel on the left to perform testing maneuvers.
+                            </p>
+                            <p class="card-text text-black-50 font-weight-bold text-left fs-5">
+                                2. Then, select the canal that you think is affected.
+                            </p>
+                            <div class="dropdown  text-left mt-4">
+                                <!--div class="btn-group mt-3 shadow-sm btn-group-lg" style="">
+                                                                                                                                                                                            <button class="dropdown-toggle btn font-weight-bold btn-primary" data-toggle="dropdown"> Select affected canal </button>
+                                                                                                                                                                                            <div class="dropdown-menu"> <a class="dropdown-item font-weight-bold my-1" href="file:///C:/Users/nhumphrey/Desktop/Pingendo/New%20Site/Third%20Site/bppvtest.html#">Action</a><a class="dropdown-item font-weight-bold my-1" href="file:///C:/Users/nhumphrey/Desktop/Pingendo/New%20Site/Third%20Site/bppvtest.html#">Action</a>
+                                                                                                                                                                                              <div class="dropdown-divider"></div>
+                                                                                                                                                                                              <a class="dropdown-item font-weight-bold" href="file:///C:/Users/nhumphrey/Desktop/Pingendo/New%20Site/Third%20Site/bppvtest.html#">Separated link</a>
+                                                                                                                                                                                            </div>
+                                                                                                                                                                                          </div-->
+                                <button id="selectAffected"
+                                    class="btn btn-dark btn-lg font-weight-bold dropdown-toggle rounded-5 px-4"
+                                    type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                    Select Affected Canal
+                                </button>
+                                <ul class="dropdown-menu">
+                                    <li>
+                                        <a id="leftRedSelect" class="dropdown-item font-weight-bold" href="#">Left
+                                            Anterior (LR)</a>
+                                    </li>
+                                    <li>
+                                        <a id="leftGreenSelect" class="dropdown-item font-weight-bold" href="#">Left
+                                            Posterior (LG)</a>
+                                    </li>
+                                    <li>
+                                        <a id="leftBlueSelect" class="dropdown-item font-weight-bold" href="#">Left
+                                            Horizontal (LB)</a>
+                                    </li>
+                                    <li>
+                                        <a id="rightRedSelect" class="dropdown-item font-weight-bold" href="#">Right
+                                            Anterior (RR)</a>
+                                    </li>
+                                    <li>
+                                        <a id="rightGreenSelect" class="dropdown-item font-weight-bold" href="#">Right
+                                            Posterior (RG)</a>
+                                    </li>
+                                    <li>
+                                        <a id="rightBlueSelect" class="dropdown-item font-weight-bold" href="#">Right
+                                            Horizontal (RB)</a>
+                                    </li>
+
+                                </ul>
+                            </div>
+                            <!--img class="img-fluid p-2 invisible" src="https://res.cloudinary.com/unmc/image/upload/v1658936346/InnerEar_Wireframe_Images_m4l4ce.png" width="400"-->
+
+                            <div id="resultsInfoDiv" style="width: inherit; min-height:450px; max-height:450px;">
+                                <!--RESULTS OF SELECTION BEGIN-->
+
+                                <div id="correctAnswerDiv" style="display: none;">
+
+                                    <h3 class="text-left font-weight-bold mb-3 text-body mt-4">Results:</h3>
+                                    <p class="card-text text-black-50 font-weight-bold text-left fs-5">
+                                        You were
+                                        <span class="text-success lead font-weight-bold ">correct!
+                                        </span>
+                                    </p>
+                                    <p class="card-text text-black-50 font-weight-bold text-left fs-5">Would you like
+                                        to:&nbsp;</p>
+                                    <a href="#"
+                                        class="btn btn-secondary mt-2 px- shadow font-weight-bol lh-sm py-3 fs- mb-2 border border-secondary btn-lg text-light rounded-pill"
+                                        style="font-size:.875rem"><span class="p-2">Review otolith movement in that
+                                            canal in conjuction with the manuever you just did</span></a>
+                                    <a id="proceedToTreat" href="#"
+                                        class="my-3 btn btn-outline d-block w mx-auto shadow font-weight-bld border border-secondary p-2"
+                                        style="font-size:.875rem">Proceed to treating the patient</a>
+
+                                </div>
+
+                                <div id="incorrectAnswerDiv" style="display: none;">
+                                    <h3 class="text-left font-weight-bold mb-3 text-body mt-4">Results:</h3>
+                                    <p class="card-text text-black-50 font-weight-bold text-left fs-5">
+                                        You were
+                                        <span class="text-danger lead font-weight-bold ">Incorrect!
+                                        </span>
+                                    </p>
+                                    <p class="card-text text-black-50 font-weight-bold text-left fs-5">&nbsp;Please
+                                        perform the manuever again.
+                                    </p>
+                                </div>
+
+                                <div id="noneSelected" style="display:none;">
+                                    <h3 class="text-left font-weight-bold mb-3 text-body mt-4">Please select a canal
+                                        first!</h3>
+                                </div>
+                                <!--RESULTS OF SELECTION END-->
+                            </div>
+
+                            <a id="submitSelectedCanal"
+                                class="btn btn-success d-block w-75 mx-auto shadow font-weight-bold border border-secondary btn-lg rounded-5 text-white mb-3">Submit
+                                response</a>
+                        </div>
+
+
+                        <!--CANAL SELECTION DIV END-->
+
+
+                        <!--SIDE CANVAS DIV BEGIN-->
+                        <div id="card-space" class="card-body p-4" style="display:none">
+                            <h4 class="card-title text-dark font-weight-bold text-left px-1">Treatment</h4>
+                            <p
+                                class="card-text text-black-50 font-weight-bol text-left clamp-font mb-3 px-1 pb-1 fw-500">
+                                Please perform maneuvers for treatement. The Model
+                                below will help you visualize otoconia movvement as you adjust patient positioning.
+
+                            </p>
+
+                            <canvas id="threejs-canvas2"></canvas>
+                            <div id="maneuverResults">
+                                <div>
+                                    Results</div>
+                                <div id="maneuverResultsText">Keep Trying</div>
+                            </div>
+                            <a id="restartModule" href="#"
+                                class="btn btn-success d-block mx-auto shadow font-weight-bold border border-secondary mt-5 mb-3 btn-lg clamp-font"
+                                style="border-radius:25px;white-space: nowrap;">Restart Module<span
+                                    class="continue-icon ml-2 mb-1">
+                                    <svg width="22
+                                                                                                                                                                                                                        "
+                                        height="22" class="fa-fw" viewbox="0 0 90 45" fill="none"
+                                        xmlns="http://www.w3.org/2000/svg">
+                                        <path
+                                            d="M88.6409 25.593L68.937 43.8742C67.708 45.0139 65.9173 45.3187 64.3775 44.6487C62.8381 43.9786 61.8429 42.4602 61.8429 40.9397L61.8535 28.1243H5.62461C2.51875 28.1243 0 25.6106 0 22.3411C0 19.0716 2.51875 16.8743 5.62461 16.8743H61.8535V4.21811C61.8535 2.53993 62.8483 1.02066 64.3881 0.350937C65.9268 -0.318611 67.7189 -0.0138071 68.9476 1.12613L88.6514 19.4073C90.4513 21.0755 90.4513 23.9231 88.6409 25.593Z"
+                                            fill="white" />
+                                        <path
+                                            d="M88.3018 25.2255L88.3008 25.2265L68.597 43.5076C68.597 43.5076 68.597 43.5076 68.5969 43.5076C67.5138 44.5121 65.9349 44.7811 64.5771 44.1902C63.2101 43.5952 62.3431 42.2506 62.3429 40.9401C62.3429 40.94 62.3429 40.9398 62.3429 40.9397L62.3535 28.1247L62.3539 27.6243H61.8535H5.62461C2.80365 27.6243 0.5 25.3433 0.5 22.3411C0.5 19.3758 2.76588 17.3743 5.62461 17.3743H61.8535H62.3535V16.8743V4.21811C62.3535 2.73881 63.2304 1.39971 64.5875 0.809443L64.5876 0.809412C65.9444 0.219016 67.5247 0.488029 68.6075 1.49267L68.9476 1.12613L68.6075 1.49267L88.3113 19.7738L88.3115 19.774C89.8976 21.244 89.8979 23.7533 88.3018 25.2255Z"
+                                            stroke="black" stroke-opacity="0.38" />
+                                    </svg>
+                                </span>
+                            </a>
+                        </div>
+                        <!--SIDE CANVAS DIV END-->
+                    </div>
+                </div>
+                <!-- Code injected by live-server -->
+                <script>
+                    // <![CDATA[  <-- For SVG support
+                    if ('WebSocket' in window) {
+                        (function () {
+                            function refreshCSS() {
+                                var sheets = [].slice.call(document.getElementsByTagName("link"));
+                                var head = document.getElementsByTagName("head")[0];
+                                for (var i = 0; i < sheets.length; ++i) {
+                                    var elem = sheets[i];
+                                    var parent = elem.parentElement || head;
+                                    parent.removeChild(elem);
+                                    var rel = elem.rel;
+                                    if (elem.href && typeof rel != "string" || rel.length == 0 || rel
+                                    .toLowerCase() == "stylesheet") {
+                                        var url = elem.href.replace(/(&|\?)_cacheOverride=\d+/, '');
+                                        elem.href = url + (url.indexOf('?') >= 0 ? '&' : '?') + '_cacheOverride=' +
+                                            (
+                                                new Date().valueOf()
+                                            );
+                                    }
+                                    parent.appendChild(elem);
+                                }
+                            }
+                            var protocol = window.location.protocol === 'http:' ? 'ws://' : 'wss://';
+                            var address = protocol + window.location.host + window.location.pathname + '/ws';
+                            var socket = new WebSocket(address);
+                            socket.onmessage = function (msg) {
+                                if (msg.data == 'reload')
+                                    window.location.reload();
+                                else if (msg.data == 'refreshcss')
+                                    refreshCSS();
+
+
+                            };
+                            if (sessionStorage && !sessionStorage.getItem('IsThisFirstTime_Log_From_LiveServer')) {
+                                console.log('Live reload enabled.');
+                                sessionStorage.setItem('IsThisFirstTime_Log_From_LiveServer', true);
+                            }
+                        })();
+                    } else {
+                        console.error(
+                            'Upgrade your browser. This Browser is NOT supported WebSocket for Live-Reloading.');
+                    }
+                    // ]]>
+                </script>
+            </div>
+        </div>
+    </div>
+    <footer class="mt-2">
+        <div class="py-4 " style="background-color:#111;">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12 text-center">
+                        <p class="mb-0 text-light fw-normal fs-6 py-2">© 2022, Board of Regents of the University of
+                            Nebraska. All
+                            rights reserved.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="modal fade" id="staticBackdrop_welcome" data-bs-backdrop="static" data-bs-keyboard="false"
+            tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+            <div class="modal-dialog modal-dialog modal-dialog-centered modal-dialog-scrollable modal-lg ">
+                <div class="modal-content ">
+                    <div class="modal-header px-3 pt-3 bg-warning">
+                        <h3 class="modal-title fw-light" id="staticBackdropLabel">Warning Message</h3>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body p-3">
+                        <div class="mt-1">
+                            <!--<h3 class="my-2 pb-2">Welcome to The Pelvic Floor</h3>-->
+                            <div class="ratio ratio-16x9 mw-54em mx-auto mb-3">
+                                <p>Example warning text</p>
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="modal-footer px-3 bg-light">
+                        <button type="button" class="btn btn-secondary px-4 py-2 d-flex"
+                            data-bs-dismiss="modal">Close</button>
+                        <button type="button" class="btn btn-primary d-none">Understood</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+    </footer>
+</body>
+
+</html>
