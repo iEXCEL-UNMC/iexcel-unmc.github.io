@@ -1,0 +1,1934 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+	<meta content="width=device-width, initial-scale=1" name="viewport"><!--FONT ROBOTO-->
+	<link href="https://fonts.googleapis.com" rel="preconnect">
+	<link href="https://fonts.gstatic.com" rel="preconnect">
+	<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100&display=swap" rel=
+	"stylesheet">
+	<link href="https://res.cloudinary.com/unmc/raw/upload/v1659989301/BPPV/bppvnew.css" rel=
+	"stylesheet"><!-- CSS only -->
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel=
+	"stylesheet">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js">
+	</script>
+	<link href="roundSlider3.css" rel="stylesheet">
+	<!--<link rel="stylesheet" href="https://res.cloudinary.com/unmc/raw/upload/v1665776267/js/roundSlider3_cdn.css">-->
+
+	<script defer src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js">
+	</script>
+	<style>
+
+	html,
+	           body {
+	               height: 100%;
+	           }
+
+	           .dropdown-item.font-weight-bold {
+	               padding-top: 10px;
+	               padding-bottom: 10px;
+	               font-size: clamp(1.1rem, -0.5vw + 1.3rem, 1rem) !important;
+
+	           }
+
+	           div#posValue {
+	               font-size: clamp(1.1rem, -0.5vw + 1.3rem, 1rem) !important;
+	           }
+
+	           span#mode {
+	               font-size: clamp(1.1rem, -0.5vw + 1.3rem, 1rem) !important;
+	           }
+
+	           div#rotX_rightButton:hover {
+	               transform:rotate(0deg);
+	   opacity: .8;
+	   -webkit-transition: .25s ease-in-out;
+	   -o-transition: .25s ease-in-out;
+	   transition: .25s ease-in-out;
+	   -webkit-transform: scale(0.9);
+	       -ms-transform: scale(0.9);
+	           transform: scale(0.9);
+
+	}
+
+	/* div#rotX_rightButton {
+
+	   transform:rotate(90deg);
+	   -webkit-transform:rotate(90)deg;
+	       -ms-transform:rotate(90)deg;
+	           transform:rotate(90)deg;
+	} */
+
+	.label {
+	               color: rgb(197, 197, 197);
+	               font-family: sans-serif;
+	               font-weight: bold;
+	               padding: 2px;
+
+	           }
+
+	#instructionsImg {
+
+	   width: 1000px;
+	   max-width: 70vw;
+	   border: 1px solid #272425;
+	   border-radius: 2px;
+	   margin-bottom: 5px;
+	}
+
+	#instructionsVertImg {
+
+	   width: 300px;
+	   max-width: 70vw;
+	   border: 1px solid #272425;
+	   border-radius: 2px;
+	   
+	}
+
+
+
+	div#rotX_leftButton:hover {
+	   opacity: .8;
+	   -webkit-transition: .25s ease-in-out;
+	   -o-transition: .25s ease-in-out;
+	   transition: .25s ease-in-out;
+	   -webkit-transform: scale(0.9);
+	       -ms-transform: scale(0.9);
+	           transform: scale(0.9);
+
+	}
+
+
+	div#rotY_leftButton:hover {
+
+	   opacity: .8;
+	   -webkit-transition: .25s ease-in-out;
+	   -o-transition: .25s ease-in-out;
+	   transition: .25s ease-in-out;
+	   -webkit-transform: scale(0.9);
+	       -ms-transform: scale(0.9);
+	           transform: scale(0.9);
+	}
+
+	div#rotY_rightButton:hover {
+	   opacity: .8;
+	   -webkit-transition: .25s ease-in-out;
+	   -o-transition: .25s ease-in-out;
+	   transition: .25s ease-in-out;
+	   -webkit-transform: scale(0.9);
+	       -ms-transform: scale(0.9);
+	           transform: scale(0.9);
+
+	}
+
+	div#rotZ_leftButton:hover {
+	   opacity: .8;
+	   -webkit-transition: .25s ease-in-out;
+	   -o-transition: .25s ease-in-out;
+	   transition: .25s ease-in-out;
+	   -webkit-transform: scale(0.9);
+	       -ms-transform: scale(0.9);
+	           transform: scale(0.9);
+
+	}
+
+	div#rotZ_rightButton:hover {
+
+	   opacity: .8;
+	   -webkit-transition: .25s ease-in-out;
+	   -o-transition: .25s ease-in-out;
+	   transition: .25s ease-in-out;
+	   -webkit-transform: scale(0.9);
+	       -ms-transform: scale(0.9);
+	           transform: scale(0.9);
+	}
+
+	a#hideControlsButton {
+	   display: -webkit-box;
+	   display: -ms-flexbox;
+	   display: flex;
+	   -webkit-box-orient: vertical;
+	   -webkit-box-direction: normal;
+	       -ms-flex-direction: column;
+	           flex-direction: column;
+	   -webkit-box-pack: center;
+	       -ms-flex-pack: center;
+	           justify-content: center;
+	}
+
+	a#resetButton {
+	   display: -webkit-box;
+	   display: -ms-flexbox;
+	   display: flex;
+	   -webkit-box-orient: horizontal;
+	   -webkit-box-direction: normal;
+	       -ms-flex-direction: row;
+	           flex-direction: row;
+	   -webkit-box-pack: center;
+	       -ms-flex-pack: center;
+	           justify-content: center;
+	   -webkit-box-align: center;
+	       -ms-flex-align: center;
+	           align-items: center;
+	   min-height:54px;
+	   margin-left:auto;
+	   margin-right:auto;
+	}
+
+	a#instructionsButton {
+	   display: -webkit-box;
+	   display: -ms-flexbox;
+	   display: flex;
+	   -webkit-box-orient: horizontal;
+	   -webkit-box-direction: normal;
+	       -ms-flex-direction: row;
+	           flex-direction: row;
+	   -webkit-box-pack: center;
+	       -ms-flex-pack: center;
+	           justify-content: center;
+	   -webkit-box-align: center;
+	       -ms-flex-align: center;
+	           align-items: center;
+	   min-height:54px;
+	   margin-left:auto;
+	   margin-right:auto;
+	}
+
+	div#selectionDiv {
+
+	   display: -webkit-box;
+
+	   display: -ms-flexbox;
+
+	   display: flex;
+	   -webkit-box-orient: vertical;
+	   -webkit-box-direction: normal;
+	       -ms-flex-direction: column;
+	           flex-direction: column;
+	   -webkit-box-pack: justify;
+	       -ms-flex-pack: justify;
+	           justify-content: space-between;
+	}
+
+
+
+
+	           @font-face {
+	               font-family: Roboto;
+	               font-style: italic;
+	               font-weight: 700;
+	               font-display: swap;
+	               src: url('https://fonts.gstatic.com/s/roboto/v30/KFOjCnqEu92Fr1Mu51TzBic3CsTYl4BOQ3o.woff2') format('woff2');
+	               unicode-range: U + 460-052F, U + 1C80-1C88, U + 20B4, U + 2DE0-2DFF, U+A640-A69F, U+FE2E-FE2F
+	           }
+	           @font-face {
+	               font-family: Roboto;
+	               font-style: italic;
+	               font-weight: 700;
+	               font-display: swap;
+	               src: url('https://fonts.gstatic.com/s/roboto/v30/KFOjCnqEu92Fr1Mu51TzBic-CsTYl4BOQ3o.woff2') format('woff2');
+	               unicode-range: U + 301, U + 400-045F, U + 490-0491, U + 4B0-04B1, U + 2116
+	           }
+	           @font-face {
+	               font-family: Roboto;
+	               font-style: italic;
+	               font-weight: 700;
+	               font-display: swap;
+	               src: url('https://fonts.gstatic.com/s/roboto/v30/KFOjCnqEu92Fr1Mu51TzBic2CsTYl4BOQ3o.woff2') format('woff2');
+	               unicode-range: U + 1F00-1FFF
+	           }
+	           @font-face {
+	               font-family: Roboto;
+	               font-style: italic;
+	               font-weight: 700;
+	               font-display: swap;
+	               src: url('https://fonts.gstatic.com/s/roboto/v30/KFOjCnqEu92Fr1Mu51TzBic5CsTYl4BOQ3o.woff2') format('woff2');
+	               unicode-range: U + 370-03FF
+	           }
+	           @font-face {
+	               font-family: Roboto;
+	               font-style: italic;
+	               font-weight: 700;
+	               font-display: swap;
+	               src: url('https://fonts.gstatic.com/s/roboto/v30/KFOjCnqEu92Fr1Mu51TzBic1CsTYl4BOQ3o.woff2') format('woff2');
+	               unicode-range: U + 102-0103, U + 110-0111, U + 128-0129, U + 168-0169, U + 1A0-01A1, U + 1AF-01B0, U + 1EA0-1EF9, U + 20 AB
+	           }
+	           @font-face {
+	               font-family: Roboto;
+	               font-style: italic;
+	               font-weight: 700;
+	               font-display: swap;
+	               src: url('https://fonts.gstatic.com/s/roboto/v30/KFOjCnqEu92Fr1Mu51TzBic0CsTYl4BOQ3o.woff2') format('woff2');
+	               unicode-range: U + 100-024F, U + 259, U + 1E00-1EFF, U + 2020, U + 20A0-20AB, U + 20AD-20CF, U + 2113, U + 2C60-2C7F, U+A720-A7FF
+	           }
+	           @font-face {
+	               font-family: Roboto;
+	               font-style: italic;
+	               font-weight: 700;
+	               font-display: swap;
+	               src: url('https://fonts.gstatic.com/s/roboto/v30/KFOjCnqEu92Fr1Mu51TzBic6CsTYl4BO.woff2') format('woff2');
+	               unicode-range: U + 0-00FF, U + 131, U + 152-0153, U + 2BB-02BC, U + 2C6, U + 2 DA, U + 2 DC, U + 2000-206F, U + 2074, U + 20 AC, U + 2122, U + 2191, U + 2193, U + 2212, U + 2215, U+FEFF, U+FFFD
+	           }
+	           @font-face {
+	               font-family: Roboto;
+	               font-style: normal;
+	               font-weight: 300;
+	               font-display: swap;
+	               src: url('https://fonts.gstatic.com/s/roboto/v30/KFOlCnqEu92Fr1MmSU5fCRc4AMP6lbBP.woff2') format('woff2');
+	               unicode-range: U + 460-052F, U + 1C80-1C88, U + 20B4, U + 2DE0-2DFF, U+A640-A69F, U+FE2E-FE2F
+	           }
+	           @font-face {
+	               font-family: Roboto;
+	               font-style: normal;
+	               font-weight: 300;
+	               font-display: swap;
+	               src: url('https://fonts.gstatic.com/s/roboto/v30/KFOlCnqEu92Fr1MmSU5fABc4AMP6lbBP.woff2') format('woff2');
+	               unicode-range: U + 301, U + 400-045F, U + 490-0491, U + 4B0-04B1, U + 2116
+	           }
+	           @font-face {
+	               font-family: Roboto;
+	               font-style: normal;
+	               font-weight: 300;
+	               font-display: swap;
+	               src: url('https://fonts.gstatic.com/s/roboto/v30/KFOlCnqEu92Fr1MmSU5fCBc4AMP6lbBP.woff2') format('woff2');
+	               unicode-range: U + 1F00-1FFF
+	           }
+	           @font-face {
+	               font-family: Roboto;
+	               font-style: normal;
+	               font-weight: 300;
+	               font-display: swap;
+	               src: url('https://fonts.gstatic.com/s/roboto/v30/KFOlCnqEu92Fr1MmSU5fBxc4AMP6lbBP.woff2') format('woff2');
+	               unicode-range: U + 370-03FF
+	           }
+	           @font-face {
+	               font-family: Roboto;
+	               font-style: normal;
+	               font-weight: 300;
+	               font-display: swap;
+	               src: url('https://fonts.gstatic.com/s/roboto/v30/KFOlCnqEu92Fr1MmSU5fCxc4AMP6lbBP.woff2') format('woff2');
+	               unicode-range: U + 102-0103, U + 110-0111, U + 128-0129, U + 168-0169, U + 1A0-01A1, U + 1AF-01B0, U + 1EA0-1EF9, U + 20 AB
+	           }
+	           @font-face {
+	               font-family: Roboto;
+	               font-style: normal;
+	               font-weight: 300;
+	               font-display: swap;
+	               src: url('https://fonts.gstatic.com/s/roboto/v30/KFOlCnqEu92Fr1MmSU5fChc4AMP6lbBP.woff2') format('woff2');
+	               unicode-range: U + 100-024F, U + 259, U + 1E00-1EFF, U + 2020, U + 20A0-20AB, U + 20AD-20CF, U + 2113, U + 2C60-2C7F, U+A720-A7FF
+	           }
+	           @font-face {
+	               font-family: Roboto;
+	               font-style: normal;
+	               font-weight: 300;
+	               font-display: swap;
+	               src: url('https://fonts.gstatic.com/s/roboto/v30/KFOlCnqEu92Fr1MmSU5fBBc4AMP6lQ.woff2') format('woff2');
+	               unicode-range: U + 0-00FF, U + 131, U + 152-0153, U + 2BB-02BC, U + 2C6, U + 2 DA, U + 2 DC, U + 2000-206F, U + 2074, U + 20 AC, U + 2122, U + 2191, U + 2193, U + 2212, U + 2215, U+FEFF, U+FFFD
+	           }
+	           @font-face {
+	               font-family: Roboto;
+	               font-style: normal;
+	               font-weight: 400;
+	               font-display: swap;
+	               src: url('https://fonts.gstatic.com/s/roboto/v30/KFOmCnqEu92Fr1Mu72xKKTU1Kvnz.woff2') format('woff2');
+	               unicode-range: U + 460-052F, U + 1C80-1C88, U + 20B4, U + 2DE0-2DFF, U+A640-A69F, U+FE2E-FE2F
+	           }
+	           @font-face {
+	               font-family: Roboto;
+	               font-style: normal;
+	               font-weight: 400;
+	               font-display: swap;
+	               src: url('https://fonts.gstatic.com/s/roboto/v30/KFOmCnqEu92Fr1Mu5mxKKTU1Kvnz.woff2') format('woff2');
+	               unicode-range: U + 301, U + 400-045F, U + 490-0491, U + 4B0-04B1, U + 2116
+	           }
+	           @font-face {
+	               font-family: Roboto;
+	               font-style: normal;
+	               font-weight: 400;
+	               font-display: swap;
+	               src: url('https://fonts.gstatic.com/s/roboto/v30/KFOmCnqEu92Fr1Mu7mxKKTU1Kvnz.woff2') format('woff2');
+	               unicode-range: U + 1F00-1FFF
+	           }
+	           @font-face {
+	               font-family: Roboto;
+	               font-style: normal;
+	               font-weight: 400;
+	               font-display: swap;
+	               src: url('https://fonts.gstatic.com/s/roboto/v30/KFOmCnqEu92Fr1Mu4WxKKTU1Kvnz.woff2') format('woff2');
+	               unicode-range: U + 370-03FF
+	           }
+	           @font-face {
+	               font-family: Roboto;
+	               font-style: normal;
+	               font-weight: 400;
+	               font-display: swap;
+	               src: url('https://fonts.gstatic.com/s/roboto/v30/KFOmCnqEu92Fr1Mu7WxKKTU1Kvnz.woff2') format('woff2');
+	               unicode-range: U + 102-0103, U + 110-0111, U + 128-0129, U + 168-0169, U + 1A0-01A1, U + 1AF-01B0, U + 1EA0-1EF9, U + 20 AB
+	           }
+	           @font-face {
+	               font-family: Roboto;
+	               font-style: normal;
+	               font-weight: 400;
+	               font-display: swap;
+	               src: url('https://fonts.gstatic.com/s/roboto/v30/KFOmCnqEu92Fr1Mu7GxKKTU1Kvnz.woff2') format('woff2');
+	               unicode-range: U + 100-024F, U + 259, U + 1E00-1EFF, U + 2020, U + 20A0-20AB, U + 20AD-20CF, U + 2113, U + 2C60-2C7F, U+A720-A7FF
+	           }
+	           @font-face {
+	               font-family: Roboto;
+	               font-style: normal;
+	               font-weight: 400;
+	               font-display: swap;
+	               src: url('https://fonts.gstatic.com/s/roboto/v30/KFOmCnqEu92Fr1Mu4mxKKTU1Kg.woff2') format('woff2');
+	               unicode-range: U + 0-00FF, U + 131, U + 152-0153, U + 2BB-02BC, U + 2C6, U + 2 DA, U + 2 DC, U + 2000-206F, U + 2074, U + 20 AC, U + 2122, U + 2191, U + 2193, U + 2212, U + 2215, U+FEFF, U+FFFD
+	           }
+	           @font-face {
+	               font-family: Roboto;
+	               font-style: normal;
+	               font-weight: 500;
+	               font-display: swap;
+	               src: url('https://fonts.gstatic.com/s/roboto/v30/KFOlCnqEu92Fr1MmEU9fCRc4AMP6lbBP.woff2') format('woff2');
+	               unicode-range: U + 460-052F, U + 1C80-1C88, U + 20B4, U + 2DE0-2DFF, U+A640-A69F, U+FE2E-FE2F
+	           }
+	           @font-face {
+	               font-family: Roboto;
+	               font-style: normal;
+	               font-weight: 500;
+	               font-display: swap;
+	               src: url('https://fonts.gstatic.com/s/roboto/v30/KFOlCnqEu92Fr1MmEU9fABc4AMP6lbBP.woff2') format('woff2');
+	               unicode-range: U + 301, U + 400-045F, U + 490-0491, U + 4B0-04B1, U + 2116
+	           }
+	           @font-face {
+	               font-family: Roboto;
+	               font-style: normal;
+	               font-weight: 500;
+	               font-display: swap;
+	               src: url('https://fonts.gstatic.com/s/roboto/v30/KFOlCnqEu92Fr1MmEU9fCBc4AMP6lbBP.woff2') format('woff2');
+	               unicode-range: U + 1F00-1FFF
+	           }
+	           @font-face {
+	               font-family: Roboto;
+	               font-style: normal;
+	               font-weight: 500;
+	               font-display: swap;
+	               src: url('https://fonts.gstatic.com/s/roboto/v30/KFOlCnqEu92Fr1MmEU9fBxc4AMP6lbBP.woff2') format('woff2');
+	               unicode-range: U + 370-03FF
+	           }
+	           @font-face {
+	               font-family: Roboto;
+	               font-style: normal;
+	               font-weight: 500;
+	               font-display: swap;
+	               src: url('https://fonts.gstatic.com/s/roboto/v30/KFOlCnqEu92Fr1MmEU9fCxc4AMP6lbBP.woff2') format('woff2');
+	               unicode-range: U + 102-0103, U + 110-0111, U + 128-0129, U + 168-0169, U + 1A0-01A1, U + 1AF-01B0, U + 1EA0-1EF9, U + 20 AB
+	           }
+	           @font-face {
+	               font-family: Roboto;
+	               font-style: normal;
+	               font-weight: 500;
+	               font-display: swap;
+	               src: url('https://fonts.gstatic.com/s/roboto/v30/KFOlCnqEu92Fr1MmEU9fChc4AMP6lbBP.woff2') format('woff2');
+	               unicode-range: U + 100-024F, U + 259, U + 1E00-1EFF, U + 2020, U + 20A0-20AB, U + 20AD-20CF, U + 2113, U + 2C60-2C7F, U+A720-A7FF
+	           }
+	           @font-face {
+	               font-family: Roboto;
+	               font-style: normal;
+	               font-weight: 500;
+	               font-display: swap;
+	               src: url('https://fonts.gstatic.com/s/roboto/v30/KFOlCnqEu92Fr1MmEU9fBBc4AMP6lQ.woff2') format('woff2');
+	               unicode-range: U + 0-00FF, U + 131, U + 152-0153, U + 2BB-02BC, U + 2C6, U + 2 DA, U + 2 DC, U + 2000-206F, U + 2074, U + 20 AC, U + 2122, U + 2191, U + 2193, U + 2212, U + 2215, U+FEFF, U+FFFD
+	           }
+	           @font-face {
+	               font-family: Roboto;
+	               font-style: normal;
+	               font-weight: 700;
+	               font-display: swap;
+	               src: url('https://fonts.gstatic.com/s/roboto/v30/KFOlCnqEu92Fr1MmWUlfCRc4AMP6lbBP.woff2') format('woff2');
+	               unicode-range: U + 460-052F, U + 1C80-1C88, U + 20B4, U + 2DE0-2DFF, U+A640-A69F, U+FE2E-FE2F
+	           }
+	           @font-face {
+	               font-family: Roboto;
+	               font-style: normal;
+	               font-weight: 700;
+	               font-display: swap;
+	               src: url('https://fonts.gstatic.com/s/roboto/v30/KFOlCnqEu92Fr1MmWUlfABc4AMP6lbBP.woff2') format('woff2');
+	               unicode-range: U + 301, U + 400-045F, U + 490-0491, U + 4B0-04B1, U + 2116
+	           }
+	           @font-face {
+	               font-family: Roboto;
+	               font-style: normal;
+	               font-weight: 700;
+	               font-display: swap;
+	               src: url('https://fonts.gstatic.com/s/roboto/v30/KFOlCnqEu92Fr1MmWUlfCBc4AMP6lbBP.woff2') format('woff2');
+	               unicode-range: U + 1F00-1FFF
+	           }
+	           @font-face {
+	               font-family: Roboto;
+	               font-style: normal;
+	               font-weight: 700;
+	               font-display: swap;
+	               src: url('https://fonts.gstatic.com/s/roboto/v30/KFOlCnqEu92Fr1MmWUlfBxc4AMP6lbBP.woff2') format('woff2');
+	               unicode-range: U + 370-03FF
+	           }
+	           @font-face {
+	               font-family: Roboto;
+	               font-style: normal;
+	               font-weight: 700;
+	               font-display: swap;
+	               src: url('https://fonts.gstatic.com/s/roboto/v30/KFOlCnqEu92Fr1MmWUlfCxc4AMP6lbBP.woff2') format('woff2');
+	               unicode-range: U + 102-0103, U + 110-0111, U + 128-0129, U + 168-0169, U + 1A0-01A1, U + 1AF-01B0, U + 1EA0-1EF9, U + 20 AB
+	           }
+	           @font-face {
+	               font-family: Roboto;
+	               font-style: normal;
+	               font-weight: 700;
+	               font-display: swap;
+	               src: url('https://fonts.gstatic.com/s/roboto/v30/KFOlCnqEu92Fr1MmWUlfChc4AMP6lbBP.woff2') format('woff2');
+	               unicode-range: U + 100-024F, U + 259, U + 1E00-1EFF, U + 2020, U + 20A0-20AB, U + 20AD-20CF, U + 2113, U + 2C60-2C7F, U+A720-A7FF
+	           }
+	           @font-face {
+	               font-family: Roboto;
+	               font-style: normal;
+	               font-weight: 700;
+	               font-display: swap;
+	               src: url('https://fonts.gstatic.com/s/roboto/v30/KFOlCnqEu92Fr1MmWUlfBBc4AMP6lQ.woff2') format('woff2');
+	               unicode-range: U + 0-00FF, U + 131, U + 152-0153, U + 2BB-02BC, U + 2C6, U + 2 DA, U + 2 DC, U + 2000-206F, U + 2074, U + 20 AC, U + 2122, U + 2191, U + 2193, U + 2212, U + 2215, U+FEFF, U+FFFD
+	           }
+	           @font-face {
+	               font-family: Roboto;
+	               font-style: normal;
+	               font-weight: 900;
+	               font-display: swap;
+	               src: url('https://fonts.gstatic.com/s/roboto/v30/KFOlCnqEu92Fr1MmYUtfCRc4AMP6lbBP.woff2') format('woff2');
+	               unicode-range: U + 460-052F, U + 1C80-1C88, U + 20B4, U + 2DE0-2DFF, U+A640-A69F, U+FE2E-FE2F
+	           }
+	           @font-face {
+	               font-family: Roboto;
+	               font-style: normal;
+	               font-weight: 900;
+	               font-display: swap;
+	               src: url('https://fonts.gstatic.com/s/roboto/v30/KFOlCnqEu92Fr1MmYUtfABc4AMP6lbBP.woff2') format('woff2');
+	               unicode-range: U + 301, U + 400-045F, U + 490-0491, U + 4B0-04B1, U + 2116
+	           }
+	           @font-face {
+	               font-family: Roboto;
+	               font-style: normal;
+	               font-weight: 900;
+	               font-display: swap;
+	               src: url('https://fonts.gstatic.com/s/roboto/v30/KFOlCnqEu92Fr1MmYUtfCBc4AMP6lbBP.woff2') format('woff2');
+	               unicode-range: U + 1F00-1FFF
+	           }
+	           @font-face {
+	               font-family: Roboto;
+	               font-style: normal;
+	               font-weight: 900;
+	               font-display: swap;
+	               src: url('https://fonts.gstatic.com/s/roboto/v30/KFOlCnqEu92Fr1MmYUtfBxc4AMP6lbBP.woff2') format('woff2');
+	               unicode-range: U + 370-03FF
+	           }
+	           @font-face {
+	               font-family: Roboto;
+	               font-style: normal;
+	               font-weight: 900;
+	               font-display: swap;
+	               src: url('https://fonts.gstatic.com/s/roboto/v30/KFOlCnqEu92Fr1MmYUtfCxc4AMP6lbBP.woff2') format('woff2');
+	               unicode-range: U + 102-0103, U + 110-0111, U + 128-0129, U + 168-0169, U + 1A0-01A1, U + 1AF-01B0, U + 1EA0-1EF9, U + 20 AB
+	           }
+	           @font-face {
+	               font-family: Roboto;
+	               font-style: normal;
+	               font-weight: 900;
+	               font-display: swap;
+	               src: url('https://fonts.gstatic.com/s/roboto/v30/KFOlCnqEu92Fr1MmYUtfChc4AMP6lbBP.woff2') format('woff2');
+	               unicode-range: U + 100-024F, U + 259, U + 1E00-1EFF, U + 2020, U + 20A0-20AB, U + 20AD-20CF, U + 2113, U + 2C60-2C7F, U+A720-A7FF
+	           }
+	           @font-face {
+	               font-family: Roboto;
+	               font-style: normal;
+	               font-weight: 900;
+	               font-display: swap;
+	               src: url('https://fonts.gstatic.com/s/roboto/v30/KFOlCnqEu92Fr1MmYUtfBBc4AMP6lQ.woff2') format('woff2');
+	               unicode-range: U + 0-00FF, U + 131, U + 152-0153, U + 2BB-02BC, U + 2C6, U + 2 DA, U + 2 DC, U + 2000-206F, U + 2074, U + 20 AC, U + 2122, U + 2191, U + 2193, U + 2212, U + 2215, U+FEFF, U+FFFD
+	           }
+
+	           @media (max-width:1199px) {
+	   div#mw-card-2 {
+
+	      max-width:48em!important;
+	      margin-right:auto;
+	      margin-left: auto;
+	      margin-top:3rem;
+	      margin-bottom:3rem;
+	   }
+
+	}
+
+	@media (max-width:767px) {
+	div#center-canvas{
+
+	padding-left:2rem!important;
+	padding-right:2rem!important;
+	}
+	}
+
+	@media (max-width:1199px) {
+	   div#mw-card-3 {
+
+	      max-width:48em!important;
+	      margin-left:auto;
+	      margin-right: auto;
+	      margin-top:0;
+	      margin-bottom:3rem;
+	   }
+
+	}
+
+	/* @media (max-width:1199px) {
+	   div#center-canvas {
+
+	     justify-content:center!important;
+	   }
+
+	} */
+
+	@media (max-width:1199px) {
+	div#extra_padding_tablet {
+	   padding-left: 6ch;
+	   padding-right: 6ch;
+	}
+	   }
+
+	   @media (max-width:1199px) {
+	#threejs-canvas {
+
+	   max-height:730px;
+	}
+	   }
+
+	   /* @media (max-width:1944px) {
+	   div#mh-card-1-1944px {
+	height:100%;
+
+	   }
+	} */
+
+	div#mh-card-1-1944px {
+
+	   height:auto;
+	}
+
+	@media (max-width:1418px) {
+	div#mh-card-2-1944 {
+
+	   height:auto;
+	}
+	}
+
+
+	/* @media (max-width:1944px) {
+	   div#mh-card-2-1944 {
+	height:100%;
+
+	   }
+	} */
+
+
+	a#hideControlsButton {
+	   -webkit-box-align: center;
+	       -ms-flex-align: center;
+	           align-items: center;
+	   display: -webkit-box;
+	   display: -ms-flexbox;
+	   display: flex;
+	   margin-left:auto;
+	   margin-right:auto;
+	}
+	</style><!--END FONT-->
+	<!-- PAGE settings -->
+	<link href="https://res.cloudinary.com/unmc/image/upload/v1618870187/iEXCEL_Favicon_vdbleh.ico"
+	rel="icon">
+	<title>iEXCEL | BPPV</title>
+	<meta content="BPPV" name="description">
+	<meta content="BPPV" name="keywords">
+	<meta content="BPPV" name="author"><!-- CSS dependencies -->
+	<!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+                                    type="text/css"> -->
+	<!--link rel="stylesheet" href="wireframe.css"-->
+	<!-- CSS only -->
+
+	<style>
+	html,
+	body {
+	   overflow-x: hidden !important;
+	}
+
+	div#rotationButtons {
+	   display: -webkit-box;
+	   display: -ms-flexbox;
+	   display: flex;
+	   -webkit-box-orient: horizontal;
+	   -webkit-box-direction: normal;
+	       -ms-flex-direction: row;
+	           flex-direction: row;
+	   -webkit-box-pack: center;
+	       -ms-flex-pack: center;
+	           justify-content: center;
+	   width: 100%;
+	   cursor: pointer;
+	}
+
+	h6 {
+
+	   font-family: 'Roboto', sans-serif;
+	}
+
+	div.rotate_wrapper {
+	   display: block;
+	   margin-top: -40px;
+	   margin-bottom: 20px;
+	}
+
+	div#rotX_spacer {
+	   cursor: default;
+	}
+
+	div#center-canvas {
+	   width: 100% !important;
+	   display: -webkit-box;
+	   display: -ms-flexbox;
+	   display: flex;
+	   -webkit-box-orient: horizontal;
+	   -webkit-box-direction: normal;
+	       -ms-flex-direction: row;
+	           flex-direction: row;
+	   -webkit-box-pack: justify;
+	       -ms-flex-pack: justify;
+	           justify-content: space-between;
+	   padding-left: 5rem;
+	   padding-right: 5rem;
+	}
+
+	canvas#threejs-canvas2 {
+	   -ms-touch-action: none;
+	       touch-action: none;
+	   display: -webkit-box !important;
+	   display: -ms-flexbox !important;
+	   display: flex !important;
+	   -webkit-box-orient: vertical !important;
+	   -webkit-box-direction: normal !important;
+	       -ms-flex-direction: column !important;
+	           flex-direction: column !important;
+	   width: 500px !important;
+	   height: 500px !important;
+	   text-align: center !important;
+	   -webkit-box-pack: center !important;
+	       -ms-flex-pack: center !important;
+	           justify-content: center !important;
+	   -webkit-box-align: center !important;
+	       -ms-flex-align: center !important;
+	           align-items: center !important;
+	   -ms-flex-item-align: center !important;
+	       -ms-grid-row-align: center !important;
+	       align-self: center !important;
+	}
+
+	canvas#threejs-canvas {
+	   -ms-touch-action: none;
+	       touch-action: none;
+	   display: -webkit-box !important;
+	   display: -ms-flexbox !important;
+	   display: flex !important;
+	   -webkit-box-orient: vertical !important;
+	   -webkit-box-direction: normal !important;
+	       -ms-flex-direction: column !important;
+	           flex-direction: column !important;
+	   width: 982px;
+	   height: 980px;
+	   text-align: center !important;
+	   -webkit-box-pack: center !important;
+	       -ms-flex-pack: center !important;
+	           justify-content: center !important;
+	   -webkit-box-align: center !important;
+	       -ms-flex-align: center !important;
+	           align-items: center !important;
+	   -ms-flex-item-align: center !important;
+	       -ms-grid-row-align: center !important;
+	       align-self: center !important;
+	}
+
+	.card.shadow.overflow-hidden {
+	   height: 1100px;
+	}
+
+	video#eyeVideo {
+
+	   margin-top:-34px;
+	}
+
+	h1.intro-text {
+	   font-size: clamp(1.5rem, 8vw - 2rem, 3rem) !important;
+	}
+
+	div#mw-card-3 {
+
+	   height:1110px;
+	}
+
+	html,
+	body,
+	h1,
+	span,
+	p,
+	h2,
+	h3,
+	h4,
+	h5 {
+	   font-family: 'Roboto', sans-serif !important;
+	}
+
+	a#hideControlsButton {
+	   width: auto;
+	   white-space: nowrap;
+	   min-height:54px;
+
+	}
+
+	a#rollRightButton {
+	   font-size: clamp(1.1rem, -0.5vw + 1.3rem, 1rem) !important;
+	   min-width: 133px !important;
+	   display: -webkit-box;
+	   display: -ms-flexbox;
+	   display: flex;
+	   -webkit-box-pack: justify;
+	       -ms-flex-pack: justify;
+	           justify-content: space-between;
+	}
+
+	a#rollLeftButton {
+	   font-size: clamp(1.1rem, -0.5vw + 1.3rem, 1rem) !important;
+	   min-width: 133px !important;
+	   display: -webkit-box;
+	   display: -ms-flexbox;
+	   display: flex;
+	   -ms-flex-pack: distribute;
+	       justify-content: space-around;
+	}
+
+	a#rollProneButton {
+
+	   font-size: clamp(1.1rem, -0.5vw + 1.3rem, 1rem) !important;
+	}
+
+
+	.text-black {
+	   color: #111 !important;
+	}
+
+	a.btn {
+	   cursor: pointer;
+	}
+
+	div.fw-400 {
+	   font-weight: 400;
+	}
+
+	#box-slider {
+	   -ms-flex-pack: distribute;
+	       justify-content: space-around;
+	   display: -webkit-box;
+	   display: -ms-flexbox;
+	   display: flex;
+	   -webkit-box-orient: vertical;
+	   -webkit-box-direction: normal;
+	       -ms-flex-direction: column;
+	           flex-direction: column;
+	   height: 150px;
+	}
+
+	.bg-black {
+	   background-color: #272425 !important;
+	}
+
+	.bg-teal {
+	   background-color: #303b41 !important;
+	}
+
+	#eye_viewer {
+	   height: 180px;
+	}
+
+	.fw-600 {
+	   font-weight: 600;
+	}
+
+	.bg-lightgray {
+	   background-color: #f7fafc !important;
+	}
+
+	.clamp-font {
+	   font-size: clamp(1.1rem, -0.5vw + 1.3rem, 1rem) !important;
+	}
+
+	#card-space {
+	   display: -webkit-box;
+	   display: -ms-flexbox;
+	   display: flex;
+	   -webkit-box-orient: vertical;
+	   -webkit-box-direction: normal;
+	       -ms-flex-direction: column;
+	           flex-direction: column;
+	   -webkit-box-pack: center;
+	       -ms-flex-pack: center;
+	           justify-content: center;
+	   -ms-flex-item-align: center;
+	       -ms-grid-row-align: center;
+	       align-self: center;
+	}
+
+	.bg-lightergray {
+	   background-color: #e2e8f0 !important;
+	}
+
+	#resetButton {
+	   min-width: 259px !important;
+	   white-space: nowrap;
+	}
+
+	#instructionsButton {
+	   min-width: 259px !important;
+	   white-space: nowrap;
+	}
+
+	#hideControlsButton {
+	   width: auto;
+	}
+
+	#sitButton {
+	   display: -webkit-box !important;
+	   display: -ms-flexbox !important;
+	   display: flex !important;
+	   -webkit-box-orient: horizontal;
+	   -webkit-box-direction: normal;
+	       -ms-flex-direction: row;
+	           flex-direction: row;
+	   -webkit-box-pack: center;
+	       -ms-flex-pack: center;
+	           justify-content: center;
+	   white-space: nowrap;
+	   vertical-align: middle;
+	   flex-direction: row;
+	   -webkit-box-align: center;
+	       -ms-flex-align: center;
+	           align-items: center;
+	   font-size: clamp(1.1rem, -0.5vw + 1.3rem, 1rem) !important;
+	}
+
+	#layDownButton {
+	   display: -webkit-box !important;
+	   display: -ms-flexbox !important;
+	   display: flex !important;
+	   -webkit-box-orient: horizontal;
+	   -webkit-box-direction: normal;
+	       -ms-flex-direction: row;
+	           flex-direction: row;
+	   -webkit-box-pack: center;
+	       -ms-flex-pack: center;
+	           justify-content: center;
+	   white-space: nowrap;
+	   vertical-align: middle;
+	   display: flex !important;
+	   flex-direction: row;
+	   -webkit-box-align: center;
+	       -ms-flex-align: center;
+	           align-items: center;
+	   font-size: clamp(1.1rem, -0.5vw + 1.3rem, 1rem) !important;
+	}
+
+	.fw-500 {
+	   font-weight: 500 !important;
+	}
+
+	.text-smaller {
+	   font-size: 0.875rem !important;
+	}
+
+	.mw-2000 {
+	   max-width: 2000px;
+	}
+
+	.rotX_leftButton {
+	   border-radius: 25px !important;
+	   display: -webkit-box;
+	   display: -ms-flexbox;
+	   display: flex;
+	   -webkit-box-orient: horizontal;
+	   -webkit-box-direction: normal;
+	       -ms-flex-direction: row;
+	           flex-direction: row;
+	   -webkit-box-pack: start;
+	       -ms-flex-pack: start;
+	           justify-content: flex-start;
+	   -webkit-box-align: center;
+	       -ms-flex-align: center;
+	           align-items: center;
+	   background-color: #dbe8ff !important;
+	}
+
+	.rotX_leftButton:hover {
+
+	   -webkit-transition: 0.2s ease-out;
+
+	   -o-transition: 0.2s ease-out;
+
+	   transition: 0.2s ease-out;
+	   opacity: .6;
+	}
+
+	.rotX_rightButton {
+
+	   border-radius: 25px !important;
+	   rotate: 90deg;
+	}
+
+	svg#rotate_90 {
+	   transform: rotate(90deg);
+	-webkit-transform: rotate(90deg);
+	       -ms-transform: rotate(90deg);
+	           transform: rotate(90deg);
+	}
+
+	svg.rotateleft_ {
+	   rotate: -90deg;
+	}
+
+	span.ggggg.rounded-pill.bg-unmcred.px-4.py-2 {
+
+	   cursor: pointer;
+	}
+
+	span.ggggg.rounded-pill.bg-unmcred.px-4.py-2:hover {
+
+	   opacity: .6;
+	   -webkit-transition: 0.2s ease-out;
+	   -o-transition: 0.2s ease-out;
+	   transition: 0.2s ease-out;
+	}
+
+	a#restartModule {
+
+	   min-width: 259px;
+	}
+
+	span.lead.enter {
+	   font-weight: 400;
+	   text-shadow: 0 0 5px black;
+	}
+
+	div#mw-card-1 {
+	   max-width: 48em;
+	   margin-left: auto;
+	   margin-right: auto;
+	}
+
+	div#mw-card-2 {
+	   max-width: 1000px;
+	   margin-left: auto;
+	   margin-right: auto;
+	}
+
+	div#group-wrap {
+	   max-width: 25em;
+	}
+
+	h5.expandableInstructions {
+	   margin-bottom: 1rem;
+	}
+
+	h5.expandableInstructions:hover {
+	   transition: .25s ease-out;
+	   opacity: .6;
+	}
+
+	/* LOADING SPINNER */
+
+	.lds-spinner {
+	 color: official;
+	 display: inline-block;
+	 position: relative;
+	 width: auto;
+	 height: 80px;
+	 translate: -45px;
+	}
+	.lds-spinner div {
+	 -webkit-transform-origin: 40px 40px;
+	     -ms-transform-origin: 40px 40px;
+	         transform-origin: 40px 40px;
+	 -webkit-animation: lds-spinner 1.2s linear infinite;
+	         animation: lds-spinner 1.2s linear infinite;
+	}
+	.lds-spinner div:after {
+	 content: " ";
+	 display: block;
+	 position: absolute;
+	 top: 3px;
+	 left: 37px;
+	 width: 6px;
+	 height: 18px;
+	 border-radius: 20%;
+	 background: #fff;
+	}
+	.lds-spinner div:nth-child(1) {
+	 -webkit-transform: rotate(0deg);
+	     -ms-transform: rotate(0deg);
+	         transform: rotate(0deg);
+	 -webkit-animation-delay: -1.1s;
+	         animation-delay: -1.1s;
+	}
+	.lds-spinner div:nth-child(2) {
+	 -webkit-transform: rotate(30deg);
+	     -ms-transform: rotate(30deg);
+	         transform: rotate(30deg);
+	 -webkit-animation-delay: -1s;
+	         animation-delay: -1s;
+	}
+	.lds-spinner div:nth-child(3) {
+	 -webkit-transform: rotate(60deg);
+	     -ms-transform: rotate(60deg);
+	         transform: rotate(60deg);
+	 -webkit-animation-delay: -0.9s;
+	         animation-delay: -0.9s;
+	}
+	.lds-spinner div:nth-child(4) {
+	 -webkit-transform: rotate(90deg);
+	     -ms-transform: rotate(90deg);
+	         transform: rotate(90deg);
+	 -webkit-animation-delay: -0.8s;
+	         animation-delay: -0.8s;
+	}
+	.lds-spinner div:nth-child(5) {
+	 -webkit-transform: rotate(120deg);
+	     -ms-transform: rotate(120deg);
+	         transform: rotate(120deg);
+	 -webkit-animation-delay: -0.7s;
+	         animation-delay: -0.7s;
+	}
+	.lds-spinner div:nth-child(6) {
+	 -webkit-transform: rotate(150deg);
+	     -ms-transform: rotate(150deg);
+	         transform: rotate(150deg);
+	 -webkit-animation-delay: -0.6s;
+	         animation-delay: -0.6s;
+	}
+	.lds-spinner div:nth-child(7) {
+	 -webkit-transform: rotate(180deg);
+	     -ms-transform: rotate(180deg);
+	         transform: rotate(180deg);
+	 -webkit-animation-delay: -0.5s;
+	         animation-delay: -0.5s;
+	}
+	.lds-spinner div:nth-child(8) {
+	 -webkit-transform: rotate(210deg);
+	     -ms-transform: rotate(210deg);
+	         transform: rotate(210deg);
+	 -webkit-animation-delay: -0.4s;
+	         animation-delay: -0.4s;
+	}
+	.lds-spinner div:nth-child(9) {
+	 -webkit-transform: rotate(240deg);
+	     -ms-transform: rotate(240deg);
+	         transform: rotate(240deg);
+	 -webkit-animation-delay: -0.3s;
+	         animation-delay: -0.3s;
+	}
+	.lds-spinner div:nth-child(10) {
+	 -webkit-transform: rotate(270deg);
+	     -ms-transform: rotate(270deg);
+	         transform: rotate(270deg);
+	 -webkit-animation-delay: -0.2s;
+	         animation-delay: -0.2s;
+	}
+	.lds-spinner div:nth-child(11) {
+	 -webkit-transform: rotate(300deg);
+	     -ms-transform: rotate(300deg);
+	         transform: rotate(300deg);
+	 -webkit-animation-delay: -0.1s;
+	         animation-delay: -0.1s;
+	}
+	.lds-spinner div:nth-child(12) {
+	 -webkit-transform: rotate(330deg);
+	     -ms-transform: rotate(330deg);
+	         transform: rotate(330deg);
+	 -webkit-animation-delay: 0s;
+	         animation-delay: 0s;
+	}
+	@-webkit-keyframes lds-spinner {
+	 0% {
+	   opacity: 1;
+	 }
+	 100% {
+	   opacity: 0;
+	 }
+	}
+	@keyframes lds-spinner {
+	 0% {
+	   opacity: 1;
+	 }
+	 100% {
+	   opacity: 0;
+	 }
+	}
+
+	.intro-text-1 {
+
+	   max-width: 53ch;
+	}
+
+	.border-right-in{
+	   border-right: 0px solid #dee2e6;
+	  
+	}
+
+	.border-left-in{
+	   border-left: 0px solid #dee2e6;
+	}
+
+	@media only screen and (max-width: 1200px) and (min-width: 600px) {
+	.border-right-in{
+	   border-right: 1px solid #dee2e6;
+	  
+	}
+
+	.border-left-in{
+	   border-left: 1px solid #dee2e6;
+	}
+	}
+
+	a.credits_hover:hover {
+	   transition: .25s ease-out;
+	   opacity: .6;
+	   cursor: pointer;
+	}
+	/* #left-card-space {display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-self: center;} */
+
+	/* @media (prefers-color-scheme: light) {
+	#home_header {
+	background-color:red!important;
+	}
+	}
+	*/
+	</style>
+</head>
+<body class="text-center bg-dark">
+	<header id="home_header">
+		<div id="loadingPage" style=
+		"font-size: 50px;/* padding:50vh; */opacity:1;position: absolute;z-index: 10;width: 100%;height: 100%;background-color: black;align-content: center;display: flex;flex-direction: column;justify-content: center;overflow-y:scroll;">
+			<div class="dsdsdsdddd p-5 mb-3" style=
+			"min-height: 300px;display:flex;flex-direction: column; align-items: center; justify-content: space-between;">
+				<h1 class="dsfwewww intro-text-1 display- lh-normal pb-3">Welcome to the interactive module for
+				the assessment<br>
+				and treatment of BPPV.</h1>
+				<p class="clamp-font mb-4 intro-text-1">Inside this app, you will be allowed to perform the
+				Dix-Hallpike maneuver to assess for BPPV and observe the resultant nystagmus pattern in order
+				to determine and select the involved semi-circular canal (SCC).</p>
+				<p class="clamp-font mb-4 intro-text-1">After you’ve correctly identified the canal involved in
+				the BPPV diagnosis, you will enter the treatment mode and perform the appropriate positioning
+				maneuvers to move the displaced otoconia from the SCC back to the utricle.</p>
+				<p class="clamp-font mb-4 intro-text-1">You will be allowed to reset the position within each
+				scenario as needed if you make an error. You may also randomize the position of the otoconia in
+				order to start the process again and test your knowledge in all 6 SCCs.</p>
+				<p class="clamp-font intro-text-1">Instructions for navigating through the 3D
+				space:</p><img alt="Instructions for Navigation" id="instructionsImg" src=
+				"https://res.cloudinary.com/unmc/image/upload/f_auto/q_auto/BPPV/bppv_instructions.jpg">
+				<p class="clamp-font my-2 intro-text-1">Press Enter to continue.</p>
+				<!--<div id="loadingText" class="display-4 fw-bo text-shadow">Loading...</div>-->
+				<div class="lds-spinner" id="loadingText">
+					<div></div>
+					<div></div>
+					<div></div>
+					<div></div>
+					<div></div>
+					<div></div>
+					<div></div>
+					<div></div>
+					<div></div>
+					<div></div>
+					<div></div>
+					<div></div>
+				</div><a class=
+				"btn btn-dark m-auto shadow border border-dark btn-lg rounded-pill text-light mt-3 mb-2 mx-0 px-5 ggggg rounded-pill bg-unmcred shadow-lg"
+				data-bs-toggle="button" id="enterButton" role="button" style="display: none;"><span class=
+				"lead enter px-4 fs-4">Enter</span></a> <img class=
+				"img-fluid d-block mx-auto mt-5 mb-4 p-xs-2 px-sm-3 p-3 pt-5" src=
+				"https://res.cloudinary.com/unmc/image/upload/v1665694712/SVG/Group_1_3_higw7v.png" width=
+				"600"> <span class="fs-6 pb-4 lh-normal">© 2023, Board of Regents of the University of
+				Nebraska. All rights reserved.</span>
+			</div>
+		</div>
+		<div id="priorExperiencePage" style=
+		"font-size: 50px;/* padding:50vh; */opacity:1;position: absolute;z-index: 9;width: 100%;height: 100%;background-color: black;align-content: center;display: flex;flex-direction: column;justify-content: center;overflow-y:scroll;">
+			<div class="dsdsdsdddd p-5 mb-3" style=
+			"min-height: 300px;display:flex;flex-direction: column; align-items: center;">
+				<h1 class="dsfwewww intro-text-1 display- lh-normal pb-3">Do you have prior clinical experience
+				with BPPV?</h1>
+				<div style="display: block;">
+					<a class=
+					"btn btn-dark m-auto shadow border border-dark btn-lg rounded-pill text-light mt-3 mb-2 mx-5 px-5 rounded-pill bg-unmcred shadow-lg"
+					data-bs-toggle="button" id="yesButtonPE" role="button"><span class=
+					"lead enter px-4 fs-4">Yes</span></a> <a class=
+					"btn btn-dark m-auto shadow border border-dark btn-lg rounded-pill text-light mt-3 mb-2 mx-5 px-5 rounded-pill bg-unmcred shadow-lg"
+					data-bs-toggle="button" id="noButtonPE" role="button"><span class=
+					"lead enter px-4 fs-4">No</span></a>
+				</div>
+			</div>
+		</div>
+		<div class="py-1 shadow-sm" style="background-color:#111;">
+			<div class="container-fluid container-padding" style="max-width:2000px;">
+				<div class="row tablet-padding">
+					<div class="col-md-12">
+						<nav class="navbar navbar-light px-2 py-3">
+							<a class="navbar-brand text-primary" href="#"><img alt="iEXCEL | UNMC" class=
+							"d-block img-fluid m-0" height="32" id="iexcelLogo" src=
+							"https://iexcel-unmc.github.io/img/iexcel-logo.svg" width="160"></a>
+							<div id="posValue" style="color:#93b0ec; font-family:monospace">
+								Testing Version
+							</div><span class="d-block flex-wrap text-light shadow"><span class="diagnosis" style=
+							" display: inline-flex;vertical-align: middle; display: flex; justify-content: center; align-items: center;"><span id="mode">Diagnosis
+							Mode</span> <span class="fa-fw ml-2"><span class="fa-fw ml-2"><svg height="16" viewbox=
+							"0 0 20 20" width="18" xmlns="http://www.w3.org/2000/svg">
+							<path d=
+							"M3.31404 2.22222C3.92841 2.22222 4.42644 1.72476 4.42644 1.11111C4.42644 0.497461 3.92841 0 3.31404 0C2.90228 0 2.54281 0.223444 2.35048 0.555556H2.20164C1.2801 0.555556 0.533044 1.30175 0.533044 2.22222V7.22222C0.225878 7.22222 -0.0257629 7.4715 0.00211378 7.77706C0.131424 9.19439 0.753121 10.5289 1.76884 11.5434C2.51367 12.2874 3.43073 12.8197 4.42644 13.1017V14.4444C4.42644 15.1702 4.89086 15.7876 5.53906 16.0163C5.56275 18.2205 7.35899 20 9.57127 20C11.7983 20 13.6037 18.1967 13.6037 15.9722V13.75C13.6037 12.5994 14.5375 11.6667 15.6895 11.6667C16.8414 11.6667 17.7752 12.5994 17.7752 13.75V15.0948C17.1271 15.3236 16.6628 15.941 16.6628 16.6667C16.6628 17.5872 17.4098 18.3333 18.3314 18.3333C19.253 18.3333 20 17.5872 20 16.6667C20 15.941 19.5357 15.3236 18.8876 15.0948V13.75C18.8876 11.9858 17.4557 10.5556 15.6895 10.5556C13.9232 10.5556 12.4913 11.9858 12.4913 13.75V15.9722C12.4913 17.5831 11.184 18.8889 9.57127 18.8889C7.97326 18.8889 6.67509 17.6067 6.65156 16.0162C7.29948 15.7873 7.76363 15.17 7.76363 14.4444V13.1017C8.75933 12.8197 9.67645 12.2874 10.4213 11.5434C11.437 10.5289 12.0586 9.19439 12.188 7.77706C12.2159 7.4715 11.9642 7.22222 11.657 7.22222V2.22222C11.657 1.30175 10.91 0.555556 9.98842 0.555556H9.83958C9.64725 0.223444 9.28778 0 8.87603 0C8.26165 0 7.76363 0.497461 7.76363 1.11111C7.76363 1.72476 8.26165 2.22222 8.87603 2.22222C9.28778 2.22222 9.64725 1.99878 9.83958 1.66667H9.98842C10.2956 1.66667 10.5446 1.9154 10.5446 2.22222V7.22222H10.6611C10.354 7.22222 10.1089 7.47217 10.0665 7.77606C9.9466 8.63367 9.55053 9.435 8.93048 10.0544C8.17844 10.8055 7.15854 11.2275 6.09503 11.2275C5.03158 11.2275 4.01162 10.8055 3.25964 10.0544C2.63954 9.435 2.24352 8.63367 2.12366 7.77606C2.08119 7.47217 1.83614 7.22222 1.52896 7.22222H1.64544V2.22222C1.64544 1.9154 1.89446 1.66667 2.20164 1.66667H2.35048C2.54281 1.99878 2.90228 2.22222 3.31404 2.22222Z"
+							fill="#FAFAFA"></path></svg></span></span></span></span>
+							<div class="btn btn-outline-secondary px-2 py-1 rounded-pill" data-toggle="tooltip" id=
+							"darkModeButton" style="padding: 0; margin-left: 20px;" title=
+							"Toggles the User Interface between Dark and Light modes.">
+								<svg height="16" id="darkModeSVG" viewbox="0 0 384 512" width="18" xmlns=
+								"http://www.w3.org/2000/svg">
+								<path d=
+								"M223.5 32C100 32 0 132.3 0 256S100 480 223.5 480c60.6 0 115.5-24.2 155.8-63.4c5-4.9 6.3-12.5 3.1-18.7s-10.1-9.7-17-8.5c-9.8 1.7-19.8 2.6-30.1 2.6c-96.9 0-175.5-78.8-175.5-176c0-65.8 36-123.1 89.3-153.3c6.1-3.5 9.2-10.5 7.7-17.3s-7.3-11.9-14.3-12.5c-6.3-.5-12.6-.8-19-.8z"
+								id="darkModePath"></path>
+								<path d=
+								"M272 384c9.6-31.9 29.5-59.1 49.2-86.2l0 0c5.2-7.1 10.4-14.2 15.4-21.4c19.8-28.5 31.4-63 31.4-100.3C368 78.8 289.2 0 192 0S16 78.8 16 176c0 37.3 11.6 71.9 31.4 100.3c5 7.2 10.2 14.3 15.4 21.4l0 0c19.8 27.1 39.7 54.4 49.2 86.2H272zM192 512c44.2 0 80-35.8 80-80V416H112v16c0 44.2 35.8 80 80 80zM112 176c0 8.8-7.2 16-16 16s-16-7.2-16-16c0-61.9 50.1-112 112-112c8.8 0 16 7.2 16 16s-7.2 16-16 16c-44.2 0-80 35.8-80 80z"
+								id="lightModePath" style="display:none"></path></svg>
+							</div>
+						</nav>
+					</div>
+				</div>
+			</div>
+		</div>
+	</header><!-- <div class="py-2">
+                                                            <div class="container-fluid" style="max-width:2000px;">
+                                                                <div class="row">
+                                                                    <div class="col-md-12">
+                                                                        <div class="list-group">
+                                                                            <h4 href="#" class="list-group-item d-flex flex-column justify-content-center align-self-center w-100 my-0 intro-text text-dark fw-bold py-2  font-weight-bold bg-lightgray">Diagnosis Mode</h4>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div> -->
+	<div class="pt-4 bd-gray-500">
+		<div class="container-fluid" id="extra_padding_tablet" style="max-width:2000px;">
+			<div class="row gx-3">
+				<div class="col-xxl-2 col-xl-3 col-lg-12" id="mw-card-1">
+					<div class="card text-center shadow" id="mh-card-1-1944px">
+						<div class="card-header text-dark font-weight-bold bg-lightgray">
+							<span class="clamp-font">Patient Controls</span>
+						</div>
+						<div class="card-body py-4" id="left-card-space">
+							<!--img class="img-fluid mb-2" width="190"
+                                                                                                                                                                src="https://res.cloudinary.com/unmc/image/upload/v1658935707/Screenshot_2022-07-27_102738_mko6ck.png"-->
+							<div class="row text-dark">
+								<!--SLIDERS PROTOTYPE BEGIN-->
+								<div class="col border-right-in">
+									<input class="c-rng" data-range="circular" id="rotX" max="160" min="0" step="1" type=
+									"range" value="0">
+									<div class="rotate_wrapper">
+										<div class="ration_aaa" id="rotationButtons" style="display: flex;">
+											<div class="btn btn-lg border border-secondary" id="rotX_leftButton" style=
+											"display:flex; flex-direction: row; justify-content: flex-start; align-items: center; border: thin solid black; width:44px; border-radius: 25px;background-color:#111">
+												<!--<svg width="44" height="44" viewbox="0 0 187 319" fill="currentcolor" xmlns="http://www.w3.org/2000/svg" class="rotateleft_">
+                                                                                                                                        <g filter="url(#filter0_d_301_3)">
+                                                                                                                                            <path fill-rule="evenodd" clip-rule="evenodd" d="M176.204 39.5364C185.265 30.492 185.265 15.8276 176.204 6.78328C167.142 -2.26107 152.45 -2.26107 143.388 6.78328L10.7962 139.123C1.73461 148.168 1.73461 162.832 10.7962 171.877L143.388 304.217C152.45 313.261 167.142 313.261 176.204 304.217C185.265 295.172 185.265 280.508 176.204 271.464L59.9536 155.44L176.204 39.5364Z" fill="black"></path>
+                                                                                                                                        </g>
+                                                                                                                                        <defs>
+                                                                                                                                            <filter id="filter0_d_301_3" x="0" y="0" width="187" height="319" filterunits="userSpaceOnUse" color-interpolation-filters="sRGB">
+                                                                                                                                                <feFlood flood-opacity="0" result="BackgroundImageFix"></feFlood>
+                                                                                                                                                <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha"></feColorMatrix>
+                                                                                                                                                <feOffset dy="4"></feOffset>
+                                                                                                                                                <feGaussianBlur stddeviation="2"></feGaussianBlur>
+                                                                                                                                                <feComposite in2="hardAlpha" operator="out"></feComposite>
+                                                                                                                                                <feColorMatrix type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.25 0"></feColorMatrix>
+                                                                                                                                                <feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow_301_3"></feBlend>
+                                                                                                                                                <feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow_301_3" result="shape"></feBlend>
+                                                                                                                                            </filter>
+                                                                                                                                        </defs>
+                                                                                                                                    </svg>-->
+												<svg height="42" viewbox="0 0 24 42" width="24" xmlns="http://www.w3.org/2000/svg">
+												<g filter="url(#filter0_i_15_3)">
+													<path clip-rule="evenodd" d=
+													"M22.942 5.25199C24.1491 4.05052 24.1491 2.10252 22.942 0.901083C21.7347 -0.300361 19.7773 -0.300361 18.5701 0.901083L0.905427 18.481C-0.301809 19.6825 -0.301809 21.6305 0.905427 22.832L18.5701 40.4118C19.7773 41.6133 21.7347 41.6133 22.942 40.4118C24.1491 39.2104 24.1491 37.2623 22.942 36.0612L7.45444 20.6485L22.942 5.25199Z"
+													fill="white" fill-rule="evenodd"></path>
+												</g>
+												<defs>
+													<filter color-interpolation-filters="sRGB" filterunits="userSpaceOnUse" height=
+													"42.6564" id="filter0_i_15_3" width="23.8473" x="0" y="0">
+														<feflood flood-opacity="0" result="BackgroundImageFix"></feflood>
+														<feblend in="SourceGraphic" in2="BackgroundImageFix" mode="normal" result=
+														"shape"></feblend>
+														<fecolormatrix in="SourceAlpha" result="hardAlpha" type="matrix" values=
+														"0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0"></fecolormatrix>
+														<feoffset dy="1.34351"></feoffset>
+														<fegaussianblur stddeviation="0.671756"></fegaussianblur>
+														<fecomposite in2="hardAlpha" k2="-1" k3="1" operator="arithmetic"></fecomposite>
+														<fecolormatrix type="matrix" values=
+														"0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.25 0"></fecolormatrix>
+														<feblend in2="shape" mode="normal" result="effect1_innerShadow_15_3"></feblend>
+													</filter>
+												</defs></svg>
+											</div>
+											<div id="rotX_spacer" style="width:100px"></div>
+											<div class="btn btn-lg border border-secondary" id="rotX_rightButton" style=
+											"display:flex; flex-direction: row; justify-content: flex-start; align-items: center; border: thin solid black; width:44px; border-radius: 25px;background-color:#111">
+												<svg height="42" viewbox="0 0 24 42" width="24" xmlns="http://www.w3.org/2000/svg">
+												<path clip-rule="evenodd" d=
+												"M0.905359 5.25199C-0.301786 4.05052 -0.301786 2.10252 0.905359 0.901083C2.11267 -0.300361 4.07 -0.300361 5.27728 0.901083L22.9419 18.481C24.1491 19.6825 24.1491 21.6305 22.9419 22.832L5.27728 40.4118C4.07 41.6133 2.11267 41.6133 0.905359 40.4118C-0.301786 39.2104 -0.301786 37.2623 0.905359 36.0612L16.3929 20.6485L0.905359 5.25199Z"
+												fill="white" fill-rule="evenodd"></path></svg>
+											</div>
+										</div>
+									</div>
+								</div>
+								<div class="col">
+									<input class="c-rng" data-range="circular" id="rotY" max="160" min="0" step="1" type=
+									"range" value="0">
+									<div id="rotationButtons" style="display: flex; margin-top:-35px;margin-bottom:20px;">
+										<div class="btn btn-lg border border-secondary" id="rotY_leftButton" style=
+										"display:flex; flex-direction: row; justify-content: flex-start; align-items: center; border: thin solid black; width:44px; border-radius: 25px;background-color:#111">
+											<svg height="42" viewbox="0 0 24 42" width="24" xmlns="http://www.w3.org/2000/svg">
+											<g filter="url(#filter0_i_15_3)">
+												<path clip-rule="evenodd" d=
+												"M22.942 5.25199C24.1491 4.05052 24.1491 2.10252 22.942 0.901083C21.7347 -0.300361 19.7773 -0.300361 18.5701 0.901083L0.905427 18.481C-0.301809 19.6825 -0.301809 21.6305 0.905427 22.832L18.5701 40.4118C19.7773 41.6133 21.7347 41.6133 22.942 40.4118C24.1491 39.2104 24.1491 37.2623 22.942 36.0612L7.45444 20.6485L22.942 5.25199Z"
+												fill="white" fill-rule="evenodd"></path>
+											</g>
+											<defs>
+												<filter color-interpolation-filters="sRGB" filterunits="userSpaceOnUse" height=
+												"42.6564" id="filter0_i_15_3" width="23.8473" x="0" y="0">
+													<feflood flood-opacity="0" result="BackgroundImageFix"></feflood>
+													<feblend in="SourceGraphic" in2="BackgroundImageFix" mode="normal" result=
+													"shape"></feblend>
+													<fecolormatrix in="SourceAlpha" result="hardAlpha" type="matrix" values=
+													"0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0"></fecolormatrix>
+													<feoffset dy="1.34351"></feoffset>
+													<fegaussianblur stddeviation="0.671756"></fegaussianblur>
+													<fecomposite in2="hardAlpha" k2="-1" k3="1" operator="arithmetic"></fecomposite>
+													<fecolormatrix type="matrix" values=
+													"0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.25 0"></fecolormatrix>
+													<feblend in2="shape" mode="normal" result="effect1_innerShadow_15_3"></feblend>
+												</filter>
+											</defs></svg>
+										</div>
+										<div id="rotY_spacer" style=" width:100px"></div>
+										<div class="btn btn-lg border border-secondary" id="rotY_rightButton" style=
+										"display:flex; flex-direction: row; justify-content: flex-start; align-items: center; border: thin solid black; width:44px; border-radius: 25px;background-color:#111">
+											<svg height="42" viewbox="0 0 24 42" width="24" xmlns="http://www.w3.org/2000/svg">
+											<path clip-rule="evenodd" d=
+											"M0.905359 5.25199C-0.301786 4.05052 -0.301786 2.10252 0.905359 0.901083C2.11267 -0.300361 4.07 -0.300361 5.27728 0.901083L22.9419 18.481C24.1491 19.6825 24.1491 21.6305 22.9419 22.832L5.27728 40.4118C4.07 41.6133 2.11267 41.6133 0.905359 40.4118C-0.301786 39.2104 -0.301786 37.2623 0.905359 36.0612L16.3929 20.6485L0.905359 5.25199Z"
+											fill="white" fill-rule="evenodd"></path></svg>
+										</div>
+									</div>
+								</div>
+								<div class="col border-left-in">
+									<input class="c-rng" data-range="circular" id="rotZ" max="160" min="0" step="1" type=
+									"range" value="0">
+									<div id="rotationButtons" style="display: flex;margin-top:-30px;margin-bottom:30px;">
+										<div class="btn btn-lg border border-secondary" id="rotZ_leftButton" style=
+										"display:flex; flex-direction: row; justify-content: flex-start; align-items: center; border: thin solid black; width:44px; border-radius: 25px;background-color:#111">
+											<svg height="42" viewbox="0 0 24 42" width="24" xmlns="http://www.w3.org/2000/svg">
+											<g filter="url(#filter0_i_15_3)">
+												<path clip-rule="evenodd" d=
+												"M22.942 5.25199C24.1491 4.05052 24.1491 2.10252 22.942 0.901083C21.7347 -0.300361 19.7773 -0.300361 18.5701 0.901083L0.905427 18.481C-0.301809 19.6825 -0.301809 21.6305 0.905427 22.832L18.5701 40.4118C19.7773 41.6133 21.7347 41.6133 22.942 40.4118C24.1491 39.2104 24.1491 37.2623 22.942 36.0612L7.45444 20.6485L22.942 5.25199Z"
+												fill="white" fill-rule="evenodd"></path>
+											</g>
+											<defs>
+												<filter color-interpolation-filters="sRGB" filterunits="userSpaceOnUse" height=
+												"42.6564" id="filter0_i_15_3" width="23.8473" x="0" y="0">
+													<feflood flood-opacity="0" result="BackgroundImageFix"></feflood>
+													<feblend in="SourceGraphic" in2="BackgroundImageFix" mode="normal" result=
+													"shape"></feblend>
+													<fecolormatrix in="SourceAlpha" result="hardAlpha" type="matrix" values=
+													"0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0"></fecolormatrix>
+													<feoffset dy="1.34351"></feoffset>
+													<fegaussianblur stddeviation="0.671756"></fegaussianblur>
+													<fecomposite in2="hardAlpha" k2="-1" k3="1" operator="arithmetic"></fecomposite>
+													<fecolormatrix type="matrix" values=
+													"0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.25 0"></fecolormatrix>
+													<feblend in2="shape" mode="normal" result="effect1_innerShadow_15_3"></feblend>
+												</filter>
+											</defs></svg>
+										</div>
+										<div id="rotZ_spacer" style=" width:100px"></div>
+										<div class="btn btn-lg border border-secondary" id="rotZ_rightButton" style=
+										"display:flex; flex-direction: row; justify-content: flex-start; align-items: center; border: thin solid black; width:44px; border-radius: 25px;background-color:#111">
+											<svg height="42" viewbox="0 0 24 42" width="24" xmlns="http://www.w3.org/2000/svg">
+											<path clip-rule="evenodd" d=
+											"M0.905359 5.25199C-0.301786 4.05052 -0.301786 2.10252 0.905359 0.901083C2.11267 -0.300361 4.07 -0.300361 5.27728 0.901083L22.9419 18.481C24.1491 19.6825 24.1491 21.6305 22.9419 22.832L5.27728 40.4118C4.07 41.6133 2.11267 41.6133 0.905359 40.4118C-0.301786 39.2104 -0.301786 37.2623 0.905359 36.0612L16.3929 20.6485L0.905359 5.25199Z"
+											fill="white" fill-rule="evenodd"></path></svg>
+										</div>
+									</div>
+								</div>
+							</div>
+							<script src="./roundSlider3.js">
+							</script> <!--HIDE BOX SLIDER FOR THIS VIEW-->
+							 <!--div id="box-slider"
+                                                                                                                                                        class="card card-body my-4 rounded fw-600 py-3 shadow-sm text-body bg-lightgray "
+                                                                                                                                                        style="border-radius:5px!important;">
+                                                                                                                                                        <div style="display:flex ;" class=" d-flex flex-row justify-content-center">
+                                                                                                                                                          <div class="pr-1">Rotation X </div>
+                                                                                                                                                          <input type="range" id="rotX" min="0" max="180" step="1" value="90" class="ml-2">
+                                                                                                                                                          <span id="rotXvalue"></span>
+                                                                                                                                                        </div>
+                                                                                                                                                        <div style="display:flex ;" class="flex-row justify-content-center">
+                                                                                                                                                          <div class="pr-1">Rotation Y </div>
+                                                                                                                                                          <input type="range" id="rotY" min="0" max="80" step="1" value="40" class="ml-2">
+                                                                                                                                                          <span id="rotYvalue"></span>
+                                                                                                                                                        </div>
+                                                                                                                                                        <div style="display:flex ;" class="  flex-row justify-content-center">
+                                                                                                                                                          <div class="flex-row justify-content-center pr-1">Rotation Z </div>
+                                                                                                                                                          <input type="range" id="rotZ" min="0" max="80" step="1" value="40" class="ml-2">
+                                                                                                                                                          <span id="rotZvalue"></span>
+                                                                                                                                                        </div>
+                                                                                                                                                      </div-->
+							 <!--SLIDERS PROTOTYPE END-->
+							<div class="_outerbuttons mx-auto" id="group-wrap">
+								<div class="_dfddsdsgggghjkkkk justify-content-between flex-wrap justify-sm-center" style=
+								"display:flex;">
+									<a class=
+									"btn btn-dark d-block m-auto shadow font-weight-bold border border-secondary btn-lg rounded-pill text-light mt-2 mb-3 mx-0"
+									data-bs-toggle="button" id="sitButton" role="button"><span class="ml-2">Sit Up</span>
+									<span class="sit-up-icon mb- ml-2 pl-1 pr-2"><svg height="24" viewbox="0 0 42 24" width=
+									"14" xmlns="http://www.w3.org/2000/svg">
+									<path clip-rule="evenodd" d=
+									"M5.25199 22.942C4.05052 24.1491 2.10252 24.1491 0.901079 22.942C-0.30036 21.7346 -0.30036 19.7773 0.901079 18.57L18.481 0.905401C19.6825 -0.3018 21.6305 -0.3018 22.832 0.905401L40.4118 18.57C41.6133 19.7773 41.6133 21.7346 40.4118 22.942C39.2104 24.1491 37.2623 24.1491 36.0612 22.942L20.6485 7.4544L5.25199 22.942Z"
+									fill="white" fill-rule="evenodd"></path></svg></span></a> <a class=
+									"btn btn-dark mt-2 mb-3 m-auto shadow font-weight-bold border border-secondary btn-lg rounded-pill text-light mx-0"
+									data-bs-toggle="button" id="layDownButton" role="button"><span class="pl-1">Lay
+									Down</span> <span class="lay-down-icon ml-2 pl-1"><svg height="24" viewbox="0 0 42 24"
+									width="14" xmlns="http://www.w3.org/2000/svg">
+									<path clip-rule="evenodd" d=
+									"M36.0609 0.905328C37.2624 -0.301772 39.2104 -0.301771 40.4118 0.905329C41.6133 2.11273 41.6133 4.07003 40.4118 5.27733L22.8319 22.9419C21.6304 24.1491 19.6824 24.1491 18.4809 22.9419L0.90114 5.27733C-0.30036 4.07003 -0.30036 2.11273 0.90114 0.905325C2.10254 -0.301775 4.05064 -0.301775 5.25174 0.905326L20.6644 16.3929L36.0609 0.905328Z"
+									fill="white" fill-rule="evenodd"></path></svg></span></a>
+								</div>
+								<div class="d-flex justify-content-between flex-wrap" id="rightleftbuttons">
+									<a class=
+									"btn btn-dark mt-2 mb-3 m-auto shadow font-weight-bold border border-secondary btn-lg rounded-pill text-light mx-0"
+									data-bs-toggle="button" id="rollLeftButton" role="button"><span class="roll-left">Roll
+									Left</span> <span class="lay-down-icon"><svg height="16" viewbox="0 0 79 131" width="9"
+									xmlns="http://www.w3.org/2000/svg">
+									<g filter="url(#filter0_d_510_5)">
+										<path clip-rule="evenodd" d=
+										"M72.3045 15.6366C75.8985 12.0595 75.8985 6.25978 72.3045 2.68277C68.71 -0.894256 62.8825 -0.894256 59.2881 2.68277L6.6957 55.0229C3.10143 58.6002 3.10143 64.3998 6.6957 67.9771L59.2881 120.317C62.8825 123.894 68.71 123.894 72.3045 120.317C75.8985 116.74 75.8985 110.94 72.3045 107.364L26.1939 61.4763L72.3045 15.6366Z"
+										fill="white" fill-rule="evenodd"></path>
+									</g>
+									<defs>
+										<filter color-interpolation-filters="sRGB" filterunits="userSpaceOnUse" height="131" id=
+										"filter0_d_510_5" width="79" x="0" y="0">
+											<feflood flood-opacity="0" result="BackgroundImageFix"></feflood>
+											<fecolormatrix in="SourceAlpha" result="hardAlpha" type="matrix" values=
+											"0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0"></fecolormatrix>
+											<feoffset dy="4"></feoffset>
+											<fegaussianblur stddeviation="2"></fegaussianblur>
+											<fecomposite in2="hardAlpha" operator="out"></fecomposite>
+											<fecolormatrix type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.25 0">
+											</fecolormatrix>
+											<feblend in2="BackgroundImageFix" mode="normal" result="effect1_dropShadow_510_5">
+											</feblend>
+											<feblend in="SourceGraphic" in2="effect1_dropShadow_510_5" mode="normal" result="shape">
+											</feblend>
+										</filter>
+									</defs></svg></span></a> <a class=
+									"btn btn-dark mt-2 mb-3 m-auto shadow font-weight-bold border border-secondary btn-lg rounded-pill text-light mx-0"
+									data-bs-toggle="button" id="rollRightButton" role="button"><span class="roll-right">Roll
+									Right</span> <span class="lay-down-icon"><svg height="14" viewbox="0 0 24 42" width="12"
+									xmlns="http://www.w3.org/2000/svg">
+									<path clip-rule="evenodd" d=
+									"M0.905359 5.25199C-0.301786 4.05052 -0.301786 2.10252 0.905359 0.901083C2.11267 -0.300361 4.07 -0.300361 5.27728 0.901083L22.9419 18.481C24.1491 19.6825 24.1491 21.6305 22.9419 22.832L5.27728 40.4118C4.07 41.6133 2.11267 41.6133 0.905359 40.4118C-0.301786 39.2104 -0.301786 37.2623 0.905359 36.0612L16.3929 20.6485L0.905359 5.25199Z"
+									fill="white" fill-rule="evenodd"></path></svg></span></a>
+								</div><a class=
+								"btn btn-dark mt-2 mb-3 m-auto shadow font-weight-bold border border-secondary btn-lg rounded-pill text-light w-100"
+								data-bs-toggle="button" id="rollDownButton" role="button"><span class="roll-to-prone">Roll
+								to Prone</span> <span class="lay-down-icon ml-2"><svg height="24" viewbox="0 0 42 24"
+								width="14" xmlns="http://www.w3.org/2000/svg">
+								<path clip-rule="evenodd" d=
+								"M36.0609 0.905328C37.2624 -0.301772 39.2104 -0.301771 40.4118 0.905329C41.6133 2.11273 41.6133 4.07003 40.4118 5.27733L22.8319 22.9419C21.6304 24.1491 19.6824 24.1491 18.4809 22.9419L0.90114 5.27733C-0.30036 4.07003 -0.30036 2.11273 0.90114 0.905325C2.10254 -0.301775 4.05064 -0.301775 5.25174 0.905326L20.6644 16.3929L36.0609 0.905328Z"
+								fill="white" fill-rule="evenodd"></path></svg></span></a>
+							</div>
+						</div>
+						<div class="card-footer text-muted d-none">
+							<span class="invisible">2 days ago</span>
+						</div>
+					</div>
+				</div>
+				<div class="col-xxl-6 col-xl-5 col-lg-12" id="mw-card-2">
+					<div class="card shadow" id="mh-card-2-1944" style="overflow-x: hidden">
+						<!--img class="card-img-top" src="https://res.cloudinary.com/unmc/image/upload/v1658935420/New_Project_83_lauskj.jpg" alt="Card image cap"-->
+						<div id="centerCanvasDiv">
+							<canvas id="threejs-canvas" style="margin:0 0 0 0; padding:0;"></canvas>
+						</div>
+						<script async src="./bundle.js">
+						</script> 
+						<!--<script async src="https://res.cloudinary.com/unmc/raw/upload/v1665775935/js/bundle_cdn.js"></script>-->
+						<div class="card-body ml-auto py-4 bg-lightgray d-flex flex-wrap" id="center-canvas">
+							<a class=
+							"btn btn-dark mt-2 px-4 shadow font-weight-bold mb-2 border border-secondary btn-lg text-light"
+							data-toggle="tooltip" id="hideControlsButton" role="button" style="border-radius:25px"
+							title="Randomizes the otoconia position and restarts the module."><span class=
+							"controls-icon"><svg class="mr-1 mb-1 fa-fw" height="20" viewbox="0 0 56 56" width="20"
+							xmlns="http://www.w3.org/2000/svg">
+							<path clip-rule="evenodd" d=
+							"M13.2028 49.828C12.3653 50.6326 11.0181 50.6162 10.1912 49.7889L6.21213 45.8077C5.38622 44.9815 5.36909 43.6326 6.17341 42.7957L7.74678 41.158C8.5511 40.3208 8.8414 38.7676 8.39997 37.7025L7.27999 34.9986C6.83619 33.9277 5.53528 33.0405 4.37459 33.0171L2.10419 32.9715C0.943158 32.9482 0.0017136 31.9842 0.0017136 30.8146L9.35203e-08 25.1857C-0.000342585 24.0175 0.941094 23.0518 2.10178 23.0284L4.37253 22.9828C5.53356 22.9595 6.83725 22.0665 7.27828 21.001L8.3986 18.2968C8.8424 17.2255 8.54974 15.6778 7.74542 14.8406L6.17205 13.2028C5.36738 12.3653 5.38383 11.0181 6.21111 10.1912L10.1923 6.21213C11.0185 5.38622 12.3674 5.36909 13.2043 6.17341L14.842 7.74678C15.6793 8.5511 17.2324 8.8414 18.2975 8.39997L21.0014 7.27999C22.0723 6.83619 22.9595 5.53528 22.9829 4.37459L23.0285 2.10419C23.0518 0.943158 24.0158 0.0017136 25.1854 0.0017136L30.8143 9.35203e-08C31.9825 -0.000342585 32.9482 0.941094 32.9716 2.10178L33.0172 4.37253C33.0405 5.53356 33.9335 6.83725 34.999 7.27828L37.7032 8.3986C38.7745 8.8424 40.3222 8.54974 41.1594 7.74542L42.7972 6.17204C43.6347 5.36738 44.9819 5.38383 45.8088 6.21111L49.7879 10.1923C50.6138 11.0185 50.6309 12.3674 49.8266 13.2043L48.2532 14.842C47.4489 15.6792 47.1586 17.2324 47.6 18.2975L48.72 21.0014C49.1638 22.0723 50.4647 22.9595 51.6254 22.9829L53.8958 23.0285C55.0568 23.0518 55.9983 24.0158 55.9983 25.1854L56 30.8143C56.0003 31.9825 55.0589 32.9482 53.8982 32.9716L51.6275 33.0172C50.4664 33.0405 49.1627 33.9335 48.7217 34.999L47.6014 37.7032C47.1576 38.7745 47.4503 40.3222 48.2546 41.1594L49.828 42.7972C50.6326 43.6347 50.6162 44.9819 49.7889 45.8088L45.8077 49.7879C44.9815 50.6138 43.6326 50.6309 42.7957 49.8266L41.158 48.2532C40.3207 47.4489 38.7676 47.1586 37.7025 47.6L34.9986 48.72C33.9277 49.1638 33.0405 50.4647 33.0171 51.6254L32.9715 53.8958C32.9482 55.0568 31.9842 55.9983 30.8146 55.9983L25.1857 56C24.0175 56.0003 23.0518 55.0589 23.0284 53.8982L22.9828 51.6275C22.9595 50.4664 22.0665 49.1627 21.001 48.7217L18.2968 47.6014C17.2255 47.1576 15.6778 47.4503 14.8406 48.2546L13.2028 49.828ZM22.762 40.6442C29.7453 43.537 37.7518 40.2207 40.6434 33.2374C43.5362 26.2542 40.2198 18.2477 33.2366 15.356C26.2534 12.4633 18.2468 15.7796 15.3552 22.7628C12.4625 29.7461 15.7788 37.7526 22.762 40.6442V40.6442Z"
+							fill="white" fill-rule="evenodd"></path></svg> <span id="hideControlsLabel">Randomize
+							Position</span><br></span></a> <a class=
+							"btn bg-unmcred mt-2 px-4 shadow font-weight-bold mb-2 border btn-lg text-light"
+							data-toggle="tooltip" id="resetButton" style="border-radius:25px" title=
+							"Resets the otoconia and patient position."><span class="ds"><svg class="mr-1 mb-1 fa-fw"
+							height="18" viewbox="0 0 60 61" width="20" xmlns="http://www.w3.org/2000/svg">
+							<path d=
+							"M52.9386 11.0315C48.953 6.19545 43.6001 2.70156 37.4251 1.04637C29.5944 -1.05012 21.4113 0.0251387 14.3874 4.07974C7.3646 8.13435 2.34055 14.6816 0.241198 22.5151C0.14237 22.8834 0.0854896 23.2557 0.000717163 23.626H6.96164C8.69116 17.8193 12.4916 12.9639 17.7603 9.92228C23.2222 6.76769 29.5834 5.93093 35.6784 7.56358C41.1209 9.02165 45.7535 12.304 48.9301 16.8791H36.0714V23.6258H59.6849V0.0117574H52.9382L52.9386 11.0315Z"
+							fill="white"></path>
+							<path d=
+							"M41.9246 50.7971C36.4627 53.9517 30.1016 54.7891 24.0065 53.1565C18.5641 51.6984 13.9314 48.416 10.7548 43.8409H23.6135V37.0942H0V60.7077H6.74671V49.6892C10.7324 54.5253 16.0853 58.0192 22.2602 59.6738C30.0909 61.771 38.2735 60.695 45.298 56.6404C52.3207 52.5858 57.3448 46.0396 59.4436 38.2056C59.5424 37.8373 59.5993 37.465 59.6841 37.0947H52.7237C50.994 42.9014 47.1935 47.7562 41.925 50.7979L41.9246 50.7971Z"
+							fill="white"></path></svg></span> Reset Position<br></a> <a class=
+							"btn btn-dark mt-2 px-4 shadow font-weight-bold mb-2 border border-secondary btn-lg text-light"
+							data-bs-target="#instructionsModal" data-bs-toggle="modal" id="instructionsButton" style=
+							"border-radius:25px"><span class="ds"><svg class="bi bi-info-circle mr-1 m" height="20"
+							viewbox="0 0 16 16" width="20" xmlns="http://www.w3.org/2000/svg">
+							<path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"></path>
+							<path d=
+							"m8.93 6.588-2.29.287-.082.38.45.083c.294.07.352.176.288.469l-.738 3.468c-.194.897.105 1.319.808 1.319.545 0 1.178-.252 1.465-.598l.088-.416c-.2.176-.492.246-.686.246-.275 0-.375-.193-.304-.533L8.93 6.588zM9 4.5a1 1 0 1 1-2 0 1 1 0 0 1 2 0z"></path>
+							</svg></span> Instructions<br></a>
+						</div>
+					</div>
+				</div>
+				<div class="col-xxl-4 col-xl-4 col-lg-12" id="mw-card-3">
+					<div class="card shadow overflow-hidden" id="mh-card-3-1994px">
+						<div id="eyeVideoPlaceholder" style=" height: 240px; color: black; font-size: 30px;">
+						<img src="./videos/diagnosisManeuverPrompt.jpg" style="max-width: 100%;"></div><video class=
+						"embed-responsive" controls="" height="240" id="eyeVideo" loop="" style="display: none;"
+						width="640"><source id="eyeVideoSrc" src="" type="video/mp4"></video> 
+						<!--CANAL SELECTION DIV BEGIN-->
+						<div class="card-body p-4 px-5 pt-5" id="selectionDiv">
+							<h3 class="text-left font-weight-bold mb-3 text-body mt-1">Test Yourself</h3>
+							<p class="card-text text-black-50 font-weight-bold text-left clamp-font">1. From the
+							dropdown menu below, select the maneuver you wish to perform</p>
+							<p class="card-text text-black-50 font-weight-bold text-left clamp-font">2. Use the patient
+							control panel on the left to perform the diagnosis maneuver.</p>
+							<p class="card-text text-black-50 font-weight-bold text-left fs-5 clamp-font">3. Then, based
+							on the nystagmus video that shows up, select the canal that you think is affected.</p>
+							<!--SIDE SELECTION-->
+							<div class="dropdown text-left mt-4">
+								<button aria-expanded="false" class=
+								"btn btn-dark btn-lg font-weight-bold dropdown-toggle rounded-5 px-4" data-bs-toggle=
+								"dropdown" id="sideSelection" type="button">Side You Want to Test</button>
+								<ul class="dropdown-menu">
+									<li>
+										<a class="dropdown-item font-weight-bold" href="#" id="choseLeftSide">Left Side</a>
+									</li>
+									<li>
+										<a class="dropdown-item font-weight-bold" href="#" id="choseRightSide">Right Side</a>
+									</li>
+								</ul>
+							</div><!--MANUEVER SELECTION-->
+							<div class="dropdown text-left mt-4">
+								<button aria-expanded="false" class=
+								"btn btn-dark btn-lg font-weight-bold dropdown-toggle rounded-5 px-4" data-bs-toggle=
+								"dropdown" id="maneuverSelection" type="button">Maneuver You Want to Perform</button>
+								<ul class="dropdown-menu">
+									<li>
+										<a class="dropdown-item font-weight-bold" href="#" id="choseDix">Dix-Hallpike
+										Maneuver</a>
+									</li>
+									<li>
+										<a class="dropdown-item font-weight-bold" href="#" id="choseRoll">Roll Maneuver</a>
+									</li>
+								</ul>
+							</div>
+							<div class="dropdown text-left mt-4">
+								<!--div class="btn-group mt-3 shadow-sm btn-group-lg" style="">                                                                                                                                                                                            <button class="dropdown-toggle btn font-weight-bold btn-primary" data-toggle="dropdown"> Select affected canal </button>
+                                                                                                                                                                                            <div class="dropdown-menu"> <a class="dropdown-item font-weight-bold my-1" href="file:///C:/Users/nhumphrey/Desktop/Pingendo/New%20Site/Third%20Site/bppvtest.html#">Action</a><a class="dropdown-item font-weight-bold my-1" href="file:///C:/Users/nhumphrey/Desktop/Pingendo/New%20Site/Third%20Site/bppvtest.html#">Action</a>
+                                                                                                                                                                                              <div class="dropdown-divider"></div>
+                                                                                                                                                                                              <a class="dropdown-item font-weight-bold" href="file:///C:/Users/nhumphrey/Desktop/Pingendo/New%20Site/Third%20Site/bppvtest.html#">Separated link</a>
+                                                                                                                                                                                            </div>
+                                                                                                                                                                                          </div-->
+								 <button aria-expanded="false" class=
+								"btn btn-dark btn-lg font-weight-bold dropdown-toggle rounded-5 px-4" data-bs-toggle=
+								"dropdown" id="selectAffected" type="button">Select Affected Canal</button>
+								<ul class="dropdown-menu">
+									<li>
+										<a class="dropdown-item font-weight-bold" href="#" id="leftRedSelect">Left Anterior</a>
+									</li>
+									<li>
+										<a class="dropdown-item font-weight-bold" href="#" id="leftGreenSelect">Left
+										Posterior</a>
+									</li>
+									<li>
+										<a class="dropdown-item font-weight-bold" href="#" id="leftBlueSelect">Left
+										Horizontal</a>
+									</li>
+									<li>
+										<a class="dropdown-item font-weight-bold" href="#" id="rightRedSelect">Right Anterior</a>
+									</li>
+									<li>
+										<a class="dropdown-item font-weight-bold" href="#" id="rightGreenSelect">Right
+										Posterior</a>
+									</li>
+									<li>
+										<a class="dropdown-item font-weight-bold" href="#" id="rightBlueSelect">Right
+										Horizontal</a>
+									</li>
+								</ul>
+							</div>
+							<!--img class="img-fluid p-2 invisible" src="https://res.cloudinary.com/unmc/image/upload/v1658936346/InnerEar_Wireframe_Images_m4l4ce.png" width="400"-->
+							<div id="resultsInfoDiv" style="width: inherit; min-height:315px; max-height:450px;">
+								<!--RESULTS OF SELECTION BEGIN-->
+								<div id="correctAnswerDiv" style="display: none;">
+									<h3 class="text-left font-weight-bold mb-3 text-body mt-4">Results:</h3>
+									<p class="card-text text-black-50 font-weight-bold text-left fs-5">You were <span class=
+									"text-success lead font-weight-bold">correct!</span></p>
+									<p class="card-text text-black-50 font-weight-bold text-left fs-5">Would you like
+									to:&nbsp;</p><!--a href="#" class="btn btn-secondary mt-2 px- shadow font-weight-bol lh-sm py-3 fs- mb-2 border border-secondary btn-lg text-light rounded-pill" style="font-size:.875rem"><span class="p-2">Review otolith movement in that canal in conjuction with the manuever you just did</span></a-->
+									<a class=
+									"my-3 btn btn-outline d-block w mx-auto shadow font-weight-bld border border-secondary p-2"
+									href="#" id="proceedToTreat" style="font-size:.875rem">Proceed to treating the patient</a>
+								</div>
+								<div id="incorrectAnswerDiv" style="display: none;">
+									<h3 class="text-left font-weight-bold mb-3 text-body mt-4">Results:</h3>
+									<p class="card-text text-black-50 font-weight-bold text-left fs-5">You were <span class=
+									"text-danger lead font-weight-bold">Incorrect!</span></p>
+									<p class="card-text text-black-50 font-weight-bold text-left fs-5">&nbsp;Please perform
+									the manuever again.</p>
+								</div>
+								<div id="noneSelected" style="display:none;">
+									<h3 class="text-left font-weight-bold mb-3 mt-4 alert alert-danger">Please select a canal
+									first!</h3>
+								</div><!--RESULTS OF SELECTION END-->
+							</div><a class=
+							"btn btn-success d-block w-75 mx-auto shadow font-weight-bold border border-secondary btn-lg rounded-5 text-white mb-3"
+							id="submitSelectedCanal">Submit response</a>
+						</div><!--CANAL SELECTION DIV END-->
+						<!--SIDE CANVAS DIV BEGIN-->
+						<div class="card-body p-4" id="card-space" style="display:none">
+							<h4 class="card-title text-dark font-weight-bold text-left px-1">Treatment</h4>
+							<p class=
+							"card-text text-black-50 font-weight-bol text-left clamp-font mb-3 px-1 pb-1 fw-500">Please
+							perform maneuvers for treatement. The Model below will help you visualize otoconia movvement
+							as you adjust patient positioning.</p><a class=
+							"btn btn-outline-success btn-sm d-block mx-auto shadow border border-secondary mb-2 btn-lg clamp-font px-3"
+							href="#" id="resetViewButton" style="border-radius:25px;white-space: nowrap;">Reset
+							View<span class="continue-icon ml-2 mb-1"></span></a>
+							<canvas id="threejs-canvas2"></canvas>
+							<div class="card-text text-black-50" id="maneuverResults">
+								<div>
+									Results:
+								</div>
+								<div id="maneuverResultsText">
+									Keep Trying
+								</div>
+							</div><a class=
+							"btn btn-success d-block mx-auto shadow font-weight-bold border border-secondary mt-5 mb-3 btn-lg clamp-font"
+							href="#" id="restartModule" style="border-radius:25px;white-space: nowrap;">Restart Module
+							<span class="continue-icon ml-2 mb-1"><svg class="fa-fw" height="22" viewbox="0 0 90 45"
+							width="22" xmlns="http://www.w3.org/2000/svg">
+							<path d=
+							"M88.6409 25.593L68.937 43.8742C67.708 45.0139 65.9173 45.3187 64.3775 44.6487C62.8381 43.9786 61.8429 42.4602 61.8429 40.9397L61.8535 28.1243H5.62461C2.51875 28.1243 0 25.6106 0 22.3411C0 19.0716 2.51875 16.8743 5.62461 16.8743H61.8535V4.21811C61.8535 2.53993 62.8483 1.02066 64.3881 0.350937C65.9268 -0.318611 67.7189 -0.0138071 68.9476 1.12613L88.6514 19.4073C90.4513 21.0755 90.4513 23.9231 88.6409 25.593Z"
+							fill="white"></path>
+							<path d=
+							"M88.3018 25.2255L88.3008 25.2265L68.597 43.5076C68.597 43.5076 68.597 43.5076 68.5969 43.5076C67.5138 44.5121 65.9349 44.7811 64.5771 44.1902C63.2101 43.5952 62.3431 42.2506 62.3429 40.9401C62.3429 40.94 62.3429 40.9398 62.3429 40.9397L62.3535 28.1247L62.3539 27.6243H61.8535H5.62461C2.80365 27.6243 0.5 25.3433 0.5 22.3411C0.5 19.3758 2.76588 17.3743 5.62461 17.3743H61.8535H62.3535V16.8743V4.21811C62.3535 2.73881 63.2304 1.39971 64.5875 0.809443L64.5876 0.809412C65.9444 0.219016 67.5247 0.488029 68.6075 1.49267L68.9476 1.12613L68.6075 1.49267L88.3113 19.7738L88.3115 19.774C89.8976 21.244 89.8979 23.7533 88.3018 25.2255Z"
+							stroke="black" stroke-opacity="0.38"></path></svg></span></a>
+						</div><!-- WARNING MODAL -->
+						<!-- Modal -->
+						<div aria-hidden="true" aria-labelledby="exampleModalLabel" class="modal fade" id=
+						"warningModal" role="dialog" tabindex="-1">
+							<div class="modal-dialog" role="document">
+								<div class="modal-content">
+									<div class="modal-header">
+										<h3 class="font-weight-bold text-body" id="exampleModalLongTitle">
+										Warning</h3><button aria-label="Close" class="close" data-bs-dismiss="modal" type=
+										"button"><span aria-hidden="true">&times;</span></button>
+									</div>
+									<div class="card-text text-black modal-body" id="warning-modal-body">
+										...
+									</div>
+									<div class="modal-footer">
+										<button class="btn btn-secondary" data-bs-dismiss="modal" id="warning-modal-cancel" type=
+										"button">Close</button> <button class="btn btn-primary" data-bs-dismiss="modal" id=
+										"warning-modal-ok" type="button">Continue</button>
+									</div>
+								</div>
+							</div>
+						</div><!-- Button trigger modal -->
+						<!-- Instructions Modal -->
+						<div aria-hidden="true" aria-labelledby="exampleModalLongTitle" class="modal fade text-dark"
+						id="instructionsModal" role="dialog" tabindex="-1">
+							<div class="modal-dialog" role="document">
+								<div class="modal-content">
+									<div class="border-bottom border-danger p-2">
+										<h3 class="font-weight-bold text-body" id="exampleModalLongTitle">
+										Instructions</h3><button aria-label="Close" class="close larger" data-bs-dismiss="modal"
+										style="font-size:2.5rem;" type="button"><span aria-hidden="true" style=
+										"font-size:2.5rem;">&times;</span></button>
+									</div>
+									<div class="card-text text-black modal-body text-left">
+										<p class=" mb-3">Click on a category to expand the instructions.</p>
+										<h5 class="expandableInstructions"><span class="expandIcon">+</span> Patient
+										Controls</h5>
+										<div class="collapse" id="patientControlsIns">
+											<h6>Rotation Controls</h6>The three patient controls in the Patient Controls panel help
+											you rotate the patient's head in all three axes (neck flexion, lateral bending and neck
+											rotation). Use the left and right button on the respective control to rotate the
+											patient's head in that direction. The knob on the blue round slider will indicate the
+											degree of rotation.<br>
+											<br>
+											<h6>Positions</h6>Using the different buttons under the patient rotation controls, you
+											can put the patient in different positions like Laying Down, Prone, Roll Left etc. The
+											ear canals also rotate to reflect the orientation of canals in that position.<br>
+											<br>
+											You can only go to certain positions from a given position. For example, while the
+											patient is sitting down, you can lay him down, but cannot roll him into prone position.
+											The buttons for positions that you are not allowed to go into from the current positions
+											will be disabled (greyed out). Also, you cannot go into a different position until the
+											current animation completes.<br>
+											<br>
+										</div>
+										<h5 class="expandableInstructions"><span class="expandIcon">+</span> Randomize
+										Position</h5>
+										<div class="collapse" id="randomizePositionIns">
+											Puts the otoconia in a randomly selected canal and resets the module. You can then start
+											over with diagnosis and treatment maneuvers for a different canal.<br>
+											<br>
+										</div>
+										<h5 class="expandableInstructions"><span class="expandIcon">+</span> Reset Position</h5>
+										<div class="collapse" id="resetPositionIns">
+											Puts the otoconia back in the starting position. You can use this in case you make a
+											mistake during the maneuver and want to start over with the diagnosis/treatment of the
+											current scenario.<br>
+											<br>
+										</div>
+										<h5 class="expandableInstructions"><span class="expandIcon">+</span> Diagnosis and
+										Treatment Modes</h5>
+										<div class="collapse" id="modesIns">
+											<h6>Diagnosis Mode</h6>The application starts in the Diagnosis Mode. Once you perform
+											the diagnosis maneuver, the nystagmus video shows up. Based on the video, once you
+											select the correct canal that otoconia is in and 'Submit Response', the otoconia becomes
+											visible, and you can click 'Proceed to treating the Patient' button to go to Treatment
+											Mode.<br>
+											<br>
+											<h6>Treatment Mode</h6>In the Treatment Mode, You can use the Patient Controls to
+											perform the treatment maneuver and get the otoconia where it should be. A zoomed-in view
+											of the current canal being treated will also be displayed. Once the otoconia reaches the
+											correct region of the ear, a notification mentioning a successful maneuver is displayed,
+											and the otoconia disappears.<br>
+											<br>
+											You can then exit the application or click 'Restart Module' to place the otoconia in a
+											random canal and reset the module to test your knowledge of a different semi-circular
+											canal.<br>
+											<br>
+										</div>
+										<h5 class="expandableInstructions"><span class="expandIcon">+</span> Navigating the 3D
+										Space</h5>
+										<div class="collapse" id="navigationIns">
+											You can move around the 3D space in both the main panel, and also in the zoomed-in view
+											in the Treatment Mode, to observe the otoconia movement from different sides/angles.
+											<img alt="Instructions for Navigation" id="instructionsVertImg" src=
+											"./textures/instructions_vertical_light.png"><br>
+											<br>
+										</div>
+										<h5 class="expandableInstructions"><span class="expandIcon">+</span> Dark Mode</h5>
+										<div class="collapse" id="darkModeIns">
+											The button with the moon icon on the top right toggles the User Interface between Dark
+											and Light modes.<br>
+											<br>
+										</div>
+									</div>
+								</div>
+								<div class="border-top border-danger p-2" style="display:flex; justify-content: right;">
+									<button class="btn btn-secondary" data-bs-dismiss="modal" type="button">Close</button>
+								</div>
+							</div>
+						</div><!-- Credits Modal -->
+						<div aria-hidden="true" aria-labelledby="exampleModalLongTitle" class="modal fade text-dark"
+						id="creditsModal" role="dialog" tabindex="-1">
+							<div class="modal-dialog" role="document">
+								<div class="modal-content">
+									<div class="border-bottom border-danger p-2">
+										<h3 class="font-weight-bold text-body" id="exampleModalLongTitle">
+										Credits</h3><button aria-label="Close" class="close larger" data-bs-dismiss="modal"
+										style="font-size:2.5rem;" type="button"><span aria-hidden="true">&times;</span></button>
+									</div>
+									<div class="card-text text-black modal-body text-left">
+										<h3>iEXCEL Visualization</h3><br>
+										<h5>Bill Glass, MS</h5>
+										<h6>Artistic Director, iEXCEL Visualization</h6><br>
+										<h5>Dheeraj Varandani, BFA</h5>
+										<h6>3D Generalist I</h6><br>
+										<h5>Neil Humphrey, BS</h5>
+										<h6>UX/UI Designer</h6><br>
+										<h5>Jer Weann Ang, MS</h5>
+										<h6>Medical Illustrator</h6><br>
+										<br>
+										<h3>Subject Matter Experts</h3><br>
+										<h5>Stacie Christensen, PT, DPT</h5>
+										<h6>Assistant Professor, College of Allied Health Professions</h6><span class=
+										"small fw-bolder">Board-Certified Clinical Specialist in Neurologic Physical Therapy
+										(NCS)</span><br>
+										<br>
+										<h5>Ethan Schroeder, PhD</h5>
+										<h6>Assistant Professor, College of Allied Health Professions</h6>
+									</div>
+								</div>
+							</div>
+						</div><!--SIDE CANVAS DIV END-->
+					</div>
+				</div>
+			</div>
+			<footer class="mt-3">
+				<div class="py-4" style="background-color:#111;">
+					<div class="container">
+						<div class="row">
+							<div class="col-md-12 text-center">
+								<p class="mb-0 text-light fw-normal fs-6 py-2">© 2023, Board of Regents of the University
+								of Nebraska. All rights reserved. <a class="credits_hover" data-bs-target="#creditsModal"
+								data-bs-toggle="modal" style="color:white; text-decoration:underline;">Credits</a>.</p>
+							</div>
+						</div>
+					</div>
+				</div>
+				<!--div class="modal fade" id="staticBackdrop_welcome" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                        <div class="modal-dialog modal-dialog modal-dialog-centered modal-dialog-scrollable modal-lg ">
+                          <div class="modal-content ">
+                            <div class="modal-header px-3 pt-3 bg-warning">
+                              <h3 class="modal-title fw-light" id="staticBackdropLabel">Warning Message</h3>
+                              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                            </div>
+                            <div class="modal-body p-3">
+                              <div class="mt-1">
+
+                                <div class="ratio ratio-16x9 mw-54em mx-auto mb-3">
+                                  <p>Example warning text</p>
+                                </div>
+                              </div>
+                              
+                            </div>
+                            <div class="modal-footer px-3 bg-light">
+                              <button type="button" class="btn btn-secondary px-4 py-2 d-flex" data-bs-dismiss="modal">Close</button>
+                              <button type="button" class="btn btn-primary d-none">Understood</button>
+                            </div>
+                          </div>
+                        </div>
+                      </div-->
+			</footer>
+		</div>
+	</div>
+</body>
+</html>
